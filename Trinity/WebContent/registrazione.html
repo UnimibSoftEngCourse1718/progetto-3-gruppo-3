@@ -5,14 +5,20 @@
 <title>Registrazione</title>
 </head>
 <body>
-	<h1>Registrazione</h1>
+	<h1><strong>Registrazione</strong></h1>
+	<h2>Inserisci i dati richiesti</h2>
 	<form method="POST" action="Registrazione.do">
 		Nome <input type="text" size="40" maxlength="40" name="nomeutente" /><br />
 		Cognome <input type="text" size="40" maxlength="40" name="cognomeutente" /><br />
-		E-mail <input type="text" size="40" maxlength="40" name="email" /><br />
+		E-mail <input type="email" size="40" maxlength="40" name="email" /><br />
+		Password <input type="text" size = "40" maxlength= "40"  name = "password" /> <br/>
+		Conferma Password <input type= "text" size = "40" maxlength= "40" name = "conferma password" /> <br />
 		Indirizzo <input type="text" size="40" maxlength="40" name="indirizzo" /><br /> 
-		Numero Carta di Credito <input type="text" size="40" maxlength="40" name="numerocarta" /><br />
+		Numero Carta di Credito <input type="number" size="40" maxlength="40" name="numerocarta" /><br />
 		<input type="SUBMIT" value="Conferma">
 	</form>
 </body>
 </html>
+
+<!-- Aggiunto campo password, conferma password e modificati type di carta
+	 di credito e email -->
