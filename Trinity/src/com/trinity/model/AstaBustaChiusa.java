@@ -1,6 +1,7 @@
 package com.trinity.model;
 
 public class AstaBustaChiusa extends Asta{
+	
 	public UtenteRegistrato offerente;
 	public int venditore;
 	public OffertaBustaChiusa offerta;
