@@ -7,21 +7,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "Aste")
-
 public abstract class Asta {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idasta", nullable=false, unique=true)
+	
 	private int idAsta;
-	@Column(name = "baseasta", length = 40, nullable = false)
+	
 	private int baseAsta;
-	@Column(name = "durata", length = 40, nullable = false)
+	
 	private int durata;
-	@Column(name = "stato", length = 40, nullable = false)
+	
 	private String stato;
-	@Column(name = "oggettoinasta", length = 40, nullable = false)
+	
 	private Oggetto oggettoInAsta;
 	
 	public Asta(int nuovaIdAsta, int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta){
