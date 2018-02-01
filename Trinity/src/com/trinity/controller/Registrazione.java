@@ -37,14 +37,14 @@ public class Registrazione extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 		//Configuration config = new Configuration().configure();
 		//ServiceRegistry servReg = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
 		//SessionFactory factory = config.buildSessionFactory(servReg);
 
 		Session session = factory.openSession();
 		session.beginTransaction();
-		UtenteRegistrato u = new UtenteRegistrato(request.getParameter("nomeutente"), request.getParameter("cognomeutente"), request.getParameter("email"), request.getParameter("indirizzo"), Integer.parseInt(request.getParameter("numerocarta")));
+		UtenteRegistrato u = new UtenteRegistrato(request.getParameter("nomeutente"), request.getParameter("cognomeutente"), request.getParameter("password"), request.getParameter("email"), request.getParameter("indirizzo"), Integer.parseInt(request.getParameter("numerocarta")));
 		session.save(u);
 		session.getTransaction().commit();
 		session.close();

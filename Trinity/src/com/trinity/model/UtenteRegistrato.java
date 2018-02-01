@@ -31,14 +31,26 @@ public class UtenteRegistrato {
 
 	@Column(name = "numerocarta", length = 40, nullable = true)
 	private int numeroCarta;
+	
+	@Column(name = "password", length = 40, nullable = true)
+	private String password;
 
-	public UtenteRegistrato(String nomeUtente, String cognomeUtente, String email, String indirizzo,
+	public UtenteRegistrato(String nomeUtente, String cognomeUtente, String password, String email, String indirizzo,
 			int numeroCarta) {
 		this.nomeUtente = nomeUtente;
 		this.cognomeUtente = cognomeUtente;
 		this.email = email;
 		this.indirizzo = indirizzo;
 		this.numeroCarta = numeroCarta;
+		this.password = password;
+	}
+
+	private String getPassword() {
+		return password;
+	}
+
+	private void setPassword(String password) {
+		this.password = password;
 	}
 
 	private int getIdUtente() {
