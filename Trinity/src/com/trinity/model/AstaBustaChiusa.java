@@ -9,8 +9,9 @@ public class AstaBustaChiusa extends Asta{
 	
 	public AstaBustaChiusa(int nuovaIdAsta, int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta, OffertaBustaChiusa nuovaOfferta) {
 		super(nuovaIdAsta, nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta);
-		this.venditore = this.idUtente;
-		this.offerta=nuovaOfferta;
+		this.venditore = UtenteRegistrato.getIdUtente();
+		this.offerta=0;
 	}
+	
 
 }

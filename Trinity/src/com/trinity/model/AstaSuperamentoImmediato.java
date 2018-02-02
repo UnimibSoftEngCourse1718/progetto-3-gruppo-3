@@ -12,8 +12,8 @@ public class AstaSuperamentoImmediato extends Asta{
 		super(nuovaIdAsta, nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta);
 		this.numTimeSlot=newNumTimeSlot;
 		this.timeSlotAggiuntivo = newTimeSlotAgg;
-		this.venditore = this.idUtente;
-		this.offerta = newOfferta;
+		this.venditore = UtenteRegistrato.getIdUtente();
+		this.offerta = 0;
 	}
 
 	public int getNumTimeSlot() {
