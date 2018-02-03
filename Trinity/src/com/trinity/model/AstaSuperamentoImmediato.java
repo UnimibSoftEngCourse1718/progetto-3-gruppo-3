@@ -4,16 +4,14 @@ public class AstaSuperamentoImmediato extends Asta{
 	private int numTimeSlot;
 	private int timeSlotAggiuntivo;
 	private UtenteRegistrato offerente;
-	private int venditore;
+	public int venditore;
 	private OffertaSuperamentoImmediato offerta;
 	
 	
-	public AstaSuperamentoImmediato(int nuovaIdAsta, int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta, int newNumTimeSlot, int newTimeSlotAgg, OffertaSuperamentoImmediato newOfferta){
-		super(nuovaIdAsta, nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta);
+	public AstaSuperamentoImmediato(int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta, int newNumTimeSlot, int newTimeSlotAgg){
+		super(nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta);
 		this.numTimeSlot=newNumTimeSlot;
 		this.timeSlotAggiuntivo = newTimeSlotAgg;
-		this.venditore = UtenteRegistrato.getIdUtente();
-		this.offerta = 0;
 	}
 
 	public int getNumTimeSlot() {

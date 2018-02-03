@@ -1,16 +1,18 @@
 package com.trinity.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AstaBustaChiusa extends Asta{
 	
 	public UtenteRegistrato offerente;
 	public int venditore;
-	public OffertaBustaChiusa offerta;
-	
-	
-	public AstaBustaChiusa(int nuovaIdAsta, int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta, OffertaBustaChiusa nuovaOfferta) {
-		super(nuovaIdAsta, nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta);
-		this.venditore = UtenteRegistrato.getIdUtente();
-		this.offerta=0;
+	public List<OffertaBustaChiusa> listaOfferte = new ArrayList<OffertaBustaChiusa>();
+
+	public AstaBustaChiusa(int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta) {
+		super(nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta);
+		
+		
 	}
 	
 

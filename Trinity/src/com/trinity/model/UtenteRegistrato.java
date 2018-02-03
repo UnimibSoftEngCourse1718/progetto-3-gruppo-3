@@ -2,6 +2,8 @@ package com.trinity.model;
 
 
 import javax.persistence.Column;
+import java.util.List;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,6 +36,16 @@ public class UtenteRegistrato {
 	
 	@Column(name = "password", length = 40, nullable = true)
 	private String password;
+	
+	@Column(name = "credito", length = 40, nullable = true)
+	private int credito;
+	
+	private List<AstaBustaChiusa> storicoAsteBustaChiusa = new ArrayList<AstaBustaChiusa>();
+	private List<AstaSuperamentoImmediato> storicoAsteSuperamentoImmediato = new ArrayList<AstaSuperamentoImmediato>();
+
+	public void setCredito(int credito) {
+		this.credito = credito;
+	}
 
 	public UtenteRegistrato(String nomeUtente, String cognomeUtente, String password, String email, String indirizzo,
 			int numeroCarta) {
@@ -53,7 +65,7 @@ public class UtenteRegistrato {
 		this.password = password;
 	}
 
-	private int getIdUtente() {
+	public int getIdUtente() {
 		return idUtente;
 	}
 
@@ -61,7 +73,7 @@ public class UtenteRegistrato {
 		this.idUtente = idUtente;
 	}
 
-	private String getNomeUtente() {
+	public String getNomeUtente() {
 		return nomeUtente;
 	}
 
@@ -69,7 +81,7 @@ public class UtenteRegistrato {
 		this.nomeUtente = nomeUtente;
 	}
 
-	private String getCognomeUtente() {
+	public String getCognomeUtente() {
 		return cognomeUtente;
 	}
 
@@ -77,7 +89,7 @@ public class UtenteRegistrato {
 		this.cognomeUtente = cognomeUtente;
 	}
 
-	private String getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
@@ -85,7 +97,7 @@ public class UtenteRegistrato {
 		this.email = email;
 	}
 
-	private String getIndirizzo() {
+	public String getIndirizzo() {
 		return indirizzo;
 	}
 
@@ -93,12 +105,52 @@ public class UtenteRegistrato {
 		this.indirizzo = indirizzo;
 	}
 
-	private int getNumeroCarta() {
+	public int getNumeroCarta() {
 		return numeroCarta;
 	}
 
 	private void setNumeroCarta(int numeroCarta) {
 		this.numeroCarta = numeroCarta;
+	}
+	
+	public int getCredito() {
+		return credito;
+	}
+//acquista credito?
+	
+	public AstaBustaChiusa creaAstaBustaChiusa (int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta) { // idAsta generato dall'utente o dal pc? 
+		AstaBustaChiusa nuovaAsta = new AstaBustaChiusa(nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta);
+		nuovaAsta.venditore = this.idUtente;
+		storicoAsteBustaChiusa.add(nuovaAsta);
+		return nuovaAsta;
+	}
+	
+	public void vediStoricoAsteBustaChiusa() { 
+		System.out.println(storicoAsteBustaChiusa.toString());
+	}
+	
+	public AstaSuperamentoImmediato creaAstaSuperamentoImmediato(int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta, int newNumTimeSlot, int newTimeSlotAgg){
+		AstaSuperamentoImmediato nuovaAsta = new AstaSuperamentoImmediato(nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta, newNumTimeSlot, newTimeSlotAgg);
+		nuovaAsta.venditore = this.idUtente;
+		storicoAsteSuperamentoImmediato.add(nuovaAsta);
+		
+		return nuovaAsta;
+	}
+	
+	public void vediStoricoAsteSuperamentoImmediato() {
+		System.out.println(storicoAsteSuperamentoImmediato.toString());
+	}
+	
+	public void proponiOffertaBustaChiusa(OffertaBustaChiusa offerta, AstaBustaChiusa asta) {
+	
+		//inserisci offerta nell'array della lista offerte per l'asta
+		// passo un oggetto offerta già istanziato? ne istanzio uno nuovo nei parametri? o passo i punti come parametro
+		// e all'interno del metodo istanzio il nuovo oggetto Offerta?
+	}
+	
+	public void proponiOffertaSuperamentoImmediato(OffertaSuperamentoImmediato offerta, AstaSuperamentoImmediato asta) {
+		
+		// inserisci offerta nell'array della lista offerte per l'asta
 	}
 
 }

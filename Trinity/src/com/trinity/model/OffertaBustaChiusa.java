@@ -1,3 +1,4 @@
+package com.trinity.model;
 
 public class OffertaBustaChiusa extends Offerta {
 
@@ -10,6 +11,7 @@ public class OffertaBustaChiusa extends Offerta {
 		setAsta(asta);
 		setVenditore(venditore);
 		setOfferente(offerente);
+		asta.listaOfferte.add(this);
 	}
 	
 	private AstaBustaChiusa getAsta() {

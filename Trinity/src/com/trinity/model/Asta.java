@@ -1,4 +1,5 @@
 package com.trinity.model;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public abstract class Asta {
@@ -13,8 +14,8 @@ public abstract class Asta {
 	
 	private Oggetto oggettoInAsta;
 	
-	public Asta(int nuovaIdAsta, int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta){
-		this.idAsta=nuovaIdAsta;
+	public Asta(int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta){
+		this.idAsta=ThreadLocalRandom.current().nextInt(0, 1001);
 		this.baseAsta=nuovaBaseAsta;
 		this.durata=nuovaDurata;
 		this.stato=nuovoStato;
