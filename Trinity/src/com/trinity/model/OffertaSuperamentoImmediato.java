@@ -1,4 +1,4 @@
-
+package com.trinity.model;
 public class OffertaSuperamentoImmediato extends Offerta{
 	
 	private AstaSuperamentoImmediato asta;

@@ -1,4 +1,4 @@
-
+package com.trinity.model;
 public abstract class Offerta {
 
 	private int idOfferta;
