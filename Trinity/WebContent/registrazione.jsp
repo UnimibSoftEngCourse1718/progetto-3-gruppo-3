@@ -9,9 +9,10 @@
 <body>
 
 <h3>Nuovo utente inserito</h3>
-Nome: <% String nomeUtente = request.getParameter("nomeutente"); out.print(nomeUtente); %> <br/>
-Cognome: <% String cognomeUtente = request.getParameter("cognomeutente"); out.print(cognomeUtente); %> <br/>
+Nome: <% String nomeUtente = request.getParameter("nomeUtente"); out.print(nomeUtente); %> <br/>
+Cognome: <% String cognomeUtente = request.getParameter("cognomeUtente"); out.print(cognomeUtente); %> <br/>
 Email: <% String email = request.getParameter("email"); out.print(email); %> <br/>
+Password: <% String password = request.getParameter("password"); out.print(password); %> <br/>
 Indirizzo: <% String indirizzo = request.getParameter("indirizzo"); out.print(indirizzo); %> <br/>
 Numero Carta: <% String numeroCarta = request.getParameter("numerocarta"); out.print(numeroCarta); %> <br/>
 

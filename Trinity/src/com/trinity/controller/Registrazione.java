@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+//import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
@@ -44,7 +44,7 @@ public class Registrazione extends HttpServlet {
 
 		Session session = factory.openSession();
 		session.beginTransaction();
-		UtenteRegistrato u = new UtenteRegistrato(request.getParameter("nomeutente"), request.getParameter("cognomeutente"), request.getParameter("password"), request.getParameter("email"), request.getParameter("indirizzo"), Integer.parseInt(request.getParameter("numerocarta")));
+		UtenteRegistrato u = new UtenteRegistrato(request.getParameter("nomeUtente"), request.getParameter("cognomeUtente"), request.getParameter("password"), request.getParameter("email"), request.getParameter("indirizzo"), Integer.parseInt(request.getParameter("numeroCarta")));
 		session.save(u);
 		session.getTransaction().commit();
 		session.close();

@@ -16,28 +16,28 @@ public class UtenteRegistrato {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idutente", nullable = false, unique = true)
+	@Column(name = "idUtente", nullable = false, unique = true)
 	private int idUtente;
 
-	@Column(name = "nomeutente", length = 40, nullable = false)
+	@Column(name = "nomeUtente", length = 40, nullable = false)
 	private String nomeUtente;
 
-	@Column(name = "cognomeutente", length = 40, nullable = false)
+	@Column(name = "cognomeUtente", length = 40, nullable = false)
 	private String cognomeUtente;
 
-	@Column(name = "email", length = 40, nullable = true)
+	@Column(name = "email", length = 40, nullable = false)
 	private String email;
 
-	@Column(name = "indirizzo", length = 40, nullable = true)
+	@Column(name = "indirizzo", length = 40, nullable = false)
 	private String indirizzo;
 
-	@Column(name = "numerocarta", length = 40, nullable = true)
+	@Column(name = "numeroCarta", length = 40, nullable = false)
 	private int numeroCarta;
 	
-	@Column(name = "password", length = 40, nullable = true)
+	@Column(name = "password", length = 40, nullable = false)
 	private String password;
 	
-	@Column(name = "credito", length = 40, nullable = true)
+	@Column(name = "crediti", length = 40, nullable = true)
 	private int credito;
 	
 	private List<AstaBustaChiusa> storicoAsteBustaChiusa = new ArrayList<AstaBustaChiusa>();
