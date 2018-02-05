@@ -1,5 +1,4 @@
---<ScriptOptions statementTerminator=";"/>
-
+USE trinitydb;
 CREATE TABLE astasuperamentoimmediato (
 	idAstaSuperamentoImmediato INT NOT NULL,
 	baseAsta INT NOT NULL,
@@ -95,14 +94,3 @@ CREATE INDEX idOfferente_idx ON offertasuperamentoimmediato (offerta ASC);
 CREATE INDEX offertaSI_asta_idx ON offertasuperamentoimmediato (asta ASC);
 
 CREATE INDEX offertaBC_asta_idx ON offertabustachiusa (asta ASC);
-
-ALTER TABLE utenteregistrato ADD PRIMARY KEY (idUtente);
-
-ALTER TABLE offertasuperamentoimmediato ADD PRIMARY KEY (idOffertaSI);
-
-ALTER TABLE offertasuperamentoimmediato ADD CONSTRAINT offertaSI_offerente FOREIGN KEY (offerta)
-	REFERENCES utenteregistrato (idUtente);
-
-ALTER TABLE offertasuperamentoimmediato ADD CONSTRAINT offertaSI_asta FOREIGN KEY (asta)
-	REFERENCES astasuperamentoimmediato (idAstaSuperamentoImmediato);
-
