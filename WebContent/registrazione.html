@@ -1,24 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Registrazione</title>
+<link rel="stylesheet" type="text/css" href="Stile.css">
+<title> Registrazione a Trinity</title>
 </head>
 <body>
-	<h1><strong>Registrazione</strong></h1>
-	<h2>Inserisci i dati richiesti</h2>
-	<form method="POST" action="registrazione.do">
-		Nome <input type="text" size="40" maxlength="40" name="nomeUtente" /><br />
-		Cognome <input type="text" size="40" maxlength="40" name="cognomeUtente" /><br />
-		E-mail <input type="email" size="40" maxlength="40" name="email" /><br />
-		Password <input type="text" size = "40" maxlength= "40"  name = "password" /> <br/>
-		<!--  Conferma Password <input type= "text" size = "40" maxlength= "40" name = "confermapassword" /> <br />-->
-		Indirizzo <input type="text" size="40" maxlength="40" name="indirizzo" /><br /> 
-		Numero Carta di Credito <input type="number" size="40" maxlength="40" name="numeroCarta" /><br />
-		<input type="SUBMIT" value="Conferma">
+
+	<form action="action_page.php" style="border: 1px solid #ccc">
+		<div class="container">
+			<h1>Registrazione</h1>
+			<p>Inserisci i dati richiesti</p>
+			<hr>
+
+			<label><b>Nome</b></label> <input type="text"
+				placeholder="Inserisci il tuo nome" name="nomeUtente" required>
+
+			<label><b>Cognome</b></label> <input type="text"
+				placeholder="Inserisci il tuo cognome" name="cognomeUtente" required>
+
+			<label><b>E-mail</b></label> <input type="text"
+				placeholder="Inserisci il tuo indirizzo email" name="email" required>
+
+			<label><b>Password</b></label> <input type="password"
+				placeholder="Inserisci la password" name="password" required>
+
+			<label><b>Conferma Password</b></label> <input type="password"
+				placeholder="Conferma la password" name="confermaPassword" required>
+
+			<label><b>Indirizzo</b></label> <input type="text"
+				placeholder="Inserisci il tuo indirizzo" name="indirizzo" required>
+
+			<label><b>Numero Carta di Credito</b></label> <input type="number"
+				placeholder="Inserisci il numero della tua carta di credito"
+				name="numeroCarta" required> <label> <input
+				type="checkbox" checked="checked" style="margin-bottom: 15px">
+				Remember me
+			</label>
+		</div>
 	</form>
+	
+		<form action="${pageContext.request.contextPath}/Registrazione" method="POST">
+    <input type="submit" value="Registrati">
+</form>
+	
+
+		<form action="./index.html">
+    <button type="submit" class="cancelbtn">Annulla</button>
+</form>
+
 </body>
 </html>
 
 <!-- Aggiunto campo password, conferma password e modificati type di carta
 	 di credito e email -->
+
+
+
+
+
+
+
+
