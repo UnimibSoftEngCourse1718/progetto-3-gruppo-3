@@ -32,7 +32,7 @@ public class UtenteRegistrato {
 	private String indirizzo;
 
 	@Column(name = "numeroCarta", length = 40, nullable = false)
-	private int numeroCarta;
+	private String numeroCarta;
 	
 	@Column(name = "password", length = 40, nullable = false)
 	private String password;
@@ -48,7 +48,7 @@ public class UtenteRegistrato {
 	}
 
 	public UtenteRegistrato(String nomeUtente, String cognomeUtente, String password, String email, String indirizzo,
-			int numeroCarta) {
+			String numeroCarta) {
 		this.nomeUtente = nomeUtente;
 		this.cognomeUtente = cognomeUtente;
 		this.email = email;
@@ -105,11 +105,11 @@ public class UtenteRegistrato {
 		this.indirizzo = indirizzo;
 	}
 
-	public int getNumeroCarta() {
+	public String getNumeroCarta() {
 		return numeroCarta;
 	}
 
-	private void setNumeroCarta(int numeroCarta) {
+	private void setNumeroCarta(String numeroCarta) {
 		this.numeroCarta = numeroCarta;
 	}
 	

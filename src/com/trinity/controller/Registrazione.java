@@ -44,7 +44,7 @@ public class Registrazione extends HttpServlet {
 
 		Session session = factory.openSession();
 		session.beginTransaction();
-		UtenteRegistrato u = new UtenteRegistrato(request.getParameter("nomeUtente"), request.getParameter("cognomeUtente"), request.getParameter("password"), request.getParameter("email"), request.getParameter("indirizzo"), Integer.parseInt(request.getParameter("numeroCarta")));
+		UtenteRegistrato u = new UtenteRegistrato(request.getParameter("nomeUtente"), request.getParameter("cognomeUtente"), request.getParameter("password"), request.getParameter("email"), request.getParameter("indirizzo"), request.getParameter("numeroCarta"));
 		session.save(u);
 		session.getTransaction().commit();
 		session.close();
