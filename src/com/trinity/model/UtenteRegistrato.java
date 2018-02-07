@@ -40,8 +40,8 @@ public class UtenteRegistrato {
 	@Column(name = "crediti", length = 40, nullable = true)
 	private int credito;
 	
-	private List<AstaBustaChiusa> storicoAsteBustaChiusa = new ArrayList<AstaBustaChiusa>();
-	private List<AstaSuperamentoImmediato> storicoAsteSuperamentoImmediato = new ArrayList<AstaSuperamentoImmediato>();
+	//private List<AstaBustaChiusa> storicoAsteBustaChiusa = new ArrayList<AstaBustaChiusa>();
+	//private List<AstaSuperamentoImmediato> storicoAsteSuperamentoImmediato = new ArrayList<AstaSuperamentoImmediato>();
 
 	public void setCredito(int credito) {
 		this.credito = credito;
@@ -121,25 +121,25 @@ public class UtenteRegistrato {
 	public AstaBustaChiusa creaAstaBustaChiusa (int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta) { // idAsta generato dall'utente o dal pc? 
 		AstaBustaChiusa nuovaAsta = new AstaBustaChiusa(nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta);
 		nuovaAsta.venditore = this.idUtente;
-		storicoAsteBustaChiusa.add(nuovaAsta);
+		//storicoAsteBustaChiusa.add(nuovaAsta);
 		return nuovaAsta;
 	}
 	
-	public void vediStoricoAsteBustaChiusa() { 
-		System.out.println(storicoAsteBustaChiusa.toString());
-	}
+	//public void vediStoricoAsteBustaChiusa() { 
+	//	System.out.println(storicoAsteBustaChiusa.toString());
+	//}
 	
 	public AstaSuperamentoImmediato creaAstaSuperamentoImmediato(int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta, int newNumTimeSlot, int newTimeSlotAgg){
 		AstaSuperamentoImmediato nuovaAsta = new AstaSuperamentoImmediato(nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta, newNumTimeSlot, newTimeSlotAgg);
 		nuovaAsta.venditore = this.idUtente;
-		storicoAsteSuperamentoImmediato.add(nuovaAsta);
+		//storicoAsteSuperamentoImmediato.add(nuovaAsta);
 		
 		return nuovaAsta;
 	}
 	
-	public void vediStoricoAsteSuperamentoImmediato() {
-		System.out.println(storicoAsteSuperamentoImmediato.toString());
-	}
+	//public void vediStoricoAsteSuperamentoImmediato() {
+	//	System.out.println(storicoAsteSuperamentoImmediato.toString());
+	//}
 	
 	public void proponiOffertaBustaChiusa(OffertaBustaChiusa offerta, AstaBustaChiusa asta) {
 	
