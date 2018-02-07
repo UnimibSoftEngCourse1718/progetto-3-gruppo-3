@@ -20,7 +20,7 @@ import com.trinity.model.UtenteRegistrato;
 /**
  * Servlet implementation class Registrazione
  */
-@WebServlet(description = "Crea un nuovo utente registrato", urlPatterns = { "/Registrazione"})
+
 public class Registrazione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
