@@ -6,15 +6,15 @@ body {
 	background: linear-gradient(to left, #76b852, #8DC26F);
 	font-family: "Arial", sans-serif;
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;      
+	-moz-osx-font-smoothing: grayscale;
 }
 
 hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
+	border: 1px solid #f1f1f1;
+	margin-bottom: 25px;
 }
 
-#img_footer{
+#img_footer {
 	width: 34px;
 	height: 30px;
 }
@@ -25,10 +25,13 @@ hr {
 	text-size: small;
 	text-align: center;
 	background-color: #f2f2f2;
-	line-height:40px;
+	line-height: 40px;
 }
 
-.footer, #push {height: 40px; clear: both;}
+.footer, #push {
+	height: 40px;
+	clear: both;
+}
 
 .log_reg-page {
 	width: 360px;
@@ -44,7 +47,8 @@ hr {
 	margin: 0 auto 100px;
 	padding: 45px;
 	text-align: center;
-	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0
+		rgba(0, 0, 0, 0.24);
 }
 
 .form input {
@@ -74,7 +78,7 @@ hr {
 	cursor: pointer;
 }
 
-.form button:hover,.form button:active,.form button:focus {
+.form button:hover, .form button:active, .form button:focus {
 	background: #43A047;
 }
 
