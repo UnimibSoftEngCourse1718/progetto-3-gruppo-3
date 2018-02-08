@@ -31,7 +31,7 @@ public class Registrazione extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -49,8 +49,7 @@ public class Registrazione extends HttpServlet {
 		session.getTransaction().commit();
 		session.close();
 		
-		RequestDispatcher view = request.getRequestDispatcher("registrazione.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("registrazione_conferma.jsp");
 		view.forward(request, response);
 	}
-
 }

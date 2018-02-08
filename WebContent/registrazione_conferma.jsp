@@ -36,10 +36,12 @@
 	%>
 	<br /> Numero Carta:
 	<%
-		String numeroCarta = request.getParameter("numerocarta");
+		String numeroCarta = request.getParameter("numeroCarta");
 		out.print(numeroCarta);
 	%>
 	<br />
 
+	<button name="nome" onclick="location.href='./login.html'">Login</button>
+	
 </body>
 </html>

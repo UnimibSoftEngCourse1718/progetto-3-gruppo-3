@@ -1,63 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="Stile.css">
-<title> Registrazione a Trinity</title>
+	<link rel="stylesheet" type="text/css" href="css/style_login_registrazione.css">
+	<title> Registrazione a Trinity</title>
 </head>
 <body>
-
-	<form action="action_page.php" style="border: 1px solid #ccc">
-		<div class="container">
-			<h1>Registrazione</h1>
+<div class="reg-page">
+	<div class="form">
+		
+		<form action="registrazione" method="POST" class="reg-form">
+			<h2>Registrazione</h2>
 			<p>Inserisci i dati richiesti</p>
 			<hr>
-
-			<label><b>Nome</b></label> <input type="text"
-				placeholder="Inserisci il tuo nome" name="nomeUtente" required>
-
-			<label><b>Cognome</b></label> <input type="text"
-				placeholder="Inserisci il tuo cognome" name="cognomeUtente" required>
-
-			<label><b>E-mail</b></label> <input type="text"
-				placeholder="Inserisci il tuo indirizzo email" name="email" required>
-
-			<label><b>Password</b></label> <input type="password"
-				placeholder="Inserisci la password" name="password" required>
-
+			
+			<label><b>Nome</b></label>
+			<input type="text" title="Nome" placeholder="Inserisci il tuo nome" name="nomeUtente" required>
+	
+			<label><b>Cognome</b></label>
+			<input type="text" title="Cognome" placeholder="Inserisci il tuo cognome" name="cognomeUtente" required>
+	
+			<label><b>E-mail</b></label>
+			<input type="text" title="Email" placeholder="Inserisci il tuo indirizzo email" name="email" required>
+	
+			<label><b>Password</b></label>
+			<input type="password" title="Password" placeholder="Inserisci la password" name="password" required>
+	
 			<!-- <label><b>Conferma Password</b></label> <input type="password"
 				placeholder="Conferma la password" name="confermaPassword" required>-->
-
-			<label><b>Indirizzo</b></label> <input type="text"
-				placeholder="Inserisci il tuo indirizzo" name="indirizzo" required>
-
-			<label><b>Numero Carta di Credito</b></label> <input type="number"
-				placeholder="Inserisci il numero della tua carta di credito"
-				name="numeroCarta" required> <label> <input
-				type="checkbox" checked="checked" style="margin-bottom: 15px">
-				Remember me
-			</label>
-		</div>
-	</form>
 	
-		<form action="registrazione" method="POST"> <!--  NON NE VUOLE SAPERE!!! -->
-    <input type="submit" value="Registrati">
-</form>
+			<label><b>Indirizzo</b></label>
+			<input type="text" title="Indirizzo" placeholder="Inserisci il tuo indirizzo" name="indirizzo" required>
 	
-
-		<form action="./index.html">
-    <button type="submit" class="cancelbtn">Annulla</button>
-</form>
-
+			<label><b>Numero Carta di Credito</b></label>
+			<input type="text" title="Numero carta" placeholder="Inserisci il numero della tua carta di credito"	name="numeroCarta" required>
+			
+			
+			<button type="submit" value="Registrati">Registrati</button>
+			
+			<button name="nome" onclick="location.href='./index.html'">Annulla</button>
+			<p class="message">Sei già registrato?<a href="./login.html">Login</a></p>
+		</form>
+	</div>
+</div>
 </body>
 </html>
-
-<!-- Aggiunto campo password, conferma password e modificati type di carta
-	 di credito e email -->
-
-
-
-
-
-
-
-

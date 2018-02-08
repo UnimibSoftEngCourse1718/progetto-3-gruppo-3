@@ -43,10 +43,6 @@ public class UtenteRegistrato {
 	//private List<AstaBustaChiusa> storicoAsteBustaChiusa = new ArrayList<AstaBustaChiusa>();
 	//private List<AstaSuperamentoImmediato> storicoAsteSuperamentoImmediato = new ArrayList<AstaSuperamentoImmediato>();
 
-	public void setCredito(int credito) {
-		this.credito = credito;
-	}
-
 	public UtenteRegistrato(String nomeUtente, String cognomeUtente, String password, String email, String indirizzo,
 			String numeroCarta) {
 		this.nomeUtente = nomeUtente;
@@ -116,7 +112,12 @@ public class UtenteRegistrato {
 	public int getCredito() {
 		return credito;
 	}
-//acquista credito?
+	
+	public void setCredito(int credito) {
+		this.credito = credito;
+	}
+	
+	//acquista credito?
 	
 	public AstaBustaChiusa creaAstaBustaChiusa (int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta) { // idAsta generato dall'utente o dal pc? 
 		AstaBustaChiusa nuovaAsta = new AstaBustaChiusa(nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta);
