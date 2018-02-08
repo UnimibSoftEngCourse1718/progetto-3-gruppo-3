@@ -11,9 +11,8 @@
 
 <div class="log_reg-page">
 	<div class="form">
-		
-			<h2>Nuovo utente inserito</h2>
-			<hr>
+		<h2>Nuovo utente inserito</h2>
+		<hr>
 			
 		Nome:
 		<%
@@ -56,6 +55,6 @@
 	<img src="media/logoTrinity.png" title="Logo Trinity" alt="Immagine - Logo Trinity" id="img_footer" align="left">
 	Footer-text
 	<img src="media/logoTrinity.png" title="Logo Trinity" alt="Immagine - Logo Trinity" id="img_footer" align="right">
-</div>	
+</div>
 </body>
 </html>
