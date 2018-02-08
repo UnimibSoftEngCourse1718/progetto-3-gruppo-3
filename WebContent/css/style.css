@@ -33,6 +33,11 @@ button {
     opacity: 90;
 }
 
+#img_footer{
+	width: 34px;
+	height: 30px;
+}
+
 div#border{
 	border: 1px solid #ccc;
 }

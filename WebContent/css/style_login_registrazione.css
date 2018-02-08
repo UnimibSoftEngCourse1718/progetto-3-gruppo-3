@@ -14,7 +14,23 @@ hr {
     margin-bottom: 25px;
 }
 
-.login-page {
+#img_footer{
+	width: 34px;
+	height: 30px;
+}
+
+.footer {
+	color: #bfbfbf;
+	width: 100%;
+	text-size: small;
+	text-align: center;
+	background-color: #f2f2f2;
+	line-height:40px;
+}
+
+.footer, #push {height: 40px; clear: both;}
+
+.log_reg-page {
 	width: 360px;
 	padding: 8% 0 0;
 	margin: auto;
