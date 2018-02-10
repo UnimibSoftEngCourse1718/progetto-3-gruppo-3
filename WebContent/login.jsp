@@ -10,26 +10,24 @@
         <title>Login</title>
     </head>
     <body>
-     <div class="log_reg-page">
+    	<div class="log_reg-page">
 		<div class="form">
         <%
           session.setMaxInactiveInterval(0);  
           utente.login();
           
           if(utente.isLoggedIn()){
-            out.println("Hello "+utente.getEmail()+"<br/>");
+            out.println("Benvenuto "+utente.getEmail()+"<br/>");
+            out.println("<a href='logout.jsp'>Logout</a> <br/>");
           }
           else{
-        	  out.println("Invalid login<br />");
+        	  out.println("I dati di accesso sono sbagliati! Controllali di nuovo!<br />");
           }
          out.println("<a href='checkLogin.jsp'>check</A>");
         %>
         <br/>
-        <button type="submit" value="Logout" onclick="location.href='./logout.jsp'">Logout</button>
-        </div>
-        </div>
-        
-
+        <button type="submit" value="TORNA ALLA HOME" onclick="location.href='./index.html'">TORNA ALLA HOME</button>
+		</div></div>
 
     </body>
 </html>
