@@ -1,34 +1,14 @@
-<!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="css/style_login_registrazione.css">
-<title>Log-in</title>
-</head>
-<body>
-
-<div class="log_reg-page">
-	<div class="form">
-		<form action="login" method="POST">
-			<h2>Login</h2>
-			<hr>
-			
-			<input type="text" title="email" placeholder="Inserisci il tuo indirizzo email" name="email" required>
-			<input type="password" title="password" placeholder="Inserisci la tua password" name="password" required>
-			
-			<button type="submit" value="Accedi">Accedi</button>
-			
-			<button onclick="location.href='./index.html'">Annulla</button>
-			<p class="message">Non sei registrato?<a href="./registrazione.html">Registrati</a></p>
-		</form>
-	</div>
-	
-<div id="push"></div>	
-</div>	
-<div class="footer">
-	<img src="media/logoTrinity.png" title="Logo Trinity" alt="Immagine - Logo Trinity" id="img_footer" align="left">
-	Footer-text
-	<img src="media/logoTrinity.png" title="Logo Trinity" alt="Immagine - Logo Trinity" id="img_footer" align="right">
-</div>
-</body>
+    <head>
+        <title>Login Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <form name="login" action="login.jsp" method="post"><br/>
+         E-Mail <input type="text" name="email" size="15" /><br/>
+         Password <input type="password" name="password" size="15" /><br/>
+         <input type ="submit" value="login" /><input type="reset" value="clear" /><br/>
+        </form>
+        
+    </body>
 </html>
