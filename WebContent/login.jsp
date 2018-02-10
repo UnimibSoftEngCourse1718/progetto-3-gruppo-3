@@ -5,10 +5,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+    	<link rel="stylesheet" type="text/css" href="css/style_login_registrazione.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
     </head>
     <body>
+     <div class="log_reg-page">
+		<div class="form">
         <%
           session.setMaxInactiveInterval(0);  
           utente.login();
@@ -21,6 +24,10 @@
           }
          out.println("<a href='checkLogin.jsp'>check</A>");
         %>
+        <br/>
+        <button type="submit" value="Logout" onclick="location.href='./logout.jsp'">Logout</button>
+        </div>
+        </div>
         
 
 
