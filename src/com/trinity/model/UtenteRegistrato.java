@@ -132,7 +132,7 @@ public class UtenteRegistrato {
 	
 	public AstaSuperamentoImmediato creaAstaSuperamentoImmediato(int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta, int newNumTimeSlot, int newTimeSlotAgg){
 		AstaSuperamentoImmediato nuovaAsta = new AstaSuperamentoImmediato(nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta, newNumTimeSlot, newTimeSlotAgg);
-		nuovaAsta.venditore = this.idUtente;
+		nuovaAsta.setVenditore(this.idUtente);
 		//storicoAsteSuperamentoImmediato.add(nuovaAsta);
 		
 		return nuovaAsta;

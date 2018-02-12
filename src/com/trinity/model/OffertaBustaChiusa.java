@@ -11,7 +11,7 @@ public class OffertaBustaChiusa extends Offerta {
 		setAsta(asta);
 		setVenditore(venditore);
 		setOfferente(offerente);
-		asta.listaOfferte.add(this);
+		asta.addOfferta(this);
 	}
 	
 	private AstaBustaChiusa getAsta() {

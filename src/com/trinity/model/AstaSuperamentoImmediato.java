@@ -4,7 +4,9 @@ public class AstaSuperamentoImmediato extends Asta{
 	private int numTimeSlot;
 	private int timeSlotAggiuntivo;
 	private UtenteRegistrato offerente;
-	public int venditore;
+	private int venditore;
+	
+
 	private OffertaSuperamentoImmediato offerta;
 	
 	
@@ -30,6 +32,13 @@ public class AstaSuperamentoImmediato extends Asta{
 		this.timeSlotAggiuntivo = timeSlotAggiuntivo;
 	}
 	
+	public int getVenditore() {
+		return venditore;
+	}
+
+	public void setVenditore(int venditore) {
+		this.venditore = venditore;
+	}
 	
 	
 }
