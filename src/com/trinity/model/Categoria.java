@@ -1,32 +1,25 @@
 package com.trinity.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class Categoria {
+	@Entity
+	@Table (name= "categoria")
+	public class Categoria {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCategoria;
+	
+	@Column(name="nomeCategoria")
 	private String nomeCategoria;
-	
-	public Categoria() {
-		idCategoria=0;
-		nomeCategoria=null;
-	}
 
-	public Categoria(int idCategoria, String nomeCategoria) {
-		this.idCategoria = idCategoria;
+	public Categoria(String nomeCategoria) {
 		this.nomeCategoria = nomeCategoria;
-	}
-	
-	public Categoria(Categoria other) {
-		this.idCategoria=other.getIdCategoria();
-		this.nomeCategoria=other.getNomeCategoria();
-	}
-
-	public int getIdCategoria() {
-		return idCategoria;
-	}
-
-	public void setIdCategoria(int idCategoria) {
-		this.idCategoria = idCategoria;
 	}
 
 	public String getNomeCategoria() {
@@ -35,6 +28,14 @@ public class Categoria {
 
 	public void setNomeCategoria(String nomeCategoria) {
 		this.nomeCategoria = nomeCategoria;
+	}
+
+	public int getIdCategoria() {
+		return idCategoria;
+	}
+
+	private void setIdCategoria(int idCategoria) {
+		this.idCategoria = idCategoria;
 	}
 	 
 	

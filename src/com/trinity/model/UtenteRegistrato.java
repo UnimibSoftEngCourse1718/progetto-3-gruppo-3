@@ -130,13 +130,13 @@ public class UtenteRegistrato {
 	//	System.out.println(storicoAsteBustaChiusa.toString());
 	//}
 	
-	public AstaSuperamentoImmediato creaAstaSuperamentoImmediato(int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta, int newNumTimeSlot, int newTimeSlotAgg){
+	/*public AstaSuperamentoImmediato creaAstaSuperamentoImmediato(int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta, int newNumTimeSlot, int newTimeSlotAgg){
 		AstaSuperamentoImmediato nuovaAsta = new AstaSuperamentoImmediato(nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta, newNumTimeSlot, newTimeSlotAgg);
-		nuovaAsta.setVenditore(this.idUtente);
+		nuovaAsta.venditore = this.idUtente;
 		//storicoAsteSuperamentoImmediato.add(nuovaAsta);
 		
 		return nuovaAsta;
-	}
+	}*/			//questo metodo ha una servlet a parte 
 	
 	//public void vediStoricoAsteSuperamentoImmediato() {
 	//	System.out.println(storicoAsteSuperamentoImmediato.toString());

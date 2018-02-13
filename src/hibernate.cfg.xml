@@ -5,6 +5,7 @@
 
 <hibernate-configuration>
 <session-factory>
+
 <!-- Database connection settings -->
 <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 <property name="connection.url">jdbc:mysql://localhost:3306/trinitydb</property>
@@ -21,6 +22,19 @@
 <property name="show_sql">true</property>
 <!-- Drop and re-create the database schema on startup -->
 <property name="hbm2ddl.auto">update</property>
+
+<!-- <hibernate-mapping package="com.trinity.model" >
+    <class name="UtenteRegistrato" table="utenteregistrato" lazy="true" />
+	<class name="AstaSuperamentoImmediato" table="astasuperamentoimmediato" lazy="true" />
+	<class name="Oggetto" table="oggetto" lazy="true" />
+	<class name="Categoria" table="categoria" lazy="true" />
+</hibernate-mapping>-->
+
 <mapping class="com.trinity.model.UtenteRegistrato"/>
+<mapping class="com.trinity.model.AstaSuperamentoImmediato"/>
+<mapping class="com.trinity.model.Oggetto"/>
+<mapping class="com.trinity.model.Categoria"/>
+
+
 </session-factory>
 </hibernate-configuration>
