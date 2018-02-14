@@ -33,7 +33,7 @@
 <mapping class="com.trinity.model.UtenteRegistrato"/>
 <mapping class="com.trinity.model.AstaSuperamentoImmediato"/>
 <mapping class="com.trinity.model.Oggetto"/>
-<mapping class="com.trinity.model.Categoria"/>
+<mapping class="com.trinity.model.Categoria" />
 
 
 </session-factory>

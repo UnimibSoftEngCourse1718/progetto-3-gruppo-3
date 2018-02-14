@@ -37,11 +37,11 @@ public class AstaSuperamentoImmediato  {
 	@Column(name = "oraFine", nullable=false)
 	private long oraFine;
 	
-	@OneToOne (fetch=FetchType.LAZY)
+	@OneToOne (fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn (name = "oggetto")
 	private Oggetto oggetto;
 	
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn(name = "venditore")
 	private UtenteRegistrato venditore;
 	

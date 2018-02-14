@@ -21,6 +21,12 @@ import javax.persistence.Table;
 	public Categoria(String nomeCategoria) {
 		this.nomeCategoria = nomeCategoria;
 	}
+	
+	public Categoria(int idCategoria, String nomeCategoria) {
+		this.idCategoria = idCategoria;
+		this.nomeCategoria = nomeCategoria;
+	}
+	
 
 	public String getNomeCategoria() {
 		return nomeCategoria;

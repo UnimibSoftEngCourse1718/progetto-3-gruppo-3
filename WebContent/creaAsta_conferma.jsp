@@ -18,7 +18,7 @@
 		%>
 		<br /> Categoria:
 		<%
-			String nomeCategoria = request.getParameter("nomeCategoria");
+			String nomeCategoria = request.getParameter("categoria");
 			out.print(nomeCategoria);
 		%>
 		

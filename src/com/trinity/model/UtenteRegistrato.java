@@ -3,6 +3,7 @@ package com.trinity.model;
 
 import javax.persistence.Column;
 import java.util.List;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,37 +13,52 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "UtenteRegistrato")
-public class UtenteRegistrato {
+public class UtenteRegistrato{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idUtente", nullable = false, unique = true)
-	private int idUtente;
+	public int idUtente;
 
 	@Column(name = "nomeUtente", length = 40, nullable = false)
-	private String nomeUtente;
+	public String nomeUtente;
 
 	@Column(name = "cognomeUtente", length = 40, nullable = false)
-	private String cognomeUtente;
+	public String cognomeUtente;
 
 	@Column(name = "email", length = 40, nullable = false)
-	private String email;
+	public String email;
 
 	@Column(name = "indirizzo", length = 40, nullable = false)
-	private String indirizzo;
+	public String indirizzo;
 
 	@Column(name = "numeroCarta", length = 40, nullable = false)
-	private String numeroCarta;
+	public String numeroCarta;
 	
 	@Column(name = "password", length = 40, nullable = false)
-	private String password;
+	public String password;
 	
 	@Column(name = "crediti", length = 40, nullable = true)
-	private int credito;
+	public int credito;
 	
 	//private List<AstaBustaChiusa> storicoAsteBustaChiusa = new ArrayList<AstaBustaChiusa>();
 	//private List<AstaSuperamentoImmediato> storicoAsteSuperamentoImmediato = new ArrayList<AstaSuperamentoImmediato>();
 
+	public UtenteRegistrato(){
+		
+	}
+	
+	public UtenteRegistrato(int idUtente, String nomeUtente, String cognomeUtente, String password, String email, String indirizzo,
+			String numeroCarta) {
+		this.idUtente = idUtente;
+		this.nomeUtente = nomeUtente;
+		this.cognomeUtente = cognomeUtente;
+		this.email = email;
+		this.indirizzo = indirizzo;
+		this.numeroCarta = numeroCarta;
+		this.password = password;
+	}
+	
 	public UtenteRegistrato(String nomeUtente, String cognomeUtente, String password, String email, String indirizzo,
 			String numeroCarta) {
 		this.nomeUtente = nomeUtente;
@@ -53,11 +69,11 @@ public class UtenteRegistrato {
 		this.password = password;
 	}
 
-	private String getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	private void setPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -65,7 +81,7 @@ public class UtenteRegistrato {
 		return idUtente;
 	}
 
-	private void setIdUtente(int idUtente) {
+	public void setIdUtente(int idUtente) {
 		this.idUtente = idUtente;
 	}
 
@@ -73,7 +89,7 @@ public class UtenteRegistrato {
 		return nomeUtente;
 	}
 
-	private void setNomeUtente(String nomeUtente) {
+	public void setNomeUtente(String nomeUtente) {
 		this.nomeUtente = nomeUtente;
 	}
 
@@ -81,7 +97,7 @@ public class UtenteRegistrato {
 		return cognomeUtente;
 	}
 
-	private void setCognomeUtente(String cognomeUtente) {
+	public void setCognomeUtente(String cognomeUtente) {
 		this.cognomeUtente = cognomeUtente;
 	}
 
@@ -89,7 +105,7 @@ public class UtenteRegistrato {
 		return email;
 	}
 
-	private void setEmail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
@@ -115,43 +131,6 @@ public class UtenteRegistrato {
 	
 	public void setCredito(int credito) {
 		this.credito = credito;
-	}
-	
-	//acquista credito?
-	
-	public AstaBustaChiusa creaAstaBustaChiusa (int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta) { // idAsta generato dall'utente o dal pc? 
-		AstaBustaChiusa nuovaAsta = new AstaBustaChiusa(nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta);
-		nuovaAsta.venditore = this.idUtente;
-		//storicoAsteBustaChiusa.add(nuovaAsta);
-		return nuovaAsta;
-	}
-	
-	//public void vediStoricoAsteBustaChiusa() { 
-	//	System.out.println(storicoAsteBustaChiusa.toString());
-	//}
-	
-	/*public AstaSuperamentoImmediato creaAstaSuperamentoImmediato(int nuovaBaseAsta, int nuovaDurata, String nuovoStato, Oggetto nuovoOggettoInAsta, int newNumTimeSlot, int newTimeSlotAgg){
-		AstaSuperamentoImmediato nuovaAsta = new AstaSuperamentoImmediato(nuovaBaseAsta, nuovaDurata, nuovoStato, nuovoOggettoInAsta, newNumTimeSlot, newTimeSlotAgg);
-		nuovaAsta.venditore = this.idUtente;
-		//storicoAsteSuperamentoImmediato.add(nuovaAsta);
-		
-		return nuovaAsta;
-	}*/			//questo metodo ha una servlet a parte 
-	
-	//public void vediStoricoAsteSuperamentoImmediato() {
-	//	System.out.println(storicoAsteSuperamentoImmediato.toString());
-	//}
-	
-	public void proponiOffertaBustaChiusa(OffertaBustaChiusa offerta, AstaBustaChiusa asta) {
-	
-		//inserisci offerta nell'array della lista offerte per l'asta
-		// passo un oggetto offerta già istanziato? ne istanzio uno nuovo nei parametri? o passo i punti come parametro
-		// e all'interno del metodo istanzio il nuovo oggetto Offerta?
-	}
-	
-	public void proponiOffertaSuperamentoImmediato(OffertaSuperamentoImmediato offerta, AstaSuperamentoImmediato asta) {
-		
-		// inserisci offerta nell'array della lista offerte per l'asta
 	}
 
 }

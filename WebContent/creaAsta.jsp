@@ -25,13 +25,15 @@ Categoria:
 
  <%
 
-out.print("<select name='categoria' size='1' >");
+out.print("<select name=\"categoria\" size='1' >");
 
 for (int var=0; var<categoria.nomeCategoria().size()-1; var++)
 {
 	out.println("<option>" + categoria.nomeCategoria().get(var) + "</option>");
 }
 out.print("</select>");
+
+out.print("<input type=\"hidden\" name=\"email\"  value=" + utente.getEmail() + " />");
 %>
 <br>
 <input type="SUBMIT" value="Conferma">

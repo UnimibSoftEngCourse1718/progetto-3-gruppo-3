@@ -3,7 +3,9 @@ package com.trinity.controller;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.util.List;
+import java.util.stream.Stream;
 
+import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,9 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Query;
+import org.hibernate.*;
+import org.hibernate.ScrollableResults;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.ejb.*;
+import org.hibernate.transform.Transformers;
 
 import com.trinity.model.AstaSuperamentoImmediato;
 import com.trinity.model.Categoria;
@@ -61,18 +67,20 @@ public class creaAsta extends HttpServlet {
 		
 		Session session = factory.openSession();
 		session.beginTransaction();
-				
-		Query query = session.createQuery("select idCategoria,nomeCategoria from com.trinity.model.Categoria where nomeCategoria = :nome ");
-		query.setParameter("nome", request.getParameter("categoria"));
-		List list = query.list();
-		Categoria c = (Categoria) list.get(0);
+			
+		int idC = (int) session.createQuery("select idCategoria from com.trinity.model.Categoria where nomeCategoria = :nome").setParameter("nome", request.getParameter("categoria")).uniqueResult();
+		Categoria c = new Categoria (idC, request.getParameter("nomeCategoria"));
 		
-		UtenteRegistrato v = new UtenteRegistrato("nome","cognome", "password", "email", "indirizzo", "cartadicredito"); //questo è per fare i test, poi bisogneà inserire come venditore il tizio loggato che crea l'asta 
+		session.cancelQuery();
+		
+		UtenteRegistrato u = (UtenteRegistrato) session.createQuery("select ut.idUtente as idUtente, ut.nomeUtente as nomeUtente, ut.cognomeUtente as cognomeUtente, ut.password as password, ut.email as email, ut.indirizzo as indirizzo, ut.numeroCarta as numeroCarta from com.trinity.model.UtenteRegistrato ut where ut.email = :email").setParameter( "email", request.getParameter("email")).setResultTransformer(Transformers.aliasToBean(UtenteRegistrato.class)).uniqueResult();
+		
+		
 		Oggetto o = new Oggetto(request.getParameter("nomeOggetto"), request.getParameter("descrizione"), c);
-		AstaSuperamentoImmediato a = new AstaSuperamentoImmediato(Integer.parseInt(request.getParameter("baseAsta")), Integer.parseInt(request.getParameter("timeSlot")), o, v); 
+		AstaSuperamentoImmediato a = new AstaSuperamentoImmediato(Integer.parseInt(request.getParameter("baseAsta")), Integer.parseInt(request.getParameter("timeSlot")), o, u); 
 		
-		session.save(v);
-		session.save(c);
+		
+		
 		session.save(o);
 		session.save(a);
 		session.getTransaction().commit();
