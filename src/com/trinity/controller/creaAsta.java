@@ -2,6 +2,8 @@ package com.trinity.controller;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.util.Date;
+import java.lang.Object;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -80,6 +82,9 @@ public class creaAsta extends HttpServlet {
 		AstaSuperamentoImmediato a = new AstaSuperamentoImmediato(Integer.parseInt(request.getParameter("baseAsta")), Integer.parseInt(request.getParameter("timeSlot")), o, u); 
 		
 		
+		
+		Date start= new Date(a.getOraFine());
+		request.setAttribute("oraFine", start);
 		
 		session.save(o);
 		session.save(a);

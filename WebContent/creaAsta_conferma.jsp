@@ -22,17 +22,18 @@
 			out.print(nomeCategoria);
 		%>
 		
-		
 		<br /> Base d'asta:
 		<%
 			String baseAsta = request.getParameter("baseAsta");
 			out.print(baseAsta);
 		%>
-		<br /> Ora fine asta:
+		
+		<br /> Fine primo slot Asta:
 		<%
-			String oraFine = request.getParameter("oraFine");
-			out.print(oraFine);
+			
+			out.print(request.getAttribute("oraFine"));
 		%>
+		
 		
 		
 		<br />

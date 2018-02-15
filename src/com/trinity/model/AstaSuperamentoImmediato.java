@@ -87,12 +87,13 @@ public class AstaSuperamentoImmediato  {
 
 
 	private void setOraInizio() {
-		long oraInizio = System.currentTimeMillis();
+		this.oraInizio = System.currentTimeMillis();
 	}
 
 
 	private void setOraFine() {
-		long oraFine = this.oraInizio;
+		this.oraFine = System.currentTimeMillis() + 180000;
+		
 	}
 
 	private int getTimeSlot() {
@@ -105,7 +106,7 @@ public class AstaSuperamentoImmediato  {
 	}
 
 
-	private long getOraFine() {
+	public long getOraFine() {
 		return oraFine;
 	}
 
