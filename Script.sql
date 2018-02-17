@@ -14,7 +14,6 @@ CREATE  TABLE IF NOT EXISTS `trinitydb`.`amministratore` (
   `passwordAmministratore` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`idAmministratore`) )
 ENGINE = InnoDB
-AUTO_INCREMENT=0
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -26,7 +25,7 @@ CREATE  TABLE IF NOT EXISTS `trinitydb`.`categoria` (
   `nomeCategoria` VARCHAR(45) NULL DEFAULT NULL ,
   PRIMARY KEY (`idCategoria`) )
 ENGINE = InnoDB
-AUTO_INCREMENT = 0
+AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -39,16 +38,15 @@ CREATE  TABLE IF NOT EXISTS `trinitydb`.`oggetto` (
   `descrizione` VARCHAR(100) NOT NULL ,
   `categoria` INT(11) NOT NULL ,
   PRIMARY KEY (`idOggetto`) ,
+  INDEX `oggetto_categoria_idx` (`categoria` ASC) ,
   CONSTRAINT `oggetto_categoria`
     FOREIGN KEY (`categoria` )
     REFERENCES `trinitydb`.`categoria` (`idCategoria` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 0
+AUTO_INCREMENT = 51
 DEFAULT CHARACTER SET = utf8;
-
-CREATE INDEX `oggetto_categoria_idx` ON `trinitydb`.`oggetto` (`categoria` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -63,9 +61,10 @@ CREATE  TABLE IF NOT EXISTS `trinitydb`.`utenteregistrato` (
   `indirizzo` VARCHAR(45) NOT NULL ,
   `numeroCarta` VARCHAR(45) NOT NULL ,
   `crediti` VARCHAR(45) NULL DEFAULT '0' ,
-  PRIMARY KEY (`idUtente`) )
+  PRIMARY KEY (`idUtente`) ,
+  UNIQUE INDEX `email` (`email` ASC) )
 ENGINE = InnoDB
-AUTO_INCREMENT = 0
+AUTO_INCREMENT = 20
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -80,7 +79,10 @@ CREATE  TABLE IF NOT EXISTS `trinitydb`.`astabustachiusa` (
   `timeslot` TIME NOT NULL ,
   `oggetto` INT(11) NOT NULL ,
   `venditore` INT(11) NOT NULL ,
+  `attiva` BINARY(1) NOT NULL DEFAULT '1' ,
   PRIMARY KEY (`idAstaBustaChiusa`) ,
+  INDEX `astaBC_oggetto_idx` (`oggetto` ASC) ,
+  INDEX `astaBC_venditore_idx` (`venditore` ASC) ,
   CONSTRAINT `astaBC_oggetto`
     FOREIGN KEY (`oggetto` )
     REFERENCES `trinitydb`.`oggetto` (`idOggetto` )
@@ -92,24 +94,18 @@ CREATE  TABLE IF NOT EXISTS `trinitydb`.`astabustachiusa` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
-
-CREATE INDEX `astaBC_oggetto_idx` ON `trinitydb`.`astabustachiusa` (`oggetto` ASC) ;
-
-CREATE INDEX `astaBC_venditore_idx` ON `trinitydb`.`astabustachiusa` (`venditore` ASC) ;
 
 
 -- -----------------------------------------------------
 -- Table `trinitydb`.`astamanager`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `trinitydb`.`astamanager` (
-  `idAstaManager` INT(11) NOT NULL AUTO_INCREMENT,
+  `idAstaManager` INT(11) NOT NULL AUTO_INCREMENT ,
   `userAstaManager` VARCHAR(45) NOT NULL ,
   `passwordAstaManager` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`idAstaManager`) )
 ENGINE = InnoDB
-AUTO_INCREMENT=0
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -119,12 +115,15 @@ DEFAULT CHARACTER SET = utf8;
 CREATE  TABLE IF NOT EXISTS `trinitydb`.`astasuperamentoimmediato` (
   `idAsta` INT(11) NOT NULL AUTO_INCREMENT ,
   `baseAsta` INT(11) NOT NULL ,
-  `oraInizio` TIME NOT NULL ,
-  `oraFine` TIME NOT NULL ,
+  `oraInizio` BIGINT(20) NOT NULL ,
+  `oraFine` BIGINT(20) NOT NULL ,
   `timeSlot` INT(11) NOT NULL ,
   `oggetto` INT(11) NOT NULL ,
   `venditore` INT(11) NOT NULL ,
+  `attiva` BINARY(1) NOT NULL DEFAULT '1' ,
   PRIMARY KEY (`idAsta`) ,
+  INDEX `astaSI_oggetto_idx` (`oggetto` ASC) ,
+  INDEX `astaSI_venditore_idx` (`venditore` ASC) ,
   CONSTRAINT `astaSI_oggetto`
     FOREIGN KEY (`oggetto` )
     REFERENCES `trinitydb`.`oggetto` (`idOggetto` )
@@ -136,12 +135,8 @@ CREATE  TABLE IF NOT EXISTS `trinitydb`.`astasuperamentoimmediato` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
-AUTO_INCREMENT=0
+AUTO_INCREMENT = 44
 DEFAULT CHARACTER SET = utf8;
-
-CREATE INDEX `astaSI_oggetto_idx` ON `trinitydb`.`astasuperamentoimmediato` (`oggetto` ASC) ;
-
-CREATE INDEX `astaSI_venditore_idx` ON `trinitydb`.`astasuperamentoimmediato` (`venditore` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -153,18 +148,15 @@ CREATE  TABLE IF NOT EXISTS `trinitydb`.`offertabustachiusa` (
   `asta` INT(11) NOT NULL ,
   `offerente` INT(11) NOT NULL ,
   PRIMARY KEY (`idOffertaBC`) ,
+  INDEX `offertaBC_asta_idx` (`asta` ASC) ,
+  INDEX `offertaBC_offerente_idx` (`offerente` ASC) ,
   CONSTRAINT `offertaBC_asta`
     FOREIGN KEY (`asta` )
     REFERENCES `trinitydb`.`astabustachiusa` (`idAstaBustaChiusa` )
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
-AUTO_INCREMENT=0
 DEFAULT CHARACTER SET = utf8;
-
-CREATE INDEX `offertaBC_asta_idx` ON `trinitydb`.`offertabustachiusa` (`asta` ASC) ;
-
-CREATE INDEX `offertaBC_offerente_idx` ON `trinitydb`.`offertabustachiusa` (`offerente` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -176,18 +168,15 @@ CREATE  TABLE IF NOT EXISTS `trinitydb`.`offertasuperamentoimmediato` (
   `asta` INT(11) NOT NULL ,
   `offerente` INT(11) NOT NULL ,
   PRIMARY KEY (`idOffertaSI`) ,
+  INDEX `offertaSI_asta_idx` (`asta` ASC) ,
+  INDEX `offertaSI_offerente_idx` (`offerente` ASC) ,
   CONSTRAINT `offertaSI_asta`
     FOREIGN KEY (`asta` )
     REFERENCES `trinitydb`.`astasuperamentoimmediato` (`idAsta` )
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
-AUTO_INCREMENT=0
 DEFAULT CHARACTER SET = utf8;
-
-CREATE INDEX `offertaSI_asta_idx` ON `trinitydb`.`offertasuperamentoimmediato` (`asta` ASC) ;
-
-CREATE INDEX `offertaSI_offerente_idx` ON `trinitydb`.`offertasuperamentoimmediato` (`offerente` ASC) ;
 
 USE `trinitydb` ;
 
