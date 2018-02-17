@@ -8,24 +8,15 @@ import java.sql.SQLException;
 
 public class Login {
 
+	String nome;
+	String cognome;
 	String email;
 	String password;
+	String indirizzo;
+	String numeroCarta;
+	String crediti;
 
-	public String getEmail() {
-		return email;
-	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	boolean loggedIn = false;
 
@@ -49,26 +40,32 @@ public class Login {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb", "root", "p0m0d0r1n1");
 
 			// create the sql command
-			prep = con.prepareStatement("Select email, password from utenteregistrato where email=? and password=?");
+			prep = con.prepareStatement("Select nomeUtente, cognomeUtente, email, password, indirizzo, numeroCarta, crediti from utenteregistrato where email= " + email + " and password=" + password);
+			
 			if (prep != null) {
-				prep.setString(1, email);
-				prep.setString(2, password);
-
+				
 				rs = prep.executeQuery();
 				if (rs != null) {
 
 					if (rs.next()) {
-						email = rs.getString(1);
-						password = rs.getString(2);
+						nome = rs.getString(1);
+						cognome = rs.getString(2);
+						email = rs.getString(3);
+						password = rs.getString(4);
+						indirizzo = rs.getString(5);
+						numeroCarta = rs.getString(6);
+						crediti = rs.getString(7);
 						loggedIn = true;
 
 					} else {
+						System.out.println(rs);
 						loggedIn = false;
 
 					}
 				}
 			}
 		} catch (Exception sqlex) {
+			sqlex.printStackTrace();
 			loggedIn = false;
 		}
 
@@ -85,6 +82,7 @@ public class Login {
 					con.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
+					System.out.println("SQL exception");
 					e.printStackTrace();
 				}
 				try {
@@ -96,6 +94,68 @@ public class Login {
 		}
 
 		return loggedIn;
+	}
+	
+	
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCognome() {
+		return cognome;
+	}
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
+	}
+
+	public String getNumeroCarta() {
+		return numeroCarta;
+	}
+
+	public void setNumeroCarta(String numeroCarta) {
+		this.numeroCarta = numeroCarta;
+	}
+
+	public String getCrediti() {
+		return crediti;
+	}
+
+	public void setCrediti(String crediti) {
+		this.crediti = crediti;
+	}
+
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
 	}
 
 	public void logOut() {
