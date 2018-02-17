@@ -92,7 +92,7 @@ public class AstaSuperamentoImmediato  {
 
 
 	private void setOraFine() {
-		this.oraFine = System.currentTimeMillis() + 180000;
+		this.oraFine = System.currentTimeMillis() + 1800000;
 		
 	}
 

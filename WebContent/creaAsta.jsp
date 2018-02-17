@@ -27,7 +27,7 @@ Categoria:
 
 out.print("<select name=\"categoria\" size='1' >");
 
-for (int var=0; var<categoria.nomeCategoria().size()-1; var++)
+for (int var=0; var<categoria.nomeCategoria().size(); var++)
 {
 	out.println("<option>" + categoria.nomeCategoria().get(var) + "</option>");
 }
