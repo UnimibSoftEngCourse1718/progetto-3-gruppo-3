@@ -19,7 +19,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "astasuperamentoimmediato")
 @SuppressWarnings("unused")
-public class AstaSuperamentoImmediato  {
+
+public class AstaSuperamentoImmediato {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +39,7 @@ public class AstaSuperamentoImmediato  {
 	@Column(name = "timeSlot", nullable = false)
 	private int timeSlot;
 	
-	@OneToOne (fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn (name = "oggetto")
 	private Oggetto oggetto;
 	

@@ -1,25 +1,27 @@
 package com.trinity.model;
 
-public class OffertaBustaChiusa extends Offerta {
+@SuppressWarnings("unused")
+public class OffertaBustaChiusa {
 
 	private AstaBustaChiusa asta;
 	private UtenteRegistrato offerente;
 	private UtenteRegistrato venditore;
 
 	public OffertaBustaChiusa(AstaBustaChiusa asta, UtenteRegistrato venditore, UtenteRegistrato offerente){
-		super();
+		//super();
 		setAsta(asta);
 		setVenditore(venditore);
 		setOfferente(offerente);
-		asta.addOfferta(this);
 	}
 	
 	private AstaBustaChiusa getAsta() {
 		return asta;
 	}
+	
 	private void setAsta(AstaBustaChiusa asta) {
 		this.asta = asta;
 	}
+	
 	private UtenteRegistrato getOfferente() {
 		return offerente;
 	}
@@ -32,14 +34,4 @@ public class OffertaBustaChiusa extends Offerta {
 	private void setVenditore(UtenteRegistrato venditore) {
 		this.venditore = venditore;
 	}
-	
-	
-	
-	
-		
-
-	
-
-	
-
 }

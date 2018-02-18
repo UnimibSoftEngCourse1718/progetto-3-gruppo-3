@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+	@SuppressWarnings("unused")
 	@Entity
 	@Table (name= "categoria")
 	public class Categoria {
@@ -27,7 +28,6 @@ import javax.persistence.Table;
 		this.nomeCategoria = nomeCategoria;
 	}
 	
-
 	public String getNomeCategoria() {
 		return nomeCategoria;
 	}
@@ -43,6 +43,4 @@ import javax.persistence.Table;
 	private void setIdCategoria(int idCategoria) {
 		this.idCategoria = idCategoria;
 	}
-	 
-	
 }

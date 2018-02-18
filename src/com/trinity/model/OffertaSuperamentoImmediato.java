@@ -1,12 +1,14 @@
 package com.trinity.model;
-public class OffertaSuperamentoImmediato extends Offerta{
+
+@SuppressWarnings("unused")
+public class OffertaSuperamentoImmediato {
 	
 	private AstaSuperamentoImmediato asta;
 	private UtenteRegistrato offerente;
 	private UtenteRegistrato venditore;
 	
 	public OffertaSuperamentoImmediato(AstaSuperamentoImmediato asta, UtenteRegistrato venditore, UtenteRegistrato offerente){
-		super();
+		//super();
 		setAsta(asta);
 		setVenditore(venditore);
 		setOfferente(offerente);
@@ -35,7 +37,4 @@ public class OffertaSuperamentoImmediato extends Offerta{
 	private void setVenditore(UtenteRegistrato venditore) {
 		this.venditore = venditore;
 	}
-	
-	
-
 }

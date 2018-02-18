@@ -11,8 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
-
+@SuppressWarnings("unused")
 @Entity
 @Table(name = "oggetto")
 public class Oggetto {
@@ -32,7 +31,6 @@ public class Oggetto {
 	@JoinColumn(name = "categoria")
 	public Categoria categoria;
 
-	@SuppressWarnings("unused")
 	private Categoria getCategoria() {
 		return categoria;
 	}
@@ -76,7 +74,6 @@ public class Oggetto {
 		return idOggetto;
 	}
 
-	@SuppressWarnings("unused")
 	private void setIdOggetto(int idOggetto) {
 		this.idOggetto = idOggetto;
 	}

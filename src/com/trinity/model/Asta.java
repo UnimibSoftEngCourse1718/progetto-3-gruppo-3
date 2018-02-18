@@ -1,6 +1,7 @@
+/*
 package com.trinity.model;
-import java.util.concurrent.ThreadLocalRandom;
 
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Asta {
 	
@@ -60,3 +61,4 @@ public abstract class Asta {
 		
 	}
 }
+*/

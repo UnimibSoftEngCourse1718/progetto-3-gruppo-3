@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@SuppressWarnings("unused")
 @Entity
 @Table(name = "UtenteRegistrato")
 public class UtenteRegistrato{
@@ -109,7 +110,6 @@ public class UtenteRegistrato{
 		return indirizzo;
 	}
 
-	@SuppressWarnings("unused")
 	private void setIndirizzo(String indirizzo) {
 		this.indirizzo = indirizzo;
 	}
@@ -118,7 +118,6 @@ public class UtenteRegistrato{
 		return numeroCarta;
 	}
 
-	@SuppressWarnings("unused")
 	private void setNumeroCarta(String numeroCarta) {
 		this.numeroCarta = numeroCarta;
 	}
