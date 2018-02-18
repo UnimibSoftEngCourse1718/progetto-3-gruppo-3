@@ -9,10 +9,14 @@
 </head>
 <body>
 <p>Inserisci la quantità di euro da spendere per i tuoi crediti:</p>
-<form method="post">
+<form method="post" action="AcquistaCrediti">
   <label>Euro</label>
-  <input id="inputEuro" type="number" placeholder="Euro" oninput="creditConverter(this.value)" onchange="creditConverter(this.value)">
+  <input name="outputCrediti" id="inputEuro" type="number" placeholder="Euro" oninput="creditConverter(this.value)" onchange="creditConverter(this.value)">
 </p>
+<!-- 
+Questo lo dobbiamo gestire con una 'input' perchè non so come restituisce i parametri alla servlet)
+
+
 <p>Crediti: <span id="outputCrediti"></span></p>
 
 <script>
@@ -21,6 +25,10 @@ function creditConverter(valNum) {
   document.getElementById("outputCrediti").innerHTML=(valNum*10);
 }
 </script>
+-->
+
+<% out.print("<input type=\"hidden\" name=\"email\"  value=" + utente.getEmail() + " />"); 
+	out.print("<input type=\"hidden\" name=\"creditiPrec\"  value=" + utente.getCrediti() + " />");%>
 <button type="submit" value="AcquistaCrediti">Conferma Acquisto Crediti</button>
 </form>
 </body>
