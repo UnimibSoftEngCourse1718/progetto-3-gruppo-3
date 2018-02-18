@@ -42,7 +42,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(description = "Creazione Asta", urlPatterns = { "/creaAsta" })
 public class creaAsta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
     /**
      * @see HttpServlet#HttpServlet()
      */

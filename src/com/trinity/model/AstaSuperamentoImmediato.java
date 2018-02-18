@@ -18,6 +18,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "astasuperamentoimmediato")
+@SuppressWarnings("unused")
 public class AstaSuperamentoImmediato  {
 	
 	@Id
@@ -31,11 +32,11 @@ public class AstaSuperamentoImmediato  {
 	@Column(name = "oraInizio", nullable = false)
 	private long oraInizio;
 	
-	@Column(name = "timeSlot", nullable = false)
-	private int timeSlot;
-	
 	@Column(name = "oraFine", nullable=false)
 	private long oraFine;
+	
+	@Column(name = "timeSlot", nullable = false)
+	private int timeSlot;
 	
 	@OneToOne (fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn (name = "oggetto")
@@ -47,92 +48,80 @@ public class AstaSuperamentoImmediato  {
 	
 	public AstaSuperamentoImmediato(){}
 	
-	
 	public AstaSuperamentoImmediato(int baseAsta, int timeSlot, Oggetto oggetto, UtenteRegistrato venditore){
 		//super(baseAsta);
 		setBaseAsta(baseAsta);
-		setOraInizio();
-		setOraFine();
+		setOraInizio(System.currentTimeMillis());
+		setOraFine(System.currentTimeMillis() + 1800000);
 		setTimeSlot(timeSlot);
 		setOggetto(oggetto);
 		setVenditore(venditore);
-		
-		
 	}
-
-
+	
+	public AstaSuperamentoImmediato(int idAsta, int baseAsta, long oraInizio, long oraFine, int timeSlot, Oggetto oggetto, UtenteRegistrato venditore){
+		//super(baseAsta);
+		setIdAsta(idAsta);
+		setBaseAsta(baseAsta);
+		setOraInizio(oraInizio);
+		setOraFine(oraFine);
+		setTimeSlot(timeSlot);
+		setOggetto(oggetto);
+		setVenditore(venditore);
+	}
+	
 	private int getIdAsta() {
 		return idAsta;
 	}
-
-
+	
 	private void setIdAsta(int idAsta) {
 		this.idAsta = idAsta;
 	}
-
-
+	
 	private int getBaseAsta() {
 		return baseAsta;
 	}
-
-
+	
 	private void setBaseAsta(int baseAsta) {
 		this.baseAsta = baseAsta;
 	}
-
-
+	
 	private long getOraInizio() {
 		return oraInizio;
 	}
-
-
-	private void setOraInizio() {
-		this.oraInizio = System.currentTimeMillis();
+	
+	private void setOraInizio(long oraInizio) {
+		this.oraInizio = oraInizio;
 	}
-
-
-	private void setOraFine() {
-		this.oraFine = System.currentTimeMillis() + 1800000;
-		
+	
+	private void setOraFine(long oraFine) {
+		this.oraFine=oraFine;
 	}
-
+	
 	private int getTimeSlot() {
 		return timeSlot;
 	}
-
-
+	
 	private void setTimeSlot(int timeSlot) {
 		this.timeSlot = timeSlot;
 	}
-
-
+	
 	public long getOraFine() {
 		return oraFine;
 	}
-
-
+	
 	private Oggetto getOggetto() {
 		return oggetto;
 	}
-
-
+	
 	private void setOggetto(Oggetto oggetto) {
 		this.oggetto = oggetto;
 	}
-
-
+	
 	private UtenteRegistrato getVenditore() {
 		return venditore;
 	}
-
-
+	
 	private void setVenditore(UtenteRegistrato venditore) {
 		this.venditore = venditore;
 	}
-
-
-	
-	
-	
-
 }

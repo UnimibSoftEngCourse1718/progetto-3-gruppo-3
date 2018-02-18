@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
    
      <%@include file="checkLogin.jsp" %>
-     <jsp:useBean id="categoria" class="loginbeans.CategoriaBean" scope="session" />
+     <jsp:useBean id="categoria" class="beans.CategoriaBean" scope="session" />
      <jsp:setProperty name="categoria" property="*" /> 
      
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

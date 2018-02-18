@@ -1,4 +1,4 @@
-<jsp:useBean id="utente" class="loginbeans.Login" scope="session" />
+<jsp:useBean id="utente" class="beans.Login" scope="session" />
      <%
           if(!utente.isLoggedIn())
           {

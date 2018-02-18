@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage = "errorPage.jsp" %>
-<jsp:useBean id="utente" class="loginbeans.Login" scope="session" />
+<jsp:useBean id="utente" class="beans.Login" scope="session" />
 <!DOCTYPE html>
 <html>
     <head>

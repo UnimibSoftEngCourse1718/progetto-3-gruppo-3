@@ -1,10 +1,6 @@
 package com.trinity.model;
 
-
 import javax.persistence.Column;
-import java.util.List;
-import java.io.Serializable;
-import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -113,6 +109,7 @@ public class UtenteRegistrato{
 		return indirizzo;
 	}
 
+	@SuppressWarnings("unused")
 	private void setIndirizzo(String indirizzo) {
 		this.indirizzo = indirizzo;
 	}
@@ -121,6 +118,7 @@ public class UtenteRegistrato{
 		return numeroCarta;
 	}
 
+	@SuppressWarnings("unused")
 	private void setNumeroCarta(String numeroCarta) {
 		this.numeroCarta = numeroCarta;
 	}
@@ -132,5 +130,4 @@ public class UtenteRegistrato{
 	public void setCredito(int credito) {
 		this.credito = credito;
 	}
-
 }

@@ -1,4 +1,4 @@
-package loginbeans;
+package beans;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

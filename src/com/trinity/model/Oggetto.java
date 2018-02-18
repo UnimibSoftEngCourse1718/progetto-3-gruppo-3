@@ -1,7 +1,5 @@
 package com.trinity.model;
 
-import java.util.ArrayList;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -35,27 +32,29 @@ public class Oggetto {
 	@JoinColumn(name = "categoria")
 	public Categoria categoria;
 
-
-	
+	@SuppressWarnings("unused")
 	private Categoria getCategoria() {
 		return categoria;
 	}
-
 
 	private void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 
-
 	public Oggetto(){}
 
-
+	public Oggetto(int idOggetto, String nomeOggetto, String descrizione, Categoria categoria) {
+		this.idOggetto=idOggetto;
+		this.nomeOggetto=nomeOggetto;
+		this.descrizione=descrizione;
+		this.categoria=categoria;
+	}
+	
 	public Oggetto(String nomeOggetto, String descrizione, Categoria categoria) {
 		setNomeOggetto(nomeOggetto);
 		setDescrizione(descrizione);
 		setCategoria(categoria);
 	}
-	
 	
 	public String getNomeOggetto() {
 		return nomeOggetto;
@@ -73,17 +72,11 @@ public class Oggetto {
 		this.descrizione = descrizione;
 	}
 
-
-
-
-
-
-
 	public int getIdOggetto() {
 		return idOggetto;
 	}
 
-
+	@SuppressWarnings("unused")
 	private void setIdOggetto(int idOggetto) {
 		this.idOggetto = idOggetto;
 	}
