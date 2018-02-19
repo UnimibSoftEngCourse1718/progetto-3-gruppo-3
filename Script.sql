@@ -3,7 +3,7 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 CREATE SCHEMA IF NOT EXISTS `trinitydb` DEFAULT CHARACTER SET utf8 ;
-USE `trinitydb` ;
+USE `trinitydb`;
 
 -- -----------------------------------------------------
 -- Table `trinitydb`.`amministratore`
@@ -79,7 +79,7 @@ CREATE  TABLE IF NOT EXISTS `trinitydb`.`astabustachiusa` (
   `timeslot` TIME NOT NULL ,
   `oggetto` INT(11) NOT NULL ,
   `venditore` INT(11) NOT NULL ,
-  `attiva` BINARY(1) NOT NULL DEFAULT '1' ,
+  `attiva` TINYINT NOT NULL DEFAULT 1 ,
   PRIMARY KEY (`idAstaBustaChiusa`) ,
   INDEX `astaBC_oggetto_idx` (`oggetto` ASC) ,
   INDEX `astaBC_venditore_idx` (`venditore` ASC) ,
@@ -120,7 +120,7 @@ CREATE  TABLE IF NOT EXISTS `trinitydb`.`astasuperamentoimmediato` (
   `timeSlot` INT(11) NOT NULL ,
   `oggetto` INT(11) NOT NULL ,
   `venditore` INT(11) NOT NULL ,
-  `attiva` BINARY(1) NOT NULL DEFAULT '1' ,
+  `attiva` TINYINT NOT NULL DEFAULT 1 ,
   PRIMARY KEY (`idAsta`) ,
   INDEX `astaSI_oggetto_idx` (`oggetto` ASC) ,
   INDEX `astaSI_venditore_idx` (`venditore` ASC) ,
@@ -179,7 +179,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 USE `trinitydb` ;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
