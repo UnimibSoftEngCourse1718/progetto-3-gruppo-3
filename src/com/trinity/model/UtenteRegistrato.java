@@ -36,7 +36,7 @@ public class UtenteRegistrato{
 	public String password;
 	
 	@Column(name = "crediti", length = 40, nullable = true)
-	public int credito;
+	public int crediti;
 	
 	//private List<AstaBustaChiusa> storicoAsteBustaChiusa = new ArrayList<AstaBustaChiusa>();
 	//private List<AstaSuperamentoImmediato> storicoAsteSuperamentoImmediato = new ArrayList<AstaSuperamentoImmediato>();
@@ -123,10 +123,10 @@ public class UtenteRegistrato{
 	}
 	
 	public int getCredito() {
-		return credito;
+		return crediti;
 	}
 	
 	public void setCredito(int credito) {
-		this.credito = credito;
+		this.crediti = credito;
 	}
 }
