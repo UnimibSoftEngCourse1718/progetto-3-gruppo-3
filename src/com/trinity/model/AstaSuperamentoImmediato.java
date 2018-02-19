@@ -39,6 +39,9 @@ public class AstaSuperamentoImmediato {
 	@Column(name = "timeSlot", nullable = false)
 	private int timeSlot;
 	
+	@Column(name = "attiva", nullable=false)
+	private int attiva;
+	
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn (name = "oggetto")
 	private Oggetto oggetto;
@@ -57,6 +60,7 @@ public class AstaSuperamentoImmediato {
 		setTimeSlot(timeSlot);
 		setOggetto(oggetto);
 		setVenditore(venditore);
+		setAttiva(1);
 	}
 	
 	public AstaSuperamentoImmediato(int idAsta, int baseAsta, long oraInizio, long oraFine, int timeSlot, Oggetto oggetto, UtenteRegistrato venditore){
@@ -68,6 +72,7 @@ public class AstaSuperamentoImmediato {
 		setTimeSlot(timeSlot);
 		setOggetto(oggetto);
 		setVenditore(venditore);
+		setAttiva(1);
 	}
 	
 	private int getIdAsta() {
@@ -124,5 +129,13 @@ public class AstaSuperamentoImmediato {
 	
 	private void setVenditore(UtenteRegistrato venditore) {
 		this.venditore = venditore;
+	}
+
+	public int isAttiva() {
+		return attiva;
+	}
+
+	public void setAttiva(int attiva) {
+		this.attiva = attiva;
 	}
 }

@@ -1,8 +1,3 @@
-/* Script in cui inserire le modifiche ad trinitydb */
+// Aggiunta modifica tabella AstaSuperamentoImmediato
 
-use trinitydb;
-
-ALTER TABLE utenteregistrato MODIFY `email` VARCHAR(45) NOT NULL unique;
-
-/* Visualizza lo stato della tabella modificata */
-DESCRIBE utenteregistrato;
+ALTER TABLE `trinitydb`.`astasuperamentoimmediato` ADD COLUMN `attiva` TINYINT NOT NULL DEFAULT 1  AFTER `venditore` ;
