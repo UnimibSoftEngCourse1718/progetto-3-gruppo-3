@@ -18,7 +18,7 @@ public class AstaSuperamentoImmediatoBean {
 			// open a connection
 			Connection connection = null;
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb","root","p0m0d0r1n1");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb","root","");
 			
 			//recupero tutti gli utenti dal db
 			PreparedStatement prep = connection.prepareStatement("Select * from utenteregistrato");  

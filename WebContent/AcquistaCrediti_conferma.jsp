@@ -7,5 +7,6 @@
 </head>
 <body>
 	<h2>Crediti acquistati con successo!</h2>
+	<button onclick="location.href='./profilo.jsp'">Torna al profilo</button>
 </body>
 </html>

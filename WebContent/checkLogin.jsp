@@ -7,4 +7,4 @@
           }
      %>
 
-        <h3>Hello <%= utente.getEmail() %> </h3>
+      

@@ -1,9 +1,6 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-   
-     <%@include file="checkLogin.jsp" %>
-     <jsp:useBean id="categoria" class="beans.CategoriaBean" scope="session" />
-     <jsp:setProperty name="categoria" property="*" /> 
-     
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	<%@include file="checkLogin.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,11 +21,11 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Il mio account</title>
+<title>Trinity</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-md bg-success navbar-dark sticky-top">
-	<a class="navbar-brand" href="#"> <img src="media/logoTrinity.png"
+	<nav class="navbar navbar-expand-md bg-success navbar-dark sitcky-top"> <a
+		class="navbar-brand" href="#"> <img src="media/logoTrinity.png"
 		alt="logo" style="width: 40px;">
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -56,37 +53,10 @@
 		</ul>
 	</div>
 	</nav>
-<title>Crea nuova asta</title>
-</head>
-<body>
-
-<h3>Crea nuova Asta</h3>
-
-<form method="POST" action="creaAsta">
-
-Base d'asta <input type="text" size="40" maxlength="40" name="baseAsta" /><br />
-Numero Time Slot <input type="text" size="40" maxlength="40" name="timeSlot" /><br />
-Oggetto : <br>
-Nome oggetto <input type="text" size="40" maxlength="40" name="nomeOggetto" /><br />
-Descrizione <input type="text" size="40" maxlength="40" name="descrizione" /><br />
-Categoria:
-
- <%
-
-out.print("<select name=\"categoria\" size='1' >");
-
-for (int var=0; var<categoria.nomeCategoria().size(); var++)
-{
-	out.println("<option>" + categoria.nomeCategoria().get(var) + "</option>");
-}
-out.print("</select>");
-
-out.print("<input type=\"hidden\" name=\"email\"  value=" + utente.getEmail() + " />");
-%>
-<br>
-<input type="SUBMIT" value="Conferma">
-</form>
-
+	
+	<div class="container">
+	<h1> <strong> COSE </strong></h1></div>
+	<br>
 
 
 </body>

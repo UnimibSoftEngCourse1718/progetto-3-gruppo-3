@@ -26,7 +26,7 @@
          out.println("<a href='checkLogin.jsp'>check</A>");
         %>
         <br/>
-        <button type="submit" value="TORNA ALLA HOME" onclick="location.href='./index.html'">TORNA ALLA HOME</button>
+        <button type="submit" value="VAI ALLA HOME" onclick="location.href='./home.jsp'">VAI ALLA HOME</button>
 		</div></div>
 
     </body>
