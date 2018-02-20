@@ -38,7 +38,7 @@ public class AstaSuperamentoImmediatoBean {
 			}
 			
 			//recupero tutti gli oggetti dal db
-			PreparedStatement prep3 = connection.prepareStatement("Select * from categoria"); 								//eventualmente, riutilizzare la variabile "prep" come sopra [quindi già dichiarato] 
+			PreparedStatement prep3 = connection.prepareStatement("Select * from oggetto"); 								//eventualmente, riutilizzare la variabile "prep" come sopra [quindi già dichiarato] 
 			ResultSet all3 = prep3.executeQuery();																			//eventualmente, riutilizzare la variabile "all" già dichiarata
 			ArrayList<Oggetto> oggetti = new ArrayList<Oggetto>();
 			boolean trovato=false;
@@ -55,7 +55,7 @@ public class AstaSuperamentoImmediatoBean {
 			}
 			
 			//recupero tutte le aste dal db
-			PreparedStatement prep4 = connection.prepareStatement("Select * from categoria"); 								//eventualmente, riutilizzare la variabile "prep" come sopra [quindi già dichiarato] 
+			PreparedStatement prep4 = connection.prepareStatement("Select * from astasuperamentoimmediato"); 								//eventualmente, riutilizzare la variabile "prep" come sopra [quindi già dichiarato] 
 			ResultSet all4 = prep4.executeQuery();																			//eventualmente, riutilizzare la variabile "all" già dichiarata
 			ArrayList<AstaSuperamentoImmediato> aste = new ArrayList<AstaSuperamentoImmediato>();
 			while (all4.next()) {																							//per ogni asta cerco l'oggetto ed il venditore (utenteRegistrato), poi la inserisco nella lista di aste
