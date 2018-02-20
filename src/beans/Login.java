@@ -37,7 +37,7 @@ public class Login {
 			// open a connection
 
 			Class.forName("com.mysql.jdbc.Driver"); // load the driver
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb", "root", "");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb", "root", "p0m0d0r1n1");
 
 			// create the sql command
 			prep = con.prepareStatement("Select nomeUtente, cognomeUtente, email, password, indirizzo, numeroCarta, crediti from utenteregistrato where email= \"" + email + "\" and password=\"" + password + "\"");

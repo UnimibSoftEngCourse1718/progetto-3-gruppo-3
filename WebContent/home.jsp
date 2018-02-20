@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@include file="checkLogin.jsp" %>
+<%@include file="checkLogin.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,8 +24,8 @@
 <title>Trinity</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-md bg-success navbar-dark sitcky-top"> <a
-		class="navbar-brand" href="#"> <img src="media/logoTrinity.png"
+	<nav class="navbar navbar-expand-md bg-success navbar-dark sitcky-top">
+	<a class="navbar-brand" href="#"> <img src="media/logoTrinity.png"
 		alt="logo" style="width: 40px;">
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -53,9 +53,12 @@
 		</ul>
 	</div>
 	</nav>
-	
+
 	<div class="container">
-	<h1> <strong> COSE </strong></h1></div>
+		<h1>
+			<strong> COSE </strong>
+		</h1>
+	</div>
 	<br>
 
 

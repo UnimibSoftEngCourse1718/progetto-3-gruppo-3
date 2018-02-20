@@ -40,7 +40,7 @@ import javax.persistence.Table;
 		return idCategoria;
 	}
 
-	private void setIdCategoria(int idCategoria) {
+	public void setIdCategoria(int idCategoria) {
 		this.idCategoria = idCategoria;
 	}
 }

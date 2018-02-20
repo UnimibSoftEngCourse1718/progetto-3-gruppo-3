@@ -75,39 +75,39 @@ public class AstaSuperamentoImmediato {
 		setAttiva(1);
 	}
 	
-	private int getIdAsta() {
+	public int getIdAsta() {
 		return idAsta;
 	}
 	
-	private void setIdAsta(int idAsta) {
+	public void setIdAsta(int idAsta) {
 		this.idAsta = idAsta;
 	}
 	
-	private int getBaseAsta() {
+	public int getBaseAsta() {
 		return baseAsta;
 	}
 	
-	private void setBaseAsta(int baseAsta) {
+	public void setBaseAsta(int baseAsta) {
 		this.baseAsta = baseAsta;
 	}
 	
-	private long getOraInizio() {
+	public long getOraInizio() {
 		return oraInizio;
 	}
 	
-	private void setOraInizio(long oraInizio) {
+	public void setOraInizio(long oraInizio) {
 		this.oraInizio = oraInizio;
 	}
 	
-	private void setOraFine(long oraFine) {
+	public void setOraFine(long oraFine) {
 		this.oraFine=oraFine;
 	}
 	
-	private int getTimeSlot() {
+	public int getTimeSlot() {
 		return timeSlot;
 	}
 	
-	private void setTimeSlot(int timeSlot) {
+	public void setTimeSlot(int timeSlot) {
 		this.timeSlot = timeSlot;
 	}
 	
@@ -115,19 +115,19 @@ public class AstaSuperamentoImmediato {
 		return oraFine;
 	}
 	
-	private Oggetto getOggetto() {
+	public Oggetto getOggetto() {
 		return oggetto;
 	}
 	
-	private void setOggetto(Oggetto oggetto) {
+	public void setOggetto(Oggetto oggetto) {
 		this.oggetto = oggetto;
 	}
 	
-	private UtenteRegistrato getVenditore() {
+	public UtenteRegistrato getVenditore() {
 		return venditore;
 	}
 	
-	private void setVenditore(UtenteRegistrato venditore) {
+	public void setVenditore(UtenteRegistrato venditore) {
 		this.venditore = venditore;
 	}
 

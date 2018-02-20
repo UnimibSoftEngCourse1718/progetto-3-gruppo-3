@@ -7,7 +7,7 @@ ALTER TABLE astasuperamentoimmediato MODIFY `attiva` TINYINT NOT NULL DEFAULT 1;
 ALTER TABLE astabustachiusa MODIFY `attiva` TINYINT NOT NULL DEFAULT 1;
 
 
---Aggiunta modifica tabella AstaSuperamentoImmediato
+-- Aggiunta modifica tabella AstaSuperamentoImmediato
 
 ALTER TABLE `trinitydb`.`astasuperamentoimmediato` CHANGE COLUMN `timeSlot` `timeSlot` INT(11) NOT NULL DEFAULT 3  ;
 

@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@SuppressWarnings("unused")
 @Entity
 @Table(name = "oggetto")
 public class Oggetto {
@@ -29,15 +28,7 @@ public class Oggetto {
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn(name = "categoria")
-	public Categoria categoria;
-
-	private Categoria getCategoria() {
-		return categoria;
-	}
-
-	private void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
+	private Categoria categoria;
 
 	public Oggetto(){}
 
@@ -74,7 +65,15 @@ public class Oggetto {
 		return idOggetto;
 	}
 
-	private void setIdOggetto(int idOggetto) {
+	public void setIdOggetto(int idOggetto) {
 		this.idOggetto = idOggetto;
+	}
+	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 }
