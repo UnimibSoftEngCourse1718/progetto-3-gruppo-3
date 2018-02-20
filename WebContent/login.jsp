@@ -2,9 +2,7 @@
 <%@page errorPage = "errorPage.jsp" %>
 <jsp:useBean id="utente" class="beans.Login" scope="session" />
 <jsp:setProperty name="utente" property="*" />
-<jsp:useBean id="contrAste" class="beans.statoAste">
-<% contrAste.aggiornaStato(); %>
-</jsp:useBean> 
+ 
 <!DOCTYPE html>
 <html>
     <head>

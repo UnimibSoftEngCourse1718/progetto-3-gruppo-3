@@ -9,6 +9,8 @@ import java.util.ArrayList;
 public class statoAste {
 	
 	long stop = System.currentTimeMillis();
+	long slot = 300000;
+	long t = 120000;
 	
 	public void aggiornaStato(){
 	try{
@@ -19,9 +21,13 @@ public class statoAste {
 
          // create the sql command
          System.out.println(stop);
-         PreparedStatement prep = con.prepareStatement("update astasuperamentoimmediato set attiva = 0 where attiva != 0 AND oraFine <= " + stop );
+         PreparedStatement prep = con.prepareStatement("update astasuperamentoimmediato set oraInizio=oraFine, oraFine = oraFine + " + slot + ", timeSlot = timeSlot-1  where attiva != 0 AND timeSlot>0 AND oraFine - oraInizio <= " + t + " AND oraFine > " + stop );
          System.out.println(prep);
          prep.executeUpdate();
+         
+         PreparedStatement prep1 = con.prepareStatement("update astasuperamentoimmediato set attiva = 0 where attiva!=0 AND oraFine <=" + stop);
+         System.out.println(prep1);
+         prep1.executeUpdate();
 	
 	}catch(Exception sqlex)
 	{

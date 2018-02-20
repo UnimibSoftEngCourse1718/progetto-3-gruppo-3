@@ -63,7 +63,7 @@ public class creaAsta extends HttpServlet {
 		UtenteRegistrato u = (UtenteRegistrato) session.createQuery("select ut.idUtente as idUtente, ut.nomeUtente as nomeUtente, ut.cognomeUtente as cognomeUtente, ut.password as password, ut.email as email, ut.indirizzo as indirizzo, ut.numeroCarta as numeroCarta from com.trinity.model.UtenteRegistrato ut where ut.email = :email").setParameter( "email", request.getParameter("email")).setResultTransformer(Transformers.aliasToBean(UtenteRegistrato.class)).uniqueResult();
 		
 		Oggetto o = new Oggetto(request.getParameter("nomeOggetto"), request.getParameter("descrizione"), c);
-		AstaSuperamentoImmediato a = new AstaSuperamentoImmediato(Integer.parseInt(request.getParameter("baseAsta")), Integer.parseInt(request.getParameter("timeSlot")), o, u); 
+		AstaSuperamentoImmediato a = new AstaSuperamentoImmediato(Integer.parseInt(request.getParameter("baseAsta")), o, u); 
 		
 		Date start= new Date(a.getOraFine());
 		request.setAttribute("oraFine", start);

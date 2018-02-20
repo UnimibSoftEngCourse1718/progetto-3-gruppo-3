@@ -18,7 +18,7 @@ public class AstaSuperamentoImmediatoBean {
 			// open a connection
 			Connection connection = null;
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb","root","");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb","root","p0m0d0r1n1");
 			
 			//recupero tutti gli utenti dal db
 			PreparedStatement prep = connection.prepareStatement("Select * from utenteregistrato");  
@@ -77,7 +77,7 @@ public class AstaSuperamentoImmediatoBean {
 						trovato=true;
 					}
 				}
-				aste.add(new AstaSuperamentoImmediato(all4.getInt(1), all4.getInt(2), all4.getLong(3), all4.getLong(4), all4.getInt(5), oggetto, venditore));			//dati asta: int idAsta, int baseAsta, long oraInizio, long oraFine, int timeSlot, Oggetto oggetto, UtenteRegistrato venditore				
+				aste.add(new AstaSuperamentoImmediato(all4.getInt(1), all4.getInt(2), all4.getLong(3), all4.getInt(5), oggetto, venditore));			//dati asta: int idAsta, int baseAsta, long oraInizio, long oraFine, int timeSlot, Oggetto oggetto, UtenteRegistrato venditore				
 			}
 			
 			return aste;
