@@ -1,6 +1,7 @@
 package com.trinity.controller;
 
 import java.io.IOException;
+
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.transform.Transformers;
 
+import com.trinity.model.AstaBustaChiusa;
 import com.trinity.model.AstaSuperamentoImmediato;
 import com.trinity.model.Categoria;
 import com.trinity.model.Oggetto;
@@ -63,13 +65,22 @@ public class creaAsta extends HttpServlet {
 		UtenteRegistrato u = (UtenteRegistrato) session.createQuery("select ut.idUtente as idUtente, ut.nomeUtente as nomeUtente, ut.cognomeUtente as cognomeUtente, ut.password as password, ut.email as email, ut.indirizzo as indirizzo, ut.numeroCarta as numeroCarta from com.trinity.model.UtenteRegistrato ut where ut.email = :email").setParameter( "email", request.getParameter("email")).setResultTransformer(Transformers.aliasToBean(UtenteRegistrato.class)).uniqueResult();
 		
 		Oggetto o = new Oggetto(request.getParameter("nomeOggetto"), request.getParameter("descrizione"), c);
-		AstaSuperamentoImmediato a = new AstaSuperamentoImmediato(Integer.parseInt(request.getParameter("baseAsta")), o, u); 
-		
-		Date start= new Date(a.getOraFine());
-		request.setAttribute("oraFine", start);
 		
 		session.save(o);
-		session.save(a);
+		
+		if(request.getParameter("tipo").equals("Crea Asta a Superamento Immediato")){
+			AstaSuperamentoImmediato a = new AstaSuperamentoImmediato(Integer.parseInt(request.getParameter("baseAsta")), o, u); 
+			Date start= new Date(a.getOraFine());
+			request.setAttribute("oraFine", start);
+			session.save(a);
+		}		
+		else{
+			AstaBustaChiusa a = new AstaBustaChiusa(Integer.parseInt(request.getParameter("baseAsta")), o, u);
+			Date start= new Date(a.getOraFine());
+			request.setAttribute("oraFine", start);
+			session.save(a);
+		}
+		
 		session.getTransaction().commit();
 		session.close();
 		
