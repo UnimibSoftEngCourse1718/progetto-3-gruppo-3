@@ -32,14 +32,14 @@ public class creaAsta extends HttpServlet {
      */
     public creaAsta() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -47,10 +47,11 @@ public class creaAsta extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@SuppressWarnings("deprecation")
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-		//new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Categoria.class);
+		
 		
 		Session session = factory.openSession();
 		session.beginTransaction();

@@ -78,7 +78,7 @@ public class AsteSuperamentoImmediatoBean {
 						trovato=true;
 					}
 				}
-				aste.add(new AstaSuperamentoImmediato(all4.getInt(1), all4.getInt(2), all4.getLong(3), all4.getInt(5), oggetto, venditore));			//dati asta: int idAsta, int baseAsta, long oraInizio, long oraFine, int timeSlot, Oggetto oggetto, UtenteRegistrato venditore				
+				aste.add(new AstaSuperamentoImmediato(all4.getInt(1), all4.getInt(2), all4.getLong(3), all4.getInt(5), oggetto, venditore));		
 			}
 			
 			return aste;

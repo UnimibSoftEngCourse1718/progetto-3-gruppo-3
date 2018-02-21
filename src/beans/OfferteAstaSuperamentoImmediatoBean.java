@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 
 public class OfferteAstaSuperamentoImmediatoBean {
 
-	public int Max(int idAsta){
+	public int Max(){
 		try{
 			// open a connection
 			Connection connection = null;

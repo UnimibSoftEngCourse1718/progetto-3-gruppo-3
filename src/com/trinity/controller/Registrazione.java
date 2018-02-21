@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-//import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import com.trinity.model.UtenteRegistrato;
@@ -34,13 +33,12 @@ public class Registrazione extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		@SuppressWarnings("deprecation")
 		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-		//Configuration config = new Configuration().configure();
-		//ServiceRegistry servReg = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
-		//SessionFactory factory = config.buildSessionFactory(servReg);
+		
 
 		Session session = factory.openSession();
 		session.beginTransaction();

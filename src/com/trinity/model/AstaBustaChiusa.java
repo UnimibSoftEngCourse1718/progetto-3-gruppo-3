@@ -51,7 +51,6 @@ public class AstaBustaChiusa {
 public AstaBustaChiusa(){}
 	
 	public AstaBustaChiusa(int baseAsta, Oggetto oggetto, UtenteRegistrato venditore){
-		//super(baseAsta);
 		setBaseAsta(baseAsta);
 		setOraInizio(System.currentTimeMillis());
 		setOraFine(System.currentTimeMillis() + 1800000);
@@ -60,7 +59,6 @@ public AstaBustaChiusa(){}
 	}
 	
 	public AstaBustaChiusa(int idAsta, int baseAsta, long oraInizio, long oraFine, Oggetto oggetto, UtenteRegistrato venditore){
-		//super(baseAsta);
 		setIdAsta(idAsta);
 		setBaseAsta(baseAsta);
 		setOraInizio(oraInizio);
@@ -69,31 +67,31 @@ public AstaBustaChiusa(){}
 		setVenditore(venditore);
 	}
 	
-	private void setIdAsta(int idAsta) {
+	public void setIdAsta(int idAsta) {
 		this.idAsta = idAsta;
 	}
 	
-	private int getIdAsta() {
+	public int getIdAsta() {
 		return idAsta;
 	}
 	
-	private void setBaseAsta(int baseAsta) {
+	public void setBaseAsta(int baseAsta) {
 		this.baseAsta = baseAsta;
 	}
 	
-	private int getBaseAsta() {
+	public int getBaseAsta() {
 		return baseAsta;
 	}
 	
-	private void setOraInizio(long oraInizio) {
+	public void setOraInizio(long oraInizio) {
 		this.oraInizio = oraInizio;
 	}
 	
-	private long getOraInizio() {
+	public long getOraInizio() {
 		return oraInizio;
 	}
 	
-	private void setOraFine(long oraFine) {
+	public void setOraFine(long oraFine) {
 		this.oraFine=oraFine;
 	}
 	
@@ -101,19 +99,19 @@ public AstaBustaChiusa(){}
 		return oraFine;
 	}
 	
-	private void setOggetto(Oggetto oggetto) {
+	public void setOggetto(Oggetto oggetto) {
 		this.oggetto = oggetto;
 	}
 	
-	private Oggetto getOggetto() {
+	public Oggetto getOggetto() {
 		return oggetto;
 	}
 	
-	private void setVenditore(UtenteRegistrato venditore) {
+	public void setVenditore(UtenteRegistrato venditore) {
 		this.venditore = venditore;
 	}
 	
-	private UtenteRegistrato getVenditore() {
+	public UtenteRegistrato getVenditore() {
 		return venditore;
 	}
 }

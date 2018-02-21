@@ -39,6 +39,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AcquistaCrediti
  */
+@SuppressWarnings("unused")
 @WebServlet("/AcquistaCrediti")
 public class AcquistaCrediti extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -48,24 +49,25 @@ public class AcquistaCrediti extends HttpServlet {
      */
     public AcquistaCrediti() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+    	
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-		//new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Categoria.class);
+		
 		
 		Session session = factory.openSession();
 		session.beginTransaction();

@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@SuppressWarnings("unused")
 @Entity
 @Table(name = "UtenteRegistrato")
 public class UtenteRegistrato{
@@ -38,9 +37,6 @@ public class UtenteRegistrato{
 	@Column(name = "crediti", length = 40, nullable = true)
 	public int crediti;
 	
-	//private List<AstaBustaChiusa> storicoAsteBustaChiusa = new ArrayList<AstaBustaChiusa>();
-	//private List<AstaSuperamentoImmediato> storicoAsteSuperamentoImmediato = new ArrayList<AstaSuperamentoImmediato>();
-
 	public UtenteRegistrato(){
 		
 	}
@@ -122,7 +118,7 @@ public class UtenteRegistrato{
 		return indirizzo;
 	}
 
-	private void setIndirizzo(String indirizzo) {
+	public void setIndirizzo(String indirizzo) {
 		this.indirizzo = indirizzo;
 	}
 
@@ -130,7 +126,7 @@ public class UtenteRegistrato{
 		return numeroCarta;
 	}
 
-	private void setNumeroCarta(String numeroCarta) {
+	public void setNumeroCarta(String numeroCarta) {
 		this.numeroCarta = numeroCarta;
 	}
 	

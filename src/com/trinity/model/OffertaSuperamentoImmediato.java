@@ -8,7 +8,6 @@ public class OffertaSuperamentoImmediato {
 	private UtenteRegistrato offerente;
 	
 	public OffertaSuperamentoImmediato(int idOffertaSI, int valore, AstaSuperamentoImmediato asta, UtenteRegistrato offerente) {
-		//super();
 		this.idOffertaSI = idOffertaSI;
 		this.valore = valore;
 		this.asta = asta;
@@ -16,7 +15,6 @@ public class OffertaSuperamentoImmediato {
 	}
 
 	public OffertaSuperamentoImmediato(int valore, AstaSuperamentoImmediato asta, UtenteRegistrato offerente) {
-		//super();
 		this.valore = valore;
 		this.asta = asta;
 		this.offerente = offerente;
