@@ -36,6 +36,9 @@ public class AstaBustaChiusa {
 	@Column(name = "oraFine", nullable=false)
 	private long oraFine;
 	
+	@Column(name = "attiva", nullable=false)
+	private int attiva;
+	
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn (name = "oggetto")
 	private Oggetto oggetto;
@@ -43,57 +46,63 @@ public class AstaBustaChiusa {
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn(name = "venditore")
 	private UtenteRegistrato venditore;
-	
-	//public UtenteRegistrato offerente;
-	//public int venditore;
-	//private List<OffertaBustaChiusa> listaOfferte = new ArrayList<OffertaBustaChiusa>();
-	
+		
 public AstaBustaChiusa(){}
 	
 	public AstaBustaChiusa(int baseAsta, Oggetto oggetto, UtenteRegistrato venditore){
 		//super(baseAsta);
 		setBaseAsta(baseAsta);
 		setOraInizio(System.currentTimeMillis());
-		setOraFine(System.currentTimeMillis() + 1800000);
+		setOraFine(System.currentTimeMillis() + 600000);
 		setOggetto(oggetto);
 		setVenditore(venditore);
+		setAttiva(1);
 	}
 	
 	public AstaBustaChiusa(int idAsta, int baseAsta, long oraInizio, long oraFine, Oggetto oggetto, UtenteRegistrato venditore){
 		//super(baseAsta);
 		setIdAsta(idAsta);
 		setBaseAsta(baseAsta);
-		setOraInizio(oraInizio);
-		setOraFine(oraFine);
+		setOraInizio(System.currentTimeMillis());
+		setOraFine(System.currentTimeMillis() + 600000);
 		setOggetto(oggetto);
 		setVenditore(venditore);
+		setAttiva(1);
 	}
 	
-	private void setIdAsta(int idAsta) {
+	public int getAttiva() {
+		return attiva;
+	}
+
+	public void setAttiva(int attiva) {
+		this.attiva = attiva;
+	}
+
+	public void setIdAsta(int idAsta) {
 		this.idAsta = idAsta;
 	}
 	
-	private int getIdAsta() {
+	public int getIdAsta() {
 		return idAsta;
 	}
 	
-	private void setBaseAsta(int baseAsta) {
+	public void setBaseAsta(int baseAsta) {
 		this.baseAsta = baseAsta;
 	}
 	
-	private int getBaseAsta() {
+	public int getBaseAsta() {
 		return baseAsta;
 	}
 	
-	private void setOraInizio(long oraInizio) {
+	public void setOraInizio(long oraInizio) {
 		this.oraInizio = oraInizio;
 	}
 	
-	private long getOraInizio() {
+	public long getOraInizio() {
 		return oraInizio;
 	}
 	
-	private void setOraFine(long oraFine) {
+	public void setOraFine(long oraFine) {
 		this.oraFine=oraFine;
 	}
 	
@@ -101,19 +110,19 @@ public AstaBustaChiusa(){}
 		return oraFine;
 	}
 	
-	private void setOggetto(Oggetto oggetto) {
+	public void setOggetto(Oggetto oggetto) {
 		this.oggetto = oggetto;
 	}
 	
-	private Oggetto getOggetto() {
+	public Oggetto getOggetto() {
 		return oggetto;
 	}
 	
-	private void setVenditore(UtenteRegistrato venditore) {
+	public void setVenditore(UtenteRegistrato venditore) {
 		this.venditore = venditore;
 	}
 	
-	private UtenteRegistrato getVenditore() {
+	public UtenteRegistrato getVenditore() {
 		return venditore;
 	}
 }
