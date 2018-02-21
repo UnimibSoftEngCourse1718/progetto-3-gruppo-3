@@ -56,6 +56,18 @@ public class UtenteRegistrato{
 		this.password = password;
 	}
 	
+	public UtenteRegistrato(int idUtente, String nomeUtente, String cognomeUtente, String email, String password, String indirizzo,
+			String numeroCarta, int crediti) {
+		this.idUtente = idUtente;
+		this.nomeUtente = nomeUtente;
+		this.cognomeUtente = cognomeUtente;
+		this.email = email;
+		this.indirizzo = indirizzo;
+		this.numeroCarta = numeroCarta;
+		this.password = password;
+		this.crediti = crediti;
+	}
+	
 	public UtenteRegistrato(String nomeUtente, String cognomeUtente, String password, String email, String indirizzo,
 			String numeroCarta) {
 		this.nomeUtente = nomeUtente;

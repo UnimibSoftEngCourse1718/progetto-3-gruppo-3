@@ -11,9 +11,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class AstaSuperamentoImmediatoBean {
+public class AsteSuperamentoImmediatoBean {
 
-	public ArrayList<AstaSuperamentoImmediato> idAsta(){
+	//metodo che restituisce un arraylist di tutte le aste a superamentoimmediato
+	public ArrayList<AstaSuperamentoImmediato> Aste(){
 		try{
 			// open a connection
 			Connection connection = null;
@@ -38,7 +39,7 @@ public class AstaSuperamentoImmediatoBean {
 			}
 			
 			//recupero tutti gli oggetti dal db
-			PreparedStatement prep3 = connection.prepareStatement("Select * from categoria"); 								//eventualmente, riutilizzare la variabile "prep" come sopra [quindi già dichiarato] 
+			PreparedStatement prep3 = connection.prepareStatement("Select * from oggetto"); 								//eventualmente, riutilizzare la variabile "prep" come sopra [quindi già dichiarato] 
 			ResultSet all3 = prep3.executeQuery();																			//eventualmente, riutilizzare la variabile "all" già dichiarata
 			ArrayList<Oggetto> oggetti = new ArrayList<Oggetto>();
 			boolean trovato=false;
@@ -55,7 +56,7 @@ public class AstaSuperamentoImmediatoBean {
 			}
 			
 			//recupero tutte le aste dal db
-			PreparedStatement prep4 = connection.prepareStatement("Select * from categoria"); 								//eventualmente, riutilizzare la variabile "prep" come sopra [quindi già dichiarato] 
+			PreparedStatement prep4 = connection.prepareStatement("Select * from astasuperamentoimmediato"); 								//eventualmente, riutilizzare la variabile "prep" come sopra [quindi già dichiarato] 
 			ResultSet all4 = prep4.executeQuery();																			//eventualmente, riutilizzare la variabile "all" già dichiarata
 			ArrayList<AstaSuperamentoImmediato> aste = new ArrayList<AstaSuperamentoImmediato>();
 			while (all4.next()) {																							//per ogni asta cerco l'oggetto ed il venditore (utenteRegistrato), poi la inserisco nella lista di aste
@@ -87,4 +88,26 @@ public class AstaSuperamentoImmediatoBean {
 			return null;
 		}
 	}
+	
+	//metodo che restituisce l'asta con dato id
+		public AstaSuperamentoImmediato Asta(int id){
+			try{
+				ArrayList<AstaSuperamentoImmediato> aste = Aste();
+				AstaSuperamentoImmediato asta = null;
+							
+				boolean trovato=false;
+				for(int i=0; (i<aste.size()) && (trovato==false); i++) {
+					if(aste.get(i).getIdAsta() == id) {
+						asta=aste.get(i);
+						trovato=true;
+					}
+				}
+				
+				return asta;
+				
+			}catch(Exception sqlex){
+				System.out.println("DB error");
+				return null;
+			}
+		}
 }

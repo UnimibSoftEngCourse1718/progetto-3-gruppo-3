@@ -75,6 +75,18 @@ public class AstaSuperamentoImmediato {
 		setAttiva(1);
 	}
 	
+	public AstaSuperamentoImmediato(int idAsta, int baseAsta, long oraInizio, long oraFine, int timeSlot, Oggetto oggetto, UtenteRegistrato venditore, int attiva){
+		//super(baseAsta);
+		setIdAsta(idAsta);
+		setBaseAsta(baseAsta);
+		setOraInizio(oraInizio);
+		setOraFine(oraFine);
+		setTimeSlot(timeSlot);
+		setOggetto(oggetto);
+		setVenditore(venditore);
+		setAttiva(attiva);
+	}
+	
 	public int getIdAsta() {
 		return idAsta;
 	}

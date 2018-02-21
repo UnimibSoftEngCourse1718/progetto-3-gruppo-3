@@ -1,40 +1,56 @@
 package com.trinity.model;
 
-@SuppressWarnings("unused")
 public class OffertaSuperamentoImmediato {
 	
+	private int idOffertaSI;
+	private int valore;
 	private AstaSuperamentoImmediato asta;
 	private UtenteRegistrato offerente;
-	private UtenteRegistrato venditore;
 	
-	public OffertaSuperamentoImmediato(AstaSuperamentoImmediato asta, UtenteRegistrato venditore, UtenteRegistrato offerente){
+	public OffertaSuperamentoImmediato(int idOffertaSI, int valore, AstaSuperamentoImmediato asta, UtenteRegistrato offerente) {
 		//super();
-		setAsta(asta);
-		setVenditore(venditore);
-		setOfferente(offerente);
-	}
-
-	private AstaSuperamentoImmediato getAsta() {
-		return asta;
-	}
-
-	private void setAsta(AstaSuperamentoImmediato asta) {
+		this.idOffertaSI = idOffertaSI;
+		this.valore = valore;
 		this.asta = asta;
-	}
-
-	private UtenteRegistrato getOfferente() {
-		return offerente;
-	}
-
-	private void setOfferente(UtenteRegistrato offerente) {
 		this.offerente = offerente;
 	}
 
-	private UtenteRegistrato getVenditore() {
-		return venditore;
+	public OffertaSuperamentoImmediato(int valore, AstaSuperamentoImmediato asta, UtenteRegistrato offerente) {
+		//super();
+		this.valore = valore;
+		this.asta = asta;
+		this.offerente = offerente;
+	}
+	
+	public int getIdOffertaSI() {
+		return idOffertaSI;
 	}
 
-	private void setVenditore(UtenteRegistrato venditore) {
-		this.venditore = venditore;
+	public void setIdOffertaSI(int idOffertaSI) {
+		this.idOffertaSI = idOffertaSI;
+	}
+
+	public int getValore() {
+		return valore;
+	}
+
+	public void setValore(int valore) {
+		this.valore = valore;
+	}
+
+	public AstaSuperamentoImmediato getAsta() {
+		return asta;
+	}
+
+	public void setAsta(AstaSuperamentoImmediato asta) {
+		this.asta = asta;
+	}
+
+	public UtenteRegistrato getOfferente() {
+		return offerente;
+	}
+
+	public void setOfferente(UtenteRegistrato offerente) {
+		this.offerente = offerente;
 	}
 }

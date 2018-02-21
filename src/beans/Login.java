@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 public class Login {
 
+	int idUtente;
 	String nome;
 	String cognome;
 	String email;
@@ -15,8 +16,6 @@ public class Login {
 	String indirizzo;
 	String numeroCarta;
 	String crediti;
-
-
 
 	boolean loggedIn = false;
 
@@ -40,27 +39,29 @@ public class Login {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb", "root", "p0m0d0r1n1");
 
 			// create the sql command
-			prep = con.prepareStatement("Select nomeUtente, cognomeUtente, email, password, indirizzo, numeroCarta, crediti from utenteregistrato where email= \"" + email + "\" and password=\"" + password + "\"");
-			
+			prep = con.prepareStatement(
+					"Select idUtente, nomeUtente, cognomeUtente, email, password, indirizzo, numeroCarta, crediti from utenteregistrato where email= \""
+							+ email + "\" and password=\"" + password + "\"");
+
 			if (prep != null) {
-				
+
 				rs = prep.executeQuery();
 				if (rs != null) {
 
 					if (rs.next()) {
-						nome = rs.getString(1);
-						cognome = rs.getString(2);
-						email = rs.getString(3);
-						password = rs.getString(4);
-						indirizzo = rs.getString(5);
-						numeroCarta = rs.getString(6);
-						crediti = rs.getString(7);
+						idUtente = rs.getInt(1);
+						nome = rs.getString(2);
+						cognome = rs.getString(3);
+						email = rs.getString(4);
+						password = rs.getString(5);
+						indirizzo = rs.getString(6);
+						numeroCarta = rs.getString(7);
+						crediti = rs.getString(8);
 						loggedIn = true;
 
 					} else {
 						System.out.println(rs);
 						loggedIn = false;
-
 					}
 				}
 			}
@@ -70,33 +71,39 @@ public class Login {
 		}
 
 		finally {
-				try {
-					if(prep != null)
+			try {
+				if (prep != null)
 					prep.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					if(con != null)
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				if (con != null)
 					con.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					System.out.println("SQL exception");
-					e.printStackTrace();
-				}
-				try {
-					if(rs != null)
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println("SQL exception");
+				e.printStackTrace();
+			}
+			try {
+				if (rs != null)
 					rs.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return loggedIn;
 	}
-	
-	
+
+	public int getId() {
+		return idUtente;
+	}
+
+	public void setId(int idUtente) {
+		this.idUtente = idUtente;
+	}
 	
 	public String getEmail() {
 		return email;
