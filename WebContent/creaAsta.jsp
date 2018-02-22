@@ -87,7 +87,5 @@ out.print("<input type=\"hidden\" name=\"email\"  value=" + utente.getEmail() + 
 <input name="tipo" type="SUBMIT" value="Crea Asta a Busta Chiusa">
 </form>
 
-
-
 </body>
 </html>

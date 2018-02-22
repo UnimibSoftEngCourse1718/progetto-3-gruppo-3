@@ -15,7 +15,8 @@ public class Login {
 	String password;
 	String indirizzo;
 	String numeroCarta;
-	String crediti;
+	int creditiDisp;
+	int creditiCont;
 
 	boolean loggedIn = false;
 
@@ -40,7 +41,7 @@ public class Login {
 
 			// create the sql command
 			prep = con.prepareStatement(
-					"Select idUtente, nomeUtente, cognomeUtente, email, password, indirizzo, numeroCarta, crediti from utenteregistrato where email= \""
+					"Select idUtente, nomeUtente, cognomeUtente, email, password, indirizzo, numeroCarta, creditiDisp, creditiCont from utenteregistrato where email= \""
 							+ email + "\" and password=\"" + password + "\"");
 
 			if (prep != null) {
@@ -56,7 +57,8 @@ public class Login {
 						password = rs.getString(5);
 						indirizzo = rs.getString(6);
 						numeroCarta = rs.getString(7);
-						crediti = rs.getString(8);
+						creditiDisp = rs.getInt(8);
+						creditiCont = rs.getInt(9);
 						loggedIn = true;
 
 					} else {
@@ -153,12 +155,20 @@ public class Login {
 		this.numeroCarta = numeroCarta;
 	}
 
-	public String getCrediti() {
-		return crediti;
+	public int getCreditiDisp() {
+		return creditiDisp;
 	}
 
-	public void setCrediti(String crediti) {
-		this.crediti = crediti;
+	public void setCreditiDisp(int creditiDisp) {
+		this.creditiDisp = creditiDisp;
+	}
+	
+	public int getCreditiCont() {
+		return creditiCont;
+	}
+
+	public void setCreditiCont(int creditiCont) {
+		this.creditiCont = creditiCont;
 	}
 
 	public void setLoggedIn(boolean loggedIn) {
