@@ -55,11 +55,11 @@
 
 <body>
 	<div class="container">
-		Offerta inviata con successo! <br> <br> id asta:
+		Offerta inviata con successo! <br><br>
+		id asta:
 		<%
- 	String indirizzo = request.getParameter("idAsta");
- 	out.print(indirizzo);
- %>
+ 			out.print(request.getParameter("idAsta"));
+		%>
 		<br> valore offerta:
 		<%
 			out.print(request.getParameter("valoreOfferta"));

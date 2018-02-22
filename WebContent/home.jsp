@@ -77,9 +77,11 @@
 			out.println("Time Slot rimanenti:  " + aste.Aste().get(i).getTimeSlot() + "<br><br>");
 			out.println("Venditore:  " + aste.Aste().get(i).getVenditore().getNomeUtente());
 			out.println(aste.Aste().get(i).getVenditore().getCognomeUtente() + "<br><br>");
-			out.print("<form method=\"POST\" action=\"idAstaSiToAstaSiPage\">");
+			out.print("<form method=\"POST\" action=\"IdAstaToAstaPage\">");
 			int idAsta=aste.Aste().get(i).getIdAsta();
+			int tipoAsta=1;	//asta superamentoimmediato vale 1
 			out.print("<input type=\"hidden\" name=\"idAsta\"  value=" + idAsta + " />");
+			out.print("<input type=\"hidden\" name=\"tipoAsta\"  value=" + tipoAsta + " />");
 			out.print("<input name=\"vedi\" type=\"SUBMIT\" value=\"Vedi Asta\"> </form>");
 			out.print("<br> <br>");
 		}

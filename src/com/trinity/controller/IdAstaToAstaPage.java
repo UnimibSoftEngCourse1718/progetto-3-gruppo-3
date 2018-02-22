@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class creaAsta
  */
-@WebServlet(description = "idAstaSiToAstaSiPage", urlPatterns = { "/idAstaSiToAstaSiPage" })
+@WebServlet(description = "IdAstaToAstaPage", urlPatterns = { "/IdAstaToAstaPage" })
 public class IdAstaToAstaPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -28,7 +28,6 @@ public class IdAstaToAstaPage extends HttpServlet {
 	 */
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

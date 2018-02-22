@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class AsteSuperamentoImmediatoBean {
-
 	
 	//metodo che restituisce un arraylist di tutte le aste a superamentoimmediato
 	public ArrayList<AstaSuperamentoImmediato> Aste(){
