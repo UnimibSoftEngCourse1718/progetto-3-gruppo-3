@@ -86,7 +86,7 @@
 			out.println("Oggetto" + "<br>");
 			out.println("nome: " + asta.getOggetto().getNomeOggetto() + "<br>");
 			out.println("descrizione: " + asta.getOggetto().getDescrizione() + "<br>");
-			//out.println("categoria: " + asta.getOggetto().getCategoria().getIdCategoria() + "<br>");
+			//out.println("categoria: " + asta.getOggetto().getCategoria().getNomeCategoria() + "<br>");
 			out.println("-------------------------------" + "<br>");
 			out.println("base asta: " + asta.getBaseAsta() + "<br>");
 			out.println("time slot disponibili: " + asta.getTimeSlot() + "<br>");
@@ -96,7 +96,6 @@
 				out.println("offerta attualmente piu' alta" + "<br>");
 				out.println("id offerta: " + offertaMax.get(0) + "<br>");
 				out.println("id offerente: " + offertaMax.get(2) + "<br>");
-				//out.println("nome e cognome offerente: " + offerente.get(0) + "<br>");
 				out.println("valore: " + offertaMax.get(1) + "<br><br>");
 			} else {
 				out.println("ancora nessuna offerta" + "<br><br>");

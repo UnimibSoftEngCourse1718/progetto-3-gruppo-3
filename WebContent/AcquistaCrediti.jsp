@@ -68,7 +68,7 @@
 			<script>
 				function creditConverter(valNum) {
 					valNum = parseInt(valNum);
-					document.getElementById("conversione").innerHTML = (valNum / 10);
+					document.getElementById("conversione").innerHTML = (valNum);
 				}
 			</script>
 

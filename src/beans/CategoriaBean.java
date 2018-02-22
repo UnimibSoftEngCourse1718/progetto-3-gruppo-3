@@ -24,7 +24,7 @@ public class CategoriaBean {
 				risultati.add(rs.getString(1));
 			}
 			return risultati;
-			//con.close();
+			//chiusura connessione?
 		}catch(Exception sqlex)
 		{
 			System.out.println("DB error");
