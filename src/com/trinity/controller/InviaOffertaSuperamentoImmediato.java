@@ -38,6 +38,7 @@ public class InviaOffertaSuperamentoImmediato extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -47,6 +48,7 @@ public class InviaOffertaSuperamentoImmediato extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			//Connessione al db
@@ -64,10 +66,17 @@ public class InviaOffertaSuperamentoImmediato extends HttpServlet {
 			UtenteRegistrato offerente = null;
 			String queryOfferente ="SELECT * FROM utenteregistrato WHERE idUtente = " + idOfferente;
 			ResultSet result = myStatement.executeQuery(queryOfferente);
+			
+			while (result.next()) {
+				
+			}
+			
 System.out.println("Ok1");
 System.out.println(result.getInt(1));
-	        offerente = new UtenteRegistrato(result.getInt(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6), result.getString(7), result.getInt(8), result.getInt(9));	//int idUtente, String nomeUtente, String cognomeUtente, String email, String password, String indirizzo, String numeroCarta, int crediti
-	        System.out.println("Ok22");
+System.out.println("Ok22");
+			offerente = new UtenteRegistrato(result.getInt(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6), result.getString(7), result.getInt(8), result.getInt(9));	//int idUtente, String nomeUtente, String cognomeUtente, String email, String password, String indirizzo, String numeroCarta, int crediti
+System.out.println("Ok3");
+			
 			//dati asta su cui fare l'offerta
 			int idAsta = Integer.parseInt(request.getParameter("idAsta"));
 			int idOggetto = 0;
@@ -143,7 +152,7 @@ System.out.println(result.getInt(1));
 	        		creditoSufficiente = true;
 	        }
 	        //calcolo in caso io abbia già fatto un'offerta
-	        else if(primaOfferta == false){
+	        else {
 	        	if((offerente.getCreditiCont() + valoreOffertaPrecIdOfferente - valoreOfferta) >= 0)
 	        		creditoSufficiente = true;
 	        }
@@ -207,6 +216,7 @@ System.out.println(result.getInt(1));
 		}catch(Exception e)
 		{
 			System.out.println("Error");
+			System.out.println(e.getMessage());
 		}
 	}
 }

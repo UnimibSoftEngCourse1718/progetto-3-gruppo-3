@@ -32,48 +32,51 @@ public class AsteSuperamentoImmediatoBean {
 			}
 			
 			//recupero tutte le categorie dal db
-			PreparedStatement prep2 = connection.prepareStatement("Select * from categoria"); 								//eventualmente, riutilizzare la variabile "prep" come sopra [quindi già dichiarato] 
-			ResultSet all2 = prep2.executeQuery(); 																			//eventualmente, riutilizzare la variabile "all" già dichiarata
+			PreparedStatement prep2 = connection.prepareStatement("Select * from categoria");
+			ResultSet all2 = prep2.executeQuery();
 			ArrayList<Categoria> categorie = new ArrayList<Categoria>();
-			while (all2.next()) { 																							//inserisco tutte le categorie del db in una lista
-				categorie.add(new Categoria(all2.getInt(1), all2.getString(2)));											//dati categoria: int idCategoria, String nomeCategoria
+			while (all2.next()) {
+				categorie.add(new Categoria(all2.getInt(1), all2.getString(2)));
 			}
 			
 			//recupero tutti gli oggetti dal db
-			PreparedStatement prep3 = connection.prepareStatement("Select * from oggetto"); 								//eventualmente, riutilizzare la variabile "prep" come sopra [quindi già dichiarato] 
-			ResultSet all3 = prep3.executeQuery();																			//eventualmente, riutilizzare la variabile "all" già dichiarata
+			PreparedStatement prep3 = connection.prepareStatement("Select * from oggetto"); 
+			ResultSet all3 = prep3.executeQuery();
 			ArrayList<Oggetto> oggetti = new ArrayList<Oggetto>();
 			boolean trovato=false;
-			while (all3.next()) {																							//per ogni oggetto cerco la categoria a cui appartiene, poi lo inserisco nella lista di oggetti
+			while (all3.next()) {
 				int idCategoria=all3.getInt(4);
 				Categoria categoria = null;
-				for(int i=0; (i<categorie.size()) && (trovato==false); i++) {												//cerco la categoria dell'oggetto
+				for(int i=0; (i<categorie.size()) && (trovato==false); i++) {
 					if(idCategoria == categorie.get(i).getIdCategoria()) {
 						categoria=categorie.get(i);
 						trovato=true;
 					}
 				}
-				oggetti.add(new Oggetto(all3.getInt(1), all3.getString(2), all3.getString(3), categoria));					//dati oggetto: int idOggetto, String nomeOggetto, String descrizione, Categoria categoria
+				oggetti.add(new Oggetto(all3.getInt(1), all3.getString(2), all3.getString(3), categoria));
 			}
 			
 			//recupero tutte le aste dal db
-			PreparedStatement prep4 = connection.prepareStatement("Select * from astasuperamentoimmediato"); 								//eventualmente, riutilizzare la variabile "prep" come sopra [quindi già dichiarato] 
-			ResultSet all4 = prep4.executeQuery();																			//eventualmente, riutilizzare la variabile "all" già dichiarata
+			PreparedStatement prep4 = connection.prepareStatement("Select * from astasuperamentoimmediato"); 
+			ResultSet all4 = prep4.executeQuery();
 			ArrayList<AstaSuperamentoImmediato> aste = new ArrayList<AstaSuperamentoImmediato>();
-			while (all4.next()) {																							//per ogni asta cerco l'oggetto ed il venditore (utenteRegistrato), poi la inserisco nella lista di aste
+			//per ogni asta cerco l'oggetto ed il venditore (utenteRegistrato), poi la inserisco nella lista di aste
+			while (all4.next()) {
 				int idOggetto=all4.getInt(6);
 				Oggetto oggetto = null;
 				int idVenditore=all4.getInt(7);
 				UtenteRegistrato venditore = null;
 				trovato=false;
-				for(int i=0; (i<oggetti.size()) && (trovato==false); i++) {													//cerco l'oggetto dell'asta
+				//cerco l'oggetto dell'asta
+				for(int i=0; (i<oggetti.size()) && (trovato==false); i++) {
 					if(idOggetto == oggetti.get(i).getIdOggetto()) {
 						oggetto=oggetti.get(i);
 						trovato=true;
 					}
 				}
 				trovato=false;
-				for(int i=0; (i<utenti.size()) && (trovato==false); i++) {													//cerco il venditore dell'asta
+				//cerco il venditore dell'asta
+				for(int i=0; (i<utenti.size()) && (trovato==false); i++) {
 					if(idVenditore == utenti.get(i).getIdUtente()) {
 						venditore=utenti.get(i);
 						trovato=true;
