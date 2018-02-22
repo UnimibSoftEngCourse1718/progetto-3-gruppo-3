@@ -90,24 +90,24 @@ public class AsteSuperamentoImmediatoBean {
 	}
 	
 	//metodo che restituisce l'asta con dato id
-		public AstaSuperamentoImmediato Asta(int id){
-			try{
-				ArrayList<AstaSuperamentoImmediato> aste = Aste();
-				AstaSuperamentoImmediato asta = null;
-							
-				boolean trovato=false;
-				for(int i=0; (i<aste.size()) && (trovato==false); i++) {
-					if(aste.get(i).getIdAsta() == id) {
-						asta=aste.get(i);
-						trovato=true;
-					}
+	public AstaSuperamentoImmediato Asta(int id){
+		try{
+			ArrayList<AstaSuperamentoImmediato> aste = Aste();
+			AstaSuperamentoImmediato asta = null;
+						
+			boolean trovato=false;
+			for(int i=0; (i<aste.size()) && (trovato==false); i++) {
+				if(aste.get(i).getIdAsta() == id) {
+					asta=aste.get(i);
+					trovato=true;
 				}
-				
-				return asta;
-				
-			}catch(Exception sqlex){
-				System.out.println("DB error");
-				return null;
 			}
+			
+			return asta;
+			
+		}catch(Exception sqlex){
+			System.out.println("DB error");
+			return null;
 		}
+	}
 }

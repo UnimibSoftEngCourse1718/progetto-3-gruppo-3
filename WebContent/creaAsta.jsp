@@ -64,7 +64,7 @@
 
 <form method="POST" action="creaAsta">
 
-Base d'asta <input type="text" size="40" maxlength="40" name="baseAsta" /><br />
+Base d'asta <input type="number" size="40" maxlength="40" name="baseAsta" /><br />
 Oggetto : <br>
 Nome oggetto <input type="text" size="40" maxlength="40" name="nomeOggetto" /><br />
 Descrizione <input type="text" size="40" maxlength="40" name="descrizione" /><br />
@@ -85,8 +85,6 @@ out.print("<input type=\"hidden\" name=\"email\"  value=" + utente.getEmail() + 
 <br>
 <input type="SUBMIT" value="Conferma">
 </form>
-
-
 
 </body>
 </html>

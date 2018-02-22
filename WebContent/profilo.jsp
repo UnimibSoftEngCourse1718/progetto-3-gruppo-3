@@ -60,7 +60,8 @@
 out.println("Cognome: " +utente.getCognome()+ "<br/>");
 out.println("Indirizzo: "+utente.getIndirizzo()+"<br/>");
 out.println("Indirizzo email: "+utente.getEmail()+"<br/>");
-out.println("Crediti: "+utente.getCrediti()+"<br/>");
+out.println("Crediti Disponibili: "+utente.getCreditiDisp()+"<br/>");
+out.println("Crediti Contabili: "+utente.getCreditiCont()+"<br/>");
 out.println("Numero carta di credito: "+utente.getNumeroCarta()+"<br/>");
 out.println("Password: "+utente.getPassword()+"<br/>"); %>
 <button onlick="location.href='./update.jsp'">Aggiorna dati</button>

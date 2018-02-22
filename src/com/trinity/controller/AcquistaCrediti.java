@@ -70,16 +70,22 @@ public class AcquistaCrediti extends HttpServlet {
 		Session session = factory.openSession();
 		session.beginTransaction();
 		
-		int creditiPrec = (int) session.createQuery("select crediti from com.trinity.model.UtenteRegistrato where email = :email").setParameter("email", request.getParameter("email")).uniqueResult();
+		int creditiAcquistati=Integer.parseInt(request.getParameter("outputCrediti"));
+		int creditiDispPrec = (int) session.createQuery("select creditiDisp from com.trinity.model.UtenteRegistrato where email = :email").setParameter("email", request.getParameter("email")).uniqueResult();
+		int creditiContPrec = (int) session.createQuery("select creditiCont from com.trinity.model.UtenteRegistrato where email = :email").setParameter("email", request.getParameter("email")).uniqueResult();
 		
-			
-		int creditiAgg = creditiPrec + Integer.parseInt(request.getParameter("outputCrediti"));
+		int creditiDispAgg = creditiDispPrec + creditiAcquistati;
+		int creditiContAgg = creditiContPrec + creditiAcquistati;
 		
-				
-		Query q = session.createQuery("update com.trinity.model.UtenteRegistrato set crediti= :crediti where email = :email");
-		q.setParameter("crediti", creditiAgg);
-		q.setParameter("email", request.getParameter("email"));
-		q.executeUpdate();
+		Query d = session.createQuery("update com.trinity.model.UtenteRegistrato set creditiDisp= :creditiDisp where email = :email");
+		d.setParameter("creditiDisp", creditiDispAgg);
+		d.setParameter("email", request.getParameter("email"));
+		d.executeUpdate();
+		
+		Query c = session.createQuery("update com.trinity.model.UtenteRegistrato set creditiCont= :creditiCont where email = :email");
+		c.setParameter("creditiCont", creditiContAgg);
+		c.setParameter("email", request.getParameter("email"));
+		c.executeUpdate();
 		
 		
 		session.getTransaction().commit();
@@ -89,5 +95,4 @@ public class AcquistaCrediti extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("AcquistaCrediti_conferma.jsp");
 		view.forward(request, response);
 	}
-
 }

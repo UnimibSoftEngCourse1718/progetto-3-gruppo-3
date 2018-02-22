@@ -35,12 +35,12 @@ public class UtenteRegistrato{
 	@Column(name = "password", length = 40, nullable = false)
 	public String password;
 	
-	@Column(name = "crediti", length = 40, nullable = true)
-	public int crediti;
+	@Column(name = "creditiDisp", length = 40, nullable = true)
+	public int creditiDisp;
 	
-	//private List<AstaBustaChiusa> storicoAsteBustaChiusa = new ArrayList<AstaBustaChiusa>();
-	//private List<AstaSuperamentoImmediato> storicoAsteSuperamentoImmediato = new ArrayList<AstaSuperamentoImmediato>();
-
+	@Column(name = "creditiCont", length = 40, nullable = true)
+	public int creditiCont;
+	
 	public UtenteRegistrato(){
 		
 	}
@@ -57,7 +57,7 @@ public class UtenteRegistrato{
 	}
 	
 	public UtenteRegistrato(int idUtente, String nomeUtente, String cognomeUtente, String email, String password, String indirizzo,
-			String numeroCarta, int crediti) {
+			String numeroCarta, int creditiDisp, int creditiCont) {
 		this.idUtente = idUtente;
 		this.nomeUtente = nomeUtente;
 		this.cognomeUtente = cognomeUtente;
@@ -65,7 +65,8 @@ public class UtenteRegistrato{
 		this.indirizzo = indirizzo;
 		this.numeroCarta = numeroCarta;
 		this.password = password;
-		this.crediti = crediti;
+		this.creditiDisp = creditiDisp;
+		this.creditiCont = creditiCont;
 	}
 	
 	public UtenteRegistrato(String nomeUtente, String cognomeUtente, String password, String email, String indirizzo,
@@ -134,11 +135,19 @@ public class UtenteRegistrato{
 		this.numeroCarta = numeroCarta;
 	}
 	
-	public int getCredito() {
-		return crediti;
+	public int getCreditiDisp() {
+		return creditiDisp;
 	}
 	
-	public void setCredito(int credito) {
-		this.crediti = credito;
+	public void setCreditiDisp(int creditiDisp) {
+		this.creditiDisp = creditiDisp;
+	}
+	
+	public int getCreditiCont() {
+		return creditiCont;
+	}
+	
+	public void setCreditiCont(int creditiCont) {
+		this.creditiCont  = creditiCont;
 	}
 }
