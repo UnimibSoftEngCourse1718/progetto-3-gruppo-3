@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.ArrayList"%>
 <%@page import="com.trinity.model.AstaSuperamentoImmediato"%>
 <%@page import="com.trinity.model.OffertaSuperamentoImmediato"%>
 <%@include file="checkLogin.jsp"%>
@@ -39,39 +39,39 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<nav class="navbar navbar-expand-md bg-success navbar-dark sitcky-top">
+<a class="navbar-brand" href="#"> <img src="media/logoTrinity.png"
+	alt="logo" style="width: 40px;">
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse"
+	data-target="#collapsibleNavbar">
+	<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="collapsibleNavbar">
+	<ul class="navbar-nav">
+		<li class="nav-item"><a class="nav-link" href="home.jsp">Home</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" href="profilo.jsp">Il
+				mio account</a></li>
+		<li class="nav-item"><a class="nav-link" href="creaAsta.jsp">Nuova
+				asta</a></li>
+		<li class="nav-item"><a class="nav-link" href="leMieAste.jsp">Le
+				mie aste</a></li>
+		<li class="nav-item"><a class="nav-link" href="logout.jsp">
+				Logout</a></li>
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<form class="form-inline" action="/action_page.php">
+			<input class="form-control mr-sm-2" type="text" placeholder="Search">
+			<button class="btn btn-success" type="submit">Search</button>
+		</form>
+		</nav>
+	</ul>
+</div>
+</nav>
 <title>Asta superamento immediato</title>
 </head>
-<body>
-	<nav class="navbar navbar-expand-md bg-success navbar-dark sitcky-top">
-	<a class="navbar-brand" href="#"> <img src="media/logoTrinity.png"
-		alt="logo" style="width: 40px;">
-	</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse"
-		data-target="#collapsibleNavbar">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="collapsibleNavbar">
-		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="home.jsp">Home</a>
-			</li>
-			<li class="nav-item"><a class="nav-link" href="profilo.jsp">Il
-					mio account</a></li>
-			<li class="nav-item"><a class="nav-link" href="creaAsta.jsp">Nuova
-					asta</a></li>
-			<li class="nav-item"><a class="nav-link" href="leMieAste.jsp">Le
-					mie aste</a></li>
-			<li class="nav-item"><a class="nav-link" href="logout.jsp">
-					Logout</a></li>
-			<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-			<form class="form-inline" action="/action_page.php">
-				<input class="form-control mr-sm-2" type="text" placeholder="Search">
-				<button class="btn btn-success" type="submit">Search</button>
-			</form>
-			</nav>
-		</ul>
-	</div>
-	</nav>
 
+<body>
 	<div class="container">
 		<h3>Asta</h3>
 		<h5>tipo: Superamento immediato</h5>
@@ -80,7 +80,7 @@
 			int id = 45;
 			AstaSuperamentoImmediato asta = aste.Asta(id);
 			ArrayList<Integer> offertaMax = offerte.Max(id);
-			
+
 			out.println("id asta: " + asta.getIdAsta() + "<br>");
 			out.println("-------------------------------" + "<br>");
 			out.println("Oggetto" + "<br>");
@@ -91,15 +91,14 @@
 			out.println("base asta: " + asta.getBaseAsta() + "<br>");
 			out.println("time slot disponibili: " + asta.getTimeSlot() + "<br>");
 			out.println("-------------------------------" + "<br>");
-			
-			if(offertaMax != null){
+
+			if (offertaMax != null) {
 				out.println("offerta attualmente piu' alta" + "<br>");
 				out.println("id offerta: " + offertaMax.get(0) + "<br>");
 				out.println("id offerente: " + offertaMax.get(2) + "<br>");
 				//out.println("nome e cognome offerente: " + offerente.get(0) + "<br>");
 				out.println("valore: " + offertaMax.get(1) + "<br><br>");
-			}
-			else{
+			} else {
 				out.println("ancora nessuna offerta" + "<br><br>");
 			}
 		%>
@@ -114,7 +113,7 @@
 				out.print("<input type=\"hidden\" name=\"idUtente\"  value=" + utente.getId() + " />");
 				out.print("<input type=\"hidden\" name=\"idAsta\"  value=" + asta.getIdAsta() + " />");
 			%>
-			<br><br> <input type="SUBMIT" value="Invia Offerta">
+			<br> <br> <input type="SUBMIT" value="Invia Offerta">
 		</form>
 	</div>
 	<br>
