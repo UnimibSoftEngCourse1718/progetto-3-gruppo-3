@@ -77,7 +77,8 @@
 		<h5>tipo: Superamento immediato</h5>
 
 		<%	
-			int id = Integer.parseInt(request.getParameter("tipoAsta"));
+			int id = 45; 
+			//Integer.parseInt(request.getParameter("tipoAsta"));
 			
 			AstaSuperamentoImmediato asta = aste.Asta(id);
 			ArrayList<Integer> offertaMax = offerte.Max(id);

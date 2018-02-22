@@ -56,45 +56,51 @@
 </head>
 
 <body>
-	<div class="header">
-		<h1>
-			<strong> ASTE LIVE </strong>
-		</h1>
+
+	<div class="container">
+		<div class="header">
+			<h1>
+				<strong> ASTE LIVE </strong>
+			</h1>
+		</div>
 	</div>
-	<h2>
-		<strong> Aste a superamento immediato</strong>
-	</h2>
-	<%
-	for(int i = 0; i < aste.Aste().size(); i++) 
-	{
-		if(aste.Aste().get(i).isAttiva() != 0) {
-			
-			out.println("Oggetto in asta:  " + aste.Aste().get(i).getOggetto().getNomeOggetto() + "<br><br>");
-			out.println("Descrizione oggetto:  " + aste.Aste().get(i).getOggetto().getDescrizione() + "<br><br>");
-			out.println("Base d'asta:  " + aste.Aste().get(i).getBaseAsta() + "<br><br>");
-			out.println("Ora d'inizio:  " + aste.Aste().get(i).getOraInizio() + "<br><br>");
-			out.println("Ora di fine:  " + aste.Aste().get(i).getOraFine() + "<br><br>");
-			out.println("Time Slot rimanenti:  " + aste.Aste().get(i).getTimeSlot() + "<br><br>");
-			out.println("Venditore:  " + aste.Aste().get(i).getVenditore().getNomeUtente());
-			out.println(aste.Aste().get(i).getVenditore().getCognomeUtente() + "<br><br>");
-			out.print("<form method=\"POST\" action=\"IdAstaToAstaPage\">");
-			int idAsta=aste.Aste().get(i).getIdAsta();
-			int tipoAsta=1;	//asta superamentoimmediato vale 1
-			out.print("<input type=\"hidden\" name=\"idAsta\"  value=" + idAsta + " />");
-			out.print("<input type=\"hidden\" name=\"tipoAsta\"  value=" + tipoAsta + " />");
-			out.print("<input name=\"vedi\" type=\"SUBMIT\" value=\"Vedi Asta\"> </form>");
-			out.print("<br> <br>");
-		}
-	
-	}%>
+	<div class="container">
+		<h2>
+			<strong> Aste a superamento immediato</strong>
+		</h2>
+		<%
+			for (int i = 0; i < aste.Aste().size(); i++) {
+				if (aste.Aste().get(i).isAttiva() != 0) {
+
+					out.println("Oggetto in asta:  " + aste.Aste().get(i).getOggetto().getNomeOggetto() + "<br><br>");
+					out.println(
+							"Descrizione oggetto:  " + aste.Aste().get(i).getOggetto().getDescrizione() + "<br><br>");
+					out.println("Base d'asta:  " + aste.Aste().get(i).getBaseAsta() + "<br><br>");
+					out.println("Ora d'inizio:  " + aste.Aste().get(i).getOraInizio() + "<br><br>");
+					out.println("Ora di fine:  " + aste.Aste().get(i).getOraFine() + "<br><br>");
+					out.println("Time Slot rimanenti:  " + aste.Aste().get(i).getTimeSlot() + "<br><br>");
+					out.println("Venditore:  " + aste.Aste().get(i).getVenditore().getNomeUtente());
+					out.println(aste.Aste().get(i).getVenditore().getCognomeUtente() + "<br><br>");
+					out.print("<form method=\"POST\" action=\"IdAstaToAstaPage\">");
+					int idAsta = aste.Aste().get(i).getIdAsta();
+					int tipoAsta = 1; //asta superamentoimmediato vale 1
+					out.print("<input type=\"hidden\" name=\"idAsta\"  value=" + idAsta + " />");
+					out.print("<input type=\"hidden\" name=\"tipoAsta\"  value=" + tipoAsta + " />");
+					out.print("<input name=\"vedi\" type=\"SUBMIT\" value=\"Vedi Asta\"> </form>");
+					out.print("<br> <br>");
+				}
+
+			}
+		%>
+	</div>
 
 	<div class="container">
 		<h2>
-		<strong>Aste a busta chiusa</strong>
-	</h2>
+			<strong>Aste a busta chiusa</strong>
+		</h2>
 	</div>
 
 	<br>
-	
+
 </body>
 </html>

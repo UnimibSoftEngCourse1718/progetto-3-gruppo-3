@@ -3,9 +3,7 @@ package com.trinity.controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,12 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.transform.Transformers;
 
 import com.trinity.model.AstaSuperamentoImmediato;
-import com.trinity.model.Categoria;
 import com.trinity.model.OffertaSuperamentoImmediato;
-import com.trinity.model.Oggetto;
 import com.trinity.model.UtenteRegistrato;
 
 /**
@@ -63,20 +58,23 @@ public class InviaOffertaSuperamentoImmediato extends HttpServlet {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb","root","p0m0d0r1n1");
 			Statement myStatement = null;
 	        myStatement = connection.createStatement();
-	        
+System.out.println("ok creo connessione");
 	        
 	        //connessione db
 	        SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();			
 			Session session = factory.openSession();
 			session.beginTransaction();
+System.out.println("Ok connessione al db");
 			
 			//dati offerta offerente
 	        int valoreOfferta = Integer.parseInt(request.getParameter("valoreOfferta"));
 			int idOfferente = Integer.parseInt(request.getParameter("idUtente"));
+System.out.println("Ok dati offerta offerente");
 			
 			//dati offerente
 			UtenteRegistrato offerente = null;
 			offerente = (UtenteRegistrato) session.createQuery("select o.idUtente as idUtente, o.nomeUtente as nomeUtente, o.cognomeUtente as cognomeUtente, o.email as email, o.password as password, o.indirizzo as indirizzo, o.numeroCarta as numeroCarta, o.creditiDisp as creditiDisp, o.creditiCont as creditiCont from com.trinity.model.UtenteRegistrato o where o.idOfferente = :idOfferente").setParameter("idOfferente", idOfferente);
+System.out.println("Ok dati offerente");
 			
 			//dati asta su cui fare l'offerta
 			int idAsta = Integer.parseInt(request.getParameter("idAsta"));
@@ -218,7 +216,7 @@ System.out.println("Ok4");
 				//reindirizzo alla conferma
 				RequestDispatcher view = request.getRequestDispatcher("inviaOfferta_conferma.jsp");
 				view.forward(request, response);
-				System.out.println("Ok");
+System.out.println("Ok");
 	        }
 	        else {
 	        	System.out.println("else");
