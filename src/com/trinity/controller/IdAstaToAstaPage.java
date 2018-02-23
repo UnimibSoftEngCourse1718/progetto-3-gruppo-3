@@ -41,14 +41,14 @@ public class IdAstaToAstaPage extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("idAsta"));
 		//recupero tipoasta
 		int tipoAsta = Integer.parseInt(request.getParameter("tipoAsta"));
-		
+		System.out.println(tipoAsta);
 		request.setAttribute("idAsta", id);
 		
 		if(tipoAsta == 1) {	// 1 = Superamento Immediato
 			RequestDispatcher view = request.getRequestDispatcher("astaSuperamentoImmediato.jsp");
 			view.forward(request, response);
 		}
-		if(tipoAsta == 0) {	// 0 = Busta Chiusa
+		else if(tipoAsta == 0) {	// 0 = Busta Chiusa
 			RequestDispatcher view = request.getRequestDispatcher("astaBustaChiusa.jsp");
 			view.forward(request, response);
 		}

@@ -29,11 +29,11 @@ public class AsteBustaChiusaBean {
 			// open a connection
 			Connection connection = null;
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb?useSSL=false","root","p0m0d0r1n1");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb?useSSL=false","root","");
 			
 			ArrayList<AstaBustaChiusa> aste = new ArrayList <AstaBustaChiusa>();
-			AstaBustaChiusa a = new AstaBustaChiusa();
-			PreparedStatement prep1 = connection.prepareStatement("select idAsta, baseAsta, oraInizio, oraFine, o.idOggetto, o.nomeOggetto, o.descrizione, c.idCategoria, c.nomeCategoria, u.idUtente, u.nomeUtente, u.cognomeUtente, u.password, u.email, u.indirizzo, u.numeroCarta, attiva from astabustachiusa asi inner join utenteregistrato u on asi.venditore = u.idUtente inner join oggetto o on asi.oggetto = o.idOggetto inner join categoria c on o.categoria = c.idCategoria ");
+			AstaBustaChiusa b = new AstaBustaChiusa();
+			PreparedStatement prep1 = connection.prepareStatement("select idAsta, baseAsta, oraInizio, oraFine, o.idOggetto, o.nomeOggetto, o.descrizione, c.idCategoria, c.nomeCategoria, u.idUtente, u.nomeUtente, u.cognomeUtente, u.password, u.email, u.indirizzo, u.numeroCarta, attiva from astabustachiusa abc inner join utenteregistrato u on abc.venditore = u.idUtente inner join oggetto o on abc.oggetto = o.idOggetto inner join categoria c on o.categoria = c.idCategoria ");
 			ResultSet rs = prep1.executeQuery();
 			while(rs.next()){
 				idAsta = rs.getInt(1);
@@ -45,8 +45,8 @@ public class AsteBustaChiusaBean {
 				
 				venditore = new UtenteRegistrato(rs.getInt(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16));
 				attiva = rs.getInt(17);
-				a = new AstaBustaChiusa(idAsta, baseAsta, oraInizio, oraFine, oggetto, venditore, attiva);
-				aste.add(a);
+				b = new AstaBustaChiusa(idAsta, baseAsta, oraInizio, oraFine, oggetto, venditore, attiva);
+				aste.add(b);
 			}
 			connection.close();
 			return aste;
@@ -71,7 +71,6 @@ public class AsteBustaChiusaBean {
 					trovato=true;
 				}
 			}
-			
 			return asta;
 			
 		}catch(Exception sqlex){

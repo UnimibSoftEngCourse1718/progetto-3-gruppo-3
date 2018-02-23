@@ -14,7 +14,7 @@ public class OfferteAstaSuperamentoImmediatoBean {
 			// open a connection
 			Connection connection = null;
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb?useSSL=false","root","p0m0d0r1n1");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb?useSSL=false","root","");
 			
 			ArrayList<Integer> max = new ArrayList <Integer>();
 			
@@ -37,7 +37,7 @@ public class OfferteAstaSuperamentoImmediatoBean {
 			max.add(idOfferta);	
 			max.add(valore);
 			max.add(idOfferente);
-			
+			connection.close();
 			return max;
 			
 		}catch(Exception sqlex){

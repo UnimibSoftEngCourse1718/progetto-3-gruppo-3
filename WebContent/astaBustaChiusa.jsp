@@ -4,18 +4,14 @@
 <%@page import="com.trinity.model.OffertaBustaChiusa"%>
 <%@include file="checkLogin.jsp"%>
 <%@ page import="java.util.Date"%>
-<jsp:useBean id="contrAste" class="beans.statoAste">
-	<%
-		contrAste.aggiornaStato();
-	%>
-</jsp:useBean>
+
 
 <jsp:useBean id="aste" class="beans.AsteBustaChiusaBean"
-	scope="session" />
+	 />
 <jsp:setProperty name="aste" property="*" />
 
 <jsp:useBean id="offerte"
-	class="beans.OfferteAstaBustaChiusaBean" scope="session" />
+	class="beans.OfferteAstaBustaChiusaBean" />
 <jsp:setProperty name="offerte" property="*" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

@@ -12,13 +12,13 @@ public class OfferteAstaBustaChiusaBean {
 	public ArrayList<Integer> Max(int idAsta){
 		try{
 			// open a connection
-			Connection connection = null;
+			Connection connection2 = null;
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb?useSSL=false","root","p0m0d0r1n1");
+			connection2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb?useSSL=false","root","");
 			
 			ArrayList<Integer> max = new ArrayList <Integer>();
 			
-			PreparedStatement prep = connection.prepareStatement("Select idOffertaSI, valore, offerente from offertabustachiusa where asta= \"" + idAsta + "\"");
+			PreparedStatement prep = connection2.prepareStatement("Select idOffertaSI, valore, offerente from offertabustachiusa where asta= \"" + idAsta + "\"");
 			
 			ResultSet all = prep.executeQuery();
 			
@@ -37,7 +37,7 @@ public class OfferteAstaBustaChiusaBean {
 			max.add(idOfferta);	
 			max.add(valore);
 			max.add(idOfferente);
-			
+			connection2.close();
 			return max;
 			
 		}catch(Exception sqlex){

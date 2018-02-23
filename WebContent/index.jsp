@@ -5,6 +5,9 @@
 	scope="session" />
 	<jsp:useBean id="astebc" class="beans.AsteBustaChiusaBean"
 	scope="session" />
+	<jsp:useBean id="statoAste" class="beans.statoAste"
+	scope="session" >
+	<%statoAste.aggiornaStato();%> </jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

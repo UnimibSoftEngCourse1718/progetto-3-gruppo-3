@@ -5,13 +5,11 @@
 <%@include file="checkLogin.jsp"%>
 <%@ page import="java.util.Date"%>
 
-
-<jsp:useBean id="aste" class="beans.AsteSuperamentoImmediatoBean"
-	scope="session" />
+<jsp:useBean id="aste" class="beans.AsteSuperamentoImmediatoBean" />
 <jsp:setProperty name="aste" property="*" />
 
 <jsp:useBean id="offerte"
-	class="beans.OfferteAstaSuperamentoImmediatoBean" scope="session" />
+	class="beans.OfferteAstaSuperamentoImmediatoBean" />
 <jsp:setProperty name="offerte" property="*" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
