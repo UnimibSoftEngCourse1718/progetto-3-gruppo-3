@@ -67,7 +67,6 @@
 		<br> <br>
 		<button onclick="location.href='home.jsp'">Home</button>
 
-		<a class="nav-link" href="home.jsp">Home</a>
 	</div>
 	<br>
 </body>
