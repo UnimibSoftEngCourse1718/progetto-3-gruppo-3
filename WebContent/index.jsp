@@ -39,6 +39,7 @@
 		</li>
 		<li class="nav-item"><a class="nav-link" href="login.html">Log in</a></li>
 		<li class="nav-item"><a class="nav-link" href="registrazione.html">Registrati</a></li>
+		<li class="nav-item"><a class="nav-link" href="GuidaTrinity.html">Aiuto</a></li>
 		
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<form class="form-inline" action="/action_page.php">

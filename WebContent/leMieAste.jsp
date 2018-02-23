@@ -45,6 +45,7 @@
 				asta</a></li>
 		<li class="nav-item"><a class="nav-link" href="leMieAste.jsp">Le
 				mie aste</a></li>
+				<li class="nav-item"><a class="nav-link" href="GuidaTrinity.html">Aiuto</a></li>
 		<li class="nav-item"><a class="nav-link" href="logout.jsp">
 				Logout</a></li>
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
