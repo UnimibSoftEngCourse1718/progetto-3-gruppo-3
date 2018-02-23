@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
-<%@page import="com.trinity.model.AstaSuperamentoImmediato"%>
-<%@page import="com.trinity.model.OffertaSuperamentoImmediato"%>
+<%@page import="com.trinity.model.AstaBustaChiusa"%>
+<%@page import="com.trinity.model.OffertaBustaChiusa"%>
 <%@include file="checkLogin.jsp"%>
 <%@ page import="java.util.Date"%>
 <jsp:useBean id="contrAste" class="beans.statoAste">
@@ -10,12 +10,12 @@
 	%>
 </jsp:useBean>
 
-<jsp:useBean id="aste" class="beans.AsteSuperamentoImmediatoBean"
+<jsp:useBean id="aste" class="beans.AsteBustaChiusaBean"
 	scope="session" />
 <jsp:setProperty name="aste" property="*" />
 
 <jsp:useBean id="offerte"
-	class="beans.OfferteAstaSuperamentoImmediatoBean" scope="session" />
+	class="beans.OfferteAstaBustaChiusaBean" scope="session" />
 <jsp:setProperty name="offerte" property="*" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -69,18 +69,18 @@
 	</ul>
 </div>
 </nav>
-<title>Asta superamento immediato</title>
+<title>Asta a busta chiusa</title>
 </head>
 
 <body>
 	<div class="container">
 		<h3>Asta</h3>
-		<h5>tipo: Superamento immediato</h5>
+		<h5>tipo: Busta Chiusa</h5>
 
 		<%
 			int id = Integer.parseInt(request.getParameter("idAsta"));
 			
-			AstaSuperamentoImmediato asta = aste.Asta(id);
+			AstaBustaChiusa asta = aste.Asta(id);
 			ArrayList<Integer> offertaMax = offerte.Max(id);
 
 			out.println("id asta: " + asta.getIdAsta() + "<br>");
@@ -88,7 +88,7 @@
 			Date end = new Date(asta.getOraFine());
 			out.println("ora inizio: " + start + "<br>");
 			out.println("ora fine: " + end+ "<br>");
-			out.println("asta attiva: " + asta.isAttiva() + "<br>");
+			out.println("asta attiva: " + asta.getAttiva() + "<br>");
 			out.println("-------------------------------" + "<br>");
 			out.println("Oggetto" + "<br>");
 			out.println("nome: " + asta.getOggetto().getNomeOggetto() + "<br>");
@@ -96,7 +96,6 @@
 			//visualizzo categoria?
 			out.println("-------------------------------" + "<br>");
 			out.println("base asta: " + asta.getBaseAsta() + "<br>");
-			out.println("time slot disponibili: " + asta.getTimeSlot() + "<br>");
 			out.println("-------------------------------" + "<br>");
 
 			if (offertaMax != null) {
@@ -109,7 +108,7 @@
 			}
 		%>
 
-		<form method="POST" action="InviaOffertaSuperamentoImmediato">
+		<form method="POST" action="InviaOffertaBustaChiusa">
 
 			Invia offerta: <input type="text" size="40" maxlength="5"
 				name="valoreOfferta" />

@@ -77,6 +77,13 @@
 		<button onlick="location.href='./update.jsp'">Aggiorna dati</button>
 		<button onclick="location.href='./AcquistaCrediti.jsp'">Acquista
 			crediti</button>
+			
+		<br><br><br><br><br>
+		
+		<h6>*Se i dati visualizzati non sono corretti, effettua nuovamente il Login*</h6>
 	</div>
+	
+	
+	
 </body>
 </html>

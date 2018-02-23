@@ -80,6 +80,9 @@
 			out.print(request.getAttribute("oraFine"));
 		%>
 		<br />
+		<br><br><br>
+		
+		<button onclick="location.href='./home.jsp'">Torna alla home</button>
 	</div>
 	<br>
 </body>

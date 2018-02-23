@@ -118,7 +118,7 @@
 					out.println(astebc.Aste().get(i).getVenditore().getCognomeUtente() + "<br><br>");
 					out.print("<form method=\"POST\" action=\"IdAstaToAstaPage\">");
 					int idAsta = astebc.Aste().get(i).getIdAsta();
-					int tipoAsta = 1; //asta superamentoimmediato vale 1
+					int tipoAsta = 0; //asta superamentoimmediato vale 1
 					out.print("<input type=\"hidden\" name=\"idAsta\"  value=" + idAsta + " />");
 					out.print("<input type=\"hidden\" name=\"tipoAsta\"  value=" + tipoAsta + " />");
 					out.print("<input name=\"vedi\" type=\"SUBMIT\" value=\"Vedi Asta\"> </form>");
