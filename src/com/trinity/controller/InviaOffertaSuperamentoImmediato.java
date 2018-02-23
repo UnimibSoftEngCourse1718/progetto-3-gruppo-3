@@ -169,7 +169,7 @@ System.out.println("inizio set parametri");
 	        
 	        //asta attiva
 	        boolean oraFineOk = false;
-	        if(oraFine<adesso)
+	        if(oraFine>adesso)
 	        	oraFineOk = true;
 	        
 	        //offerente e venditore diversi

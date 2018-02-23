@@ -2,10 +2,10 @@
 	pageEncoding="ISO-8859-1"%>
 <%@include file="checkLogin.jsp"%>
 <%@ page import="java.util.Date"%>
-<jsp:useBean id="astesi" class="beans.AsteSuperamentoImmediatoBean"
-	scope="session" />
-	<jsp:useBean id="astebc" class="beans.AsteBustaChiusaBean"
-	scope="session" />
+
+<jsp:useBean id="astesi" class="beans.AsteSuperamentoImmediatoBean" scope="session" />
+<jsp:useBean id="astebc" class="beans.AsteBustaChiusaBean" scope="session" />
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -119,7 +119,7 @@
 					out.println(astebc.Aste().get(i).getVenditore().getCognomeUtente() + "<br><br>");
 					out.print("<form method=\"POST\" action=\"IdAstaToAstaPage\">");
 					int idAsta = astebc.Aste().get(i).getIdAsta();
-					int tipoAsta = 0; //asta superamentoimmediato vale 1
+					int tipoAsta = 0; //asta busta chiusa vale 0
 					out.print("<input type=\"hidden\" name=\"idAsta\"  value=" + idAsta + " />");
 					out.print("<input type=\"hidden\" name=\"tipoAsta\"  value=" + tipoAsta + " />");
 					out.print("<input name=\"vedi\" type=\"SUBMIT\" value=\"Vedi Asta\"> </form>");

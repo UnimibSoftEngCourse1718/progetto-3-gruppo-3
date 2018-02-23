@@ -6,12 +6,11 @@
 <%@ page import="java.util.Date"%>
 
 
-<jsp:useBean id="aste" class="beans.AsteSuperamentoImmediatoBean"
-	scope="session" />
+<jsp:useBean id="aste" class="beans.AsteSuperamentoImmediatoBean" />
 <jsp:setProperty name="aste" property="*" />
 
 <jsp:useBean id="offerte"
-	class="beans.OfferteAstaSuperamentoImmediatoBean" scope="session" />
+	class="beans.OfferteAstaSuperamentoImmediatoBean" />
 <jsp:setProperty name="offerte" property="*" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -54,7 +53,7 @@
 				asta</a></li>
 		<li class="nav-item"><a class="nav-link" href="leMieAste.jsp">Le
 				mie aste</a></li>
-				<li class="nav-item"><a class="nav-link" href="GuidaTrinity.html">Aiuto</a></li>
+		<li class="nav-item"><a class="nav-link" href="GuidaTrinity.html">Aiuto</a></li>
 		<li class="nav-item"><a class="nav-link" href="logout.jsp">
 				Logout</a></li>
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -76,7 +75,7 @@
 
 		<%
 			int id = Integer.parseInt(request.getParameter("idAsta"));
-			
+
 			AstaSuperamentoImmediato asta = aste.Asta(id);
 			ArrayList<Integer> offertaMax = offerte.Max(id);
 
@@ -84,7 +83,7 @@
 			Date start = new Date(asta.getOraInizio());
 			Date end = new Date(asta.getOraFine());
 			out.println("ora inizio: " + start + "<br>");
-			out.println("ora fine: " + end+ "<br>");
+			out.println("ora fine: " + end + "<br>");
 			out.println("asta attiva: " + asta.isAttiva() + "<br>");
 			out.println("-------------------------------" + "<br>");
 			out.println("Oggetto" + "<br>");
@@ -96,7 +95,7 @@
 			out.println("time slot disponibili: " + asta.getTimeSlot() + "<br>");
 			out.println("-------------------------------" + "<br>");
 
-			if (offertaMax != null && offertaMax.get(1)>0) {
+			if (offertaMax != null && offertaMax.get(1) > 0) {
 				out.println("offerta attualmente piu' alta" + "<br>");
 				out.println("id offerta: " + offertaMax.get(0) + "<br>");
 				out.println("id offerente: " + offertaMax.get(2) + "<br>");
