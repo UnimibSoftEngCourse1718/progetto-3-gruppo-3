@@ -70,7 +70,7 @@ public AstaBustaChiusa(){}
 		setAttiva(1);
 	}
 	
-	public AstaBustaChiusa(int idAsta, int baseAsta, long oraInizio, long oraFine, Oggetto oggetto, UtenteRegistrato venditore){
+	public AstaBustaChiusa(int idAsta, int baseAsta, long oraInizio, long oraFine, Oggetto oggetto, UtenteRegistrato venditore, int attiva){
 		//super(baseAsta);
 		setIdAsta(idAsta);
 		setBaseAsta(baseAsta);

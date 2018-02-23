@@ -15,7 +15,7 @@ public class statoAste {
         // open a connection
          Connection con = null;
          Class.forName("com.mysql.jdbc.Driver");  // load the driver
-         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb?useSSL=false","root","p0m0d0r1n1");
+         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb?useSSL=false","root","");
 
          // create the sql command
          System.out.println(stop);

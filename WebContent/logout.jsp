@@ -21,7 +21,7 @@
 			%>
 			<br />
 			<button type="submit" value="TORNA ALLA HOME"
-				onclick="location.href='./index.html'">TORNA ALLA HOME</button>
+				onclick="location.href='./index.jsp'">TORNA ALLA HOME</button>
 		</div>
 	</div>
 </body>
