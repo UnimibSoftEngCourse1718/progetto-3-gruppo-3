@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@include file="checkLogin.jsp"%>
+<%@ page import="java.util.Date"%>
 <jsp:useBean id="aste" class="beans.AsteSuperamentoImmediatoBean"
 	scope="session" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -70,14 +71,16 @@
 		</h2>
 		<%
 			for (int i = 0; i < aste.Aste().size(); i++) {
-				//if (aste.Aste().get(i).isAttiva() != 0) {
-					{
+				if (aste.Aste().get(i).isAttiva() != 0) {
+					
 					out.println("Oggetto in asta:  " + aste.Aste().get(i).getOggetto().getNomeOggetto() + "<br><br>");
 					out.println(
 							"Descrizione oggetto:  " + aste.Aste().get(i).getOggetto().getDescrizione() + "<br><br>");
 					out.println("Base d'asta:  " + aste.Aste().get(i).getBaseAsta() + "<br><br>");
-					out.println("Ora d'inizio:  " + aste.Aste().get(i).getOraInizio() + "<br><br>");
-					out.println("Ora di fine:  " + aste.Aste().get(i).getOraFine() + "<br><br>");
+					Date start = new Date(aste.Aste().get(i).getOraInizio());
+					Date end = new Date(aste.Aste().get(i).getOraFine());
+					out.println("Ora d'inizio:  " + start + "<br><br>");
+					out.println("Ora di fine:  " + end + "<br><br>");
 					out.println("Time Slot rimanenti:  " + aste.Aste().get(i).getTimeSlot() + "<br><br>");
 					out.println("Venditore:  " + aste.Aste().get(i).getVenditore().getNomeUtente());
 					out.println(aste.Aste().get(i).getVenditore().getCognomeUtente() + "<br><br>");
@@ -89,7 +92,6 @@
 					out.print("<input name=\"vedi\" type=\"SUBMIT\" value=\"Vedi Asta\"> </form>");
 					out.print("<br> <br>");
 				}
-
 			}
 		%>
 	</div>

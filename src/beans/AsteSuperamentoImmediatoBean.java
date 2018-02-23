@@ -57,8 +57,6 @@ public class AsteSuperamentoImmediatoBean {
 			System.out.println(sqlex.getMessage());
 			return null;
 		}
-		
-		
 	}
 	
 	//metodo che restituisce l'asta con dato id
