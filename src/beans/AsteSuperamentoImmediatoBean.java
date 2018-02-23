@@ -31,13 +31,12 @@ public class AsteSuperamentoImmediatoBean {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb?useSSL=false","root","p0m0d0r1n1");
 			
-			
 			ArrayList<AstaSuperamentoImmediato> aste = new ArrayList <AstaSuperamentoImmediato>();
 			AstaSuperamentoImmediato a = new AstaSuperamentoImmediato();
 			PreparedStatement prep1 = connection.prepareStatement("select idAsta, baseAsta, oraInizio, oraFine, timeSlot, o.idOggetto, o.nomeOggetto, o.descrizione, c.idCategoria, c.nomeCategoria, u.idUtente, u.nomeUtente, u.cognomeUtente, u.password, u.email, u.indirizzo, u.numeroCarta, attiva from astasuperamentoimmediato asi inner join utenteregistrato u on asi.venditore = u.idUtente inner join oggetto o on asi.oggetto = o.idOggetto inner join categoria c on o.categoria = c.idCategoria ");
 			ResultSet rs = prep1.executeQuery();
 			while(rs.next()){
-				idAsta=rs.getInt(1);
+				idAsta = rs.getInt(1);
 				baseAsta = rs.getInt(2);
 				oraInizio = rs.getLong(3);
 				oraFine = rs.getLong(4);

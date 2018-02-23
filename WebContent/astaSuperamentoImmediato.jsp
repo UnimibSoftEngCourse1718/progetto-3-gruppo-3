@@ -76,9 +76,8 @@
 		<h3>Asta</h3>
 		<h5>tipo: Superamento immediato</h5>
 
-		<%	
-			int id = 63; 
-			//Integer.parseInt(request.getParameter("tipoAsta"));
+		<%
+			int id = Integer.parseInt(request.getParameter("idAsta"));
 			
 			AstaSuperamentoImmediato asta = aste.Asta(id);
 			ArrayList<Integer> offertaMax = offerte.Max(id);
@@ -91,7 +90,7 @@
 			out.println("Oggetto" + "<br>");
 			out.println("nome: " + asta.getOggetto().getNomeOggetto() + "<br>");
 			out.println("descrizione: " + asta.getOggetto().getDescrizione() + "<br>");
-			//visualizzo anche categoria?
+			//visualizzo categoria?
 			out.println("-------------------------------" + "<br>");
 			out.println("base asta: " + asta.getBaseAsta() + "<br>");
 			out.println("time slot disponibili: " + asta.getTimeSlot() + "<br>");

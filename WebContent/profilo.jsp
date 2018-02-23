@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@include file="checkLogin.jsp"%>
-<jsp:setProperty name="utenteregistrato" property="*" />
+<%@page import="com.trinity.model.UtenteRegistrato"%>
+<jsp:useBean id="utentiRegistrati" class="beans.UtenteRegistratoBean" scope="session" />
+<jsp:setProperty name="utentiRegistrati" property="*" />
+	
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -57,14 +61,18 @@
 <body>
 	<div class="container">
 		<%
-			out.println("Nome: " + utente.getNome() + "<br/>");
-			out.println("Cognome: " + utente.getCognome() + "<br/>");
-			out.println("Indirizzo: " + utente.getIndirizzo() + "<br/>");
-			out.println("Indirizzo email: " + utente.getEmail() + "<br/>");
-			out.println("Crediti Disponibili: " + utente.getCreditiDisp() + "<br/>");
-			out.println("Crediti Contabili: " + utente.getCreditiCont() + "<br/>");
-			out.println("Numero carta di credito: " + utente.getNumeroCarta() + "<br/>");
-			out.println("Password: " + utente.getPassword() + "<br/>");
+			int id = utente.getId();
+			UtenteRegistrato u = utentiRegistrati.uR(id);
+			
+			out.println("Id: " + id + "<br/>");
+			out.println("Nome: " + u.getNomeUtente() + "<br/>");
+			out.println("Cognome: " + u.getCognomeUtente() + "<br/>");
+			out.println("Indirizzo: " + u.getIndirizzo() + "<br/>");
+			out.println("Indirizzo email: " + u.getEmail() + "<br/>");
+			out.println("Crediti Disponibili: " + u.getCreditiDisp() + "<br/>");
+			out.println("Crediti Contabili: " + u.getCreditiCont() + "<br/>");
+			out.println("Numero carta di credito: " + u.getNumeroCarta() + "<br/>");
+			out.println("Password: " + u.getPassword() + "<br/>");
 		%>
 		<button onlick="location.href='./update.jsp'">Aggiorna dati</button>
 		<button onclick="location.href='./AcquistaCrediti.jsp'">Acquista

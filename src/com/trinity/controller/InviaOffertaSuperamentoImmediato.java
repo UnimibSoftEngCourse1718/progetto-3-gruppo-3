@@ -3,7 +3,9 @@ package com.trinity.controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,10 +18,13 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.transform.Transformers;
 
 import com.trinity.model.AstaSuperamentoImmediato;
 import com.trinity.model.OffertaSuperamentoImmediato;
 import com.trinity.model.UtenteRegistrato;
+import com.trinity.model.Categoria;
+
 
 /**
  * Servlet implementation class InviaOffertaSuperamentoImmediato
@@ -75,7 +80,7 @@ System.out.println("id offerente:"+idOfferente);
 			
 			//dati offerente
 			UtenteRegistrato offerente = null;
-			offerente = (UtenteRegistrato) session.createQuery("select idUtente, nomeUtente, cognomeUtente, email, password, indirizzo, numeroCarta, creditiDisp, creditiCont from com.trinity.model.UtenteRegistrato where idUtente= :idOfferente").setParameter("idOfferente", idOfferente).uniqueResult();
+			offerente = (UtenteRegistrato) session.createQuery("select ut.idUtente as idUtente, ut.nomeUtente as nomeUtente, ut.cognomeUtente as cognomeUtente, ut.email as email, ut.password as password, ut.indirizzo as indirizzo, ut.numeroCarta as numeroCarta, ut.creditiDisp as creditiDisp, ut.creditiCont as creditiCont from com.trinity.model.UtenteRegistrato ut where ut.idUtente = :idUtente").setParameter( "idUtente", idOfferente).setResultTransformer(Transformers.aliasToBean(UtenteRegistrato.class)).uniqueResult();
 System.out.println("Ok dati offerente");
 			
 			//dati asta su cui fare l'offerta
@@ -83,9 +88,18 @@ System.out.println("Ok dati offerente");
 			int idOggetto = 0;
 			int idVenditore = 0;
 			AstaSuperamentoImmediato asta = null;
-			asta = (AstaSuperamentoImmediato) session.createQuery("select o.idAsta as idAsta, o.baseAsta as baseAsta, o.oraInizio as oraInizio, o.oraFine as oraFine, o.timeSlot as timeSlot, o.oggetto as oggetto, o.venditore as venditore, o.attiva as attiva from com.trinity.model.AstaSuperamentoImmediato o where o.idAsta = :idAsta").setParameter("idAsta", idAsta);
-	        idOggetto=asta.getOggetto().getIdOggetto();
-	        idVenditore=asta.getVenditore().getIdUtente();
+			
+			int baseAsta = (int) session.createQuery("select baseAsta from com.trinity.model.AstaSuperamentoImmediato where idAsta= :idAsta").setParameter("idAsta",idAsta).uniqueResult();
+			long oraInizio = (long) session.createQuery("select oraInizio from com.trinity.model.AstaSuperamentoImmediato where idAsta= :idAsta").setParameter("idAsta",idAsta).uniqueResult();
+			long oraFine = (long) session.createQuery("select oraFine from com.trinity.model.AstaSuperamentoImmediato where idAsta= :idAsta").setParameter("idAsta",idAsta).uniqueResult();
+			int timeSlot = (int) session.createQuery("select timeSlot from com.trinity.model.AstaSuperamentoImmediato where idAsta= :idAsta").setParameter("idAsta",idAsta).uniqueResult();
+			UtenteRegistrato uV = (UtenteRegistrato) session.createQuery("select venditore from com.trinity.model.AstaSuperamentoImmediato where idAsta= :idAsta").setParameter("idAsta",idAsta).uniqueResult();
+			idVenditore = uV.getIdUtente();
+			int attiva = (int) session.createQuery("select attiva from com.trinity.model.AstaSuperamentoImmediato where idAsta= :idAsta").setParameter("idAsta",idAsta).uniqueResult(); 
+			
+			System.out.println("questa asta : " + idVenditore);
+			System.out.println("questa asta : " + attiva);
+System.out.println("Ok dati asta");
 	        
 	        //valore attuale dell'asta
 			int valoreAttualeAsta = asta.getBaseAsta();
@@ -213,7 +227,8 @@ System.out.println("Ok4");
 				u.setParameter("creditiDisp", offerente.getCreditiCont());
 				u.setParameter("idOfferente", idOfferente);
 				u.executeUpdate();
-		        //aggiorno asta nel database
+		        
+				//aggiorno asta nel database
 				
 				
 				//reindirizzo alla conferma
