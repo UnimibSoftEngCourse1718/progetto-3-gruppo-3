@@ -50,7 +50,20 @@ public class AstaSuperamentoImmediato {
 	@Column(name = "attiva", nullable=false)
 	private int attiva;
 	
-	public AstaSuperamentoImmediato(){}
+	//costruttore utilizzato in ASIBean
+	public AstaSuperamentoImmediato(int idAsta2, int baseAsta2, long oraInizio2, long oraFine2, int timeSlot2, int oggetto2, int venditore2, int attiva2){
+		setIdAsta(idAsta2);
+		setBaseAsta(baseAsta2);
+		setOraInizio(oraInizio2);
+		setOraFine(oraFine2);
+		setTimeSlot(timeSlot2);
+		
+		setAttiva(attiva2);
+	}
+	
+	public AstaSuperamentoImmediato(){
+		
+	}
 	
 	public AstaSuperamentoImmediato(int baseAsta, Oggetto oggetto, UtenteRegistrato venditore){
 		//super(baseAsta);

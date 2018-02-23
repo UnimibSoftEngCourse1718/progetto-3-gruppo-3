@@ -70,8 +70,8 @@
 		</h2>
 		<%
 			for (int i = 0; i < aste.Aste().size(); i++) {
-				if (aste.Aste().get(i).isAttiva() != 0) {
-
+				//if (aste.Aste().get(i).isAttiva() != 0) {
+					{
 					out.println("Oggetto in asta:  " + aste.Aste().get(i).getOggetto().getNomeOggetto() + "<br><br>");
 					out.println(
 							"Descrizione oggetto:  " + aste.Aste().get(i).getOggetto().getDescrizione() + "<br><br>");

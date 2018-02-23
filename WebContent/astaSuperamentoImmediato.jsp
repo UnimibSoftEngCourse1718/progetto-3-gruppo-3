@@ -77,7 +77,7 @@
 		<h5>tipo: Superamento immediato</h5>
 
 		<%	
-			int id = 45; 
+			int id = 63; 
 			//Integer.parseInt(request.getParameter("tipoAsta"));
 			
 			AstaSuperamentoImmediato asta = aste.Asta(id);
