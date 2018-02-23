@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -70,10 +71,11 @@ System.out.println("Ok connessione al db");
 	        int valoreOfferta = Integer.parseInt(request.getParameter("valoreOfferta"));
 			int idOfferente = Integer.parseInt(request.getParameter("idUtente"));
 System.out.println("Ok dati offerta offerente");
+System.out.println("id offerente:"+idOfferente);
 			
 			//dati offerente
 			UtenteRegistrato offerente = null;
-			offerente = (UtenteRegistrato) session.createQuery("select o.idUtente as idUtente, o.nomeUtente as nomeUtente, o.cognomeUtente as cognomeUtente, o.email as email, o.password as password, o.indirizzo as indirizzo, o.numeroCarta as numeroCarta, o.creditiDisp as creditiDisp, o.creditiCont as creditiCont from com.trinity.model.UtenteRegistrato o where o.idOfferente = :idOfferente").setParameter("idOfferente", idOfferente);
+			offerente = (UtenteRegistrato) session.createQuery("select idUtente, nomeUtente, cognomeUtente, email, password, indirizzo, numeroCarta, creditiDisp, creditiCont from com.trinity.model.UtenteRegistrato where idUtente= :idOfferente").setParameter("idOfferente", idOfferente).uniqueResult();
 System.out.println("Ok dati offerente");
 			
 			//dati asta su cui fare l'offerta
@@ -201,15 +203,16 @@ System.out.println("Ok4");
 	        					
 				//inserisco offerta nel database
 				//myStatement.executeUpdate("INSERT INTO offertasuperamentoimmediato " + offerta);
-				
 				session.save(offerta);
-				
 				session.getTransaction().commit();
-				
 				session.close();
 				
 				//aggiorno offerente nel database
-		        
+				Query u = session.createQuery("update com.trinity.model.UtenteRegistrato set creditiDisp= :creditiDisp and creditiDisp= :creditiCont where idUtente = :idOfferente");
+				u.setParameter("creditiDisp", offerente.getCreditiDisp());
+				u.setParameter("creditiDisp", offerente.getCreditiCont());
+				u.setParameter("idOfferente", idOfferente);
+				u.executeUpdate();
 		        //aggiorno asta nel database
 				
 				

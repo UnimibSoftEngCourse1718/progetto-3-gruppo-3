@@ -39,9 +39,6 @@ public class AstaSuperamentoImmediato {
 	@Column(name = "timeSlot", nullable = false)
 	private int timeSlot;
 	
-	@Column(name = "attiva", nullable=false)
-	private int attiva;
-	
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn (name = "oggetto")
 	private Oggetto oggetto;
@@ -49,6 +46,9 @@ public class AstaSuperamentoImmediato {
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn(name = "venditore")
 	private UtenteRegistrato venditore;
+	
+	@Column(name = "attiva", nullable=false)
+	private int attiva;
 	
 	public AstaSuperamentoImmediato(){}
 	

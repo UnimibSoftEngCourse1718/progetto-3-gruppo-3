@@ -84,6 +84,9 @@
 			ArrayList<Integer> offertaMax = offerte.Max(id);
 
 			out.println("id asta: " + asta.getIdAsta() + "<br>");
+			out.println("ora inizio: " + asta.getOraInizio() + "<br>");
+			out.println("ora fine: " + asta.getOraFine() + "<br>");
+			out.println("asta attiva: " + asta.isAttiva() + "<br>");
 			out.println("-------------------------------" + "<br>");
 			out.println("Oggetto" + "<br>");
 			out.println("nome: " + asta.getOggetto().getNomeOggetto() + "<br>");

@@ -28,13 +28,14 @@
 	<class name="AstaSuperamentoImmediato" table="astasuperamentoimmediato" lazy="true" />
 	<class name="Oggetto" table="oggetto" lazy="true" />
 	<class name="Categoria" table="categoria" lazy="true" />
+	<class name="OffertaSuperamentoImmediato" table="offertasuperamentoimmediato" lazy="true" />
 </hibernate-mapping>-->
 
 <mapping class="com.trinity.model.UtenteRegistrato"/>
 <mapping class="com.trinity.model.AstaSuperamentoImmediato"/>
 <mapping class="com.trinity.model.Oggetto"/>
-<mapping class="com.trinity.model.Categoria" />
-
+<mapping class="com.trinity.model.Categoria"/>
+<mapping class="com.trinity.model.OffertaSuperamentoImmediato"/>
 
 </session-factory>
 </hibernate-configuration>
