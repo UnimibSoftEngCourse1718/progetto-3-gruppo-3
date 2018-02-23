@@ -1,4 +1,3 @@
-
 package beans;
 
 import com.trinity.model.AstaBustaChiusa;
