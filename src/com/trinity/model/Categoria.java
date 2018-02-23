@@ -13,13 +13,17 @@ import javax.persistence.Table;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCategoria;
+	public int idCategoria;
 	
 	@Column(name="nomeCategoria")
 	private String nomeCategoria;
 
 	public Categoria(String nomeCategoria) {
 		this.nomeCategoria = nomeCategoria;
+	}
+	
+	public Categoria() {
+		
 	}
 	
 	public Categoria(int idCategoria, String nomeCategoria) {

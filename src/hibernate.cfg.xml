@@ -36,6 +36,7 @@
 <mapping class="com.trinity.model.Oggetto"/>
 <mapping class="com.trinity.model.Categoria"/>
 <mapping class="com.trinity.model.OffertaSuperamentoImmediato"/>
+<mapping class="com.trinity.model.AstaBustaChiusa"/>
 
 </session-factory>
 </hibernate-configuration>

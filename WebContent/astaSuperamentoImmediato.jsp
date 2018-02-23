@@ -3,11 +3,7 @@
 <%@page import="com.trinity.model.AstaSuperamentoImmediato"%>
 <%@page import="com.trinity.model.OffertaSuperamentoImmediato"%>
 <%@include file="checkLogin.jsp"%>
-<jsp:useBean id="contrAste" class="beans.statoAste">
-	<%
-		contrAste.aggiornaStato();
-	%>
-</jsp:useBean>
+
 
 <jsp:useBean id="aste" class="beans.AsteSuperamentoImmediatoBean"
 	scope="session" />
@@ -78,7 +74,7 @@
 
 		<%
 			int id = Integer.parseInt(request.getParameter("idAsta"));
-			
+			 
 			AstaSuperamentoImmediato asta = aste.Asta(id);
 			ArrayList<Integer> offertaMax = offerte.Max(id);
 
@@ -96,7 +92,7 @@
 			out.println("time slot disponibili: " + asta.getTimeSlot() + "<br>");
 			out.println("-------------------------------" + "<br>");
 
-			if (offertaMax != null) {
+			if (offertaMax != null && offertaMax.get(1)>0) {
 				out.println("offerta attualmente piu' alta" + "<br>");
 				out.println("id offerta: " + offertaMax.get(0) + "<br>");
 				out.println("id offerente: " + offertaMax.get(2) + "<br>");

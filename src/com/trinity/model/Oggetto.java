@@ -18,7 +18,7 @@ public class Oggetto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idOggetto", nullable = false, unique = true)
-	private int idOggetto;
+	public int idOggetto;
 
 	@Column(name = "nomeOggetto", nullable = false)
 	private String nomeOggetto;
@@ -28,7 +28,7 @@ public class Oggetto {
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn(name = "categoria")
-	private Categoria categoria;
+	public Categoria categoria;
 
 	public Oggetto(){}
 

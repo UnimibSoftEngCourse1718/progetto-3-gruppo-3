@@ -25,7 +25,7 @@ public class AstaSuperamentoImmediato {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idAsta", nullable = false, unique = true)
-	private int idAsta;
+	public int idAsta;
 	
 	@Column(name = "baseAsta", nullable = false)
 	private int baseAsta;
@@ -34,10 +34,10 @@ public class AstaSuperamentoImmediato {
 	private long oraInizio;
 	
 	@Column(name = "oraFine", nullable=false)
-	private long oraFine;
+	public long oraFine;
 	
 	@Column(name = "timeSlot", nullable = false)
-	private int timeSlot;
+	public int timeSlot;
 	
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn (name = "oggetto")
@@ -49,17 +49,6 @@ public class AstaSuperamentoImmediato {
 	
 	@Column(name = "attiva", nullable=false)
 	private int attiva;
-	
-	//costruttore utilizzato in ASIBean
-	public AstaSuperamentoImmediato(int idAsta2, int baseAsta2, long oraInizio2, long oraFine2, int timeSlot2, int oggetto2, int venditore2, int attiva2){
-		setIdAsta(idAsta2);
-		setBaseAsta(baseAsta2);
-		setOraInizio(oraInizio2);
-		setOraFine(oraFine2);
-		setTimeSlot(timeSlot2);
-		
-		setAttiva(attiva2);
-	}
 	
 	public AstaSuperamentoImmediato(){
 		

@@ -22,6 +22,7 @@ import org.hibernate.transform.Transformers;
 
 import com.trinity.model.AstaSuperamentoImmediato;
 import com.trinity.model.OffertaSuperamentoImmediato;
+import com.trinity.model.Oggetto;
 import com.trinity.model.UtenteRegistrato;
 import com.trinity.model.Categoria;
 
@@ -85,10 +86,10 @@ System.out.println("Ok dati offerente");
 			
 			//dati asta su cui fare l'offerta
 			int idAsta = Integer.parseInt(request.getParameter("idAsta"));
-			int idOggetto = 0;
 			int idVenditore = 0;
-			AstaSuperamentoImmediato asta = null;
 			
+			AstaSuperamentoImmediato asta = null;
+
 			int baseAsta = (int) session.createQuery("select baseAsta from com.trinity.model.AstaSuperamentoImmediato where idAsta= :idAsta").setParameter("idAsta",idAsta).uniqueResult();
 			long oraInizio = (long) session.createQuery("select oraInizio from com.trinity.model.AstaSuperamentoImmediato where idAsta= :idAsta").setParameter("idAsta",idAsta).uniqueResult();
 			long oraFine = (long) session.createQuery("select oraFine from com.trinity.model.AstaSuperamentoImmediato where idAsta= :idAsta").setParameter("idAsta",idAsta).uniqueResult();
@@ -96,61 +97,79 @@ System.out.println("Ok dati offerente");
 			UtenteRegistrato uV = (UtenteRegistrato) session.createQuery("select venditore from com.trinity.model.AstaSuperamentoImmediato where idAsta= :idAsta").setParameter("idAsta",idAsta).uniqueResult();
 			idVenditore = uV.getIdUtente();
 			int attiva = (int) session.createQuery("select attiva from com.trinity.model.AstaSuperamentoImmediato where idAsta= :idAsta").setParameter("idAsta",idAsta).uniqueResult(); 
+
 			
 			System.out.println("questa asta : " + idVenditore);
 			System.out.println("questa asta : " + attiva);
 System.out.println("Ok dati asta");
 	        
+			//oggetto e categoria
+			int idOggetto = 0;
+			Oggetto ogg = null;
+			Categoria cat = null;
+			
+			idOggetto = (int) session.createQuery("select oggetto.idOggetto from com.trinity.model.AstaSuperamentoImmediato where idAsta= :idAsta").setParameter("idAsta",idAsta).uniqueResult();
+System.out.println("Ok idOggetto");
+			
+			cat = (Categoria) session.createQuery("select categoria from com.trinity.model.Oggetto where idOggetto= :idOggetto").setParameter("idOggetto",idOggetto).uniqueResult();
+System.out.println("Ok categoria");
+			
+			String nomeOgg = (String) session.createQuery("select nomeOggetto from com.trinity.model.Oggetto where idOggetto= :idOggetto").setParameter("idOggetto",idOggetto).uniqueResult();
+			String descOgg = (String) session.createQuery("select descrizione from com.trinity.model.Oggetto where idOggetto= :idOggetto").setParameter("idOggetto",idOggetto).uniqueResult();
+			
+			ogg = new Oggetto(idOggetto, nomeOgg, descOgg, cat);
+System.out.println("Ok istanziata categoria e oggetto");
+			
 	        //valore attuale dell'asta
-			int valoreAttualeAsta = asta.getBaseAsta();
-	        
+			int valoreAttualeAsta = baseAsta;
+System.out.println("Ok valore attuale asta=baseAsta");
+
 	        //adesso
 			long adesso = System.currentTimeMillis();
+System.out.println("Ok adesso");
 			
 			//valore offerta precedente (se esiste. per ora assumo che esista)
 			boolean offertaPrec=false;
 			int valoreOffertaPrec = 0;
-			String x = (String) session.createQuery("select valore from com.trinity.model.OffertaSuperamentoImmediato where asta = :idAsta").setParameter("idAsta", idAsta).uniqueResult();
-			//il valore tornato dalla query è valido?
-//verificare
-			if(x != null) {
-	        	offertaPrec = true;
-	        	valoreOffertaPrec = Integer.parseInt(x);
-	        }
+System.out.println("ok setto boolean e intero per valore offerta precedente");			
+			long contOffPrec = (long) session.createQuery("select count(o.valore) from com.trinity.model.OffertaSuperamentoImmediato o where o.asta.idAsta = :idAsta").setParameter("idAsta", idAsta).uniqueResult();
+System.out.println("ok conto quante offerte ci sono gia state per quest aasta="+contOffPrec);
+
+			if(contOffPrec > 0) {
+				offertaPrec = true;
+				valoreOffertaPrec = (int) session.createQuery("select max(o.valore) from com.trinity.model.OffertaSuperamentoImmediato o where o.asta.idAsta = :idAsta").setParameter("idAsta", idAsta).uniqueResult();
+			}
+System.out.println("ok valore offerta precdente = "+ valoreOffertaPrec);
 			
 			//controlli per verificare se l'utente aveva già offerto per questa asta (se si, prendo lo scorso valore della sua offerta)
 	        boolean primaOfferta = true;
 	        int valoreOffertaPrecIdOfferente = 0;
-	        
-	        int intquanti=0;
-	        String stringquanti = (String) session.createQuery("select count(valore) from com.trinity.model.OffertaSuperamentoImmediato where asta = :idAsta and offerente = :idOfferente").setParameter("idAsta", idAsta).setParameter("idOfferente", idOfferente).uniqueResult();
-	        String ValorePrecOfferta = (String) session.createQuery("select max(valore) from com.trinity.model.OffertaSuperamentoImmediato where asta = :idAsta and offerente = :idOfferente").setParameter("idAsta", idAsta).setParameter("idOfferente", idOfferente).uniqueResult();
-	        //controllo se la quantita è accettabile
-	        if(stringquanti != null) {	//se la quantità in stringa è valido la converto in intera e controllo sia maggiore di 0
-	        	intquanti=Integer.parseInt(stringquanti);
-	        	if(intquanti > 0) {
-	        		valoreOffertaPrecIdOfferente = Integer.parseInt(ValorePrecOfferta);
-	        		primaOfferta=false;
-		        }
+	    
+	        long quanti = (long) session.createQuery("select count(o.valore) from com.trinity.model.OffertaSuperamentoImmediato o where o.asta.idAsta = :idAsta and o.offerente.idUtente = :idOfferente").setParameter("idAsta", idAsta).setParameter("idOfferente", idOfferente).uniqueResult();
+	        if(quanti > 0) {
+	        	valoreOffertaPrecIdOfferente = (int) session.createQuery("select max(o.valore) from com.trinity.model.OffertaSuperamentoImmediato o where o.asta.idAsta = :idAsta and o.offerente.idUtente = :idOfferente").setParameter("idAsta", idAsta).setParameter("idOfferente", idOfferente).uniqueResult();
+        		primaOfferta=false;
 	        }
+System.out.println("ok valore offerta precdente stesso utente = "+ valoreOffertaPrec);
 	        
 	        //setto valore attuale dell'asta. se esiste già un'offerta per questa asta allora quello è il valore dell'asta attuale. altrimenti rimane baseAsta
 	        if(offertaPrec == true) {
-	        	valoreAttualeAsta = valoreOffertaPrec;
+	        	valoreAttualeAsta = (int) valoreOffertaPrec;
 	        }
-System.out.println("Ok3");
-	        
+System.out.println("fine controlli");
+
+System.out.println("inizio set parametri");
 	 //set parametri per verificare se l'offerta è validabile
 	        boolean validabile=false;
 	        
 	        //asta attiva
 	        boolean astaIsAttiva = false;
-	        if(asta.isAttiva()==1)
+	        if(attiva==1)
 	        	astaIsAttiva=true;
 	        
 	        //asta attiva
 	        boolean oraFineOk = false;
-	        if(asta.getOraFine()<adesso)
+	        if(oraFine<adesso)
 	        	oraFineOk = true;
 	        
 	        //offerente e venditore diversi
@@ -167,12 +186,12 @@ System.out.println("Ok3");
 	        boolean creditoSufficiente = false;
 	        //calcolo in caso sia la mia prima offerta
 	        if(primaOfferta == true) {
-	        	if((offerente.getCreditiCont() - valoreOfferta) >= 0)
+	        	if((offerente.getCreditiDisp() - valoreOfferta) >= 0)
 	        		creditoSufficiente = true;
 	        }
 	        //calcolo in caso io abbia già fatto un'offerta
 	        else {
-	        	if((offerente.getCreditiCont() + valoreOffertaPrecIdOfferente - valoreOfferta) >= 0)
+	        	if((offerente.getCreditiDisp() + valoreOffertaPrecIdOfferente - valoreOfferta) >= 0)
 	        		creditoSufficiente = true;
 	        }
 	        
@@ -183,53 +202,75 @@ System.out.println("Ok3");
 	  //set parametri per gestione offerta
 	        //times slot disponibili
 	        boolean timeSlotDisp = false;
-	        if(asta.getTimeSlot() > 0)
+	        if(timeSlot > 0)
 	        	timeSlotDisp = true;
 	        
-	        //decrementatimeSlot (se il tempo è minore di 5 minuti
+	        //decrementatimeSlot (se il tempo è minore di 5 minuti)
 	        boolean decrementaTimeSlot = false;
-	        if(asta.getOraFine()-adesso < 300000)
+	        if(oraFine-adesso < 300000)
 	        	decrementaTimeSlot = true;
 System.out.println("Ok4");
+
 	   //creazione offerta	        
 	        if(validabile == true) {
 	        	//aggiorno timeSlot e orario di fine asta [se ho timeslot e il tempo è minore di un tot]
 	        	if(timeSlotDisp && decrementaTimeSlot) {
-	        		int tsl = asta.getTimeSlot();
+	        		int tsl = timeSlot;
 	        		tsl --;
-	        		long time = asta.getOraFine();
+	        		long time = oraFine;
 	        		time += 300000;
-	        		asta.setTimeSlot(tsl);
-	        		asta.setOraFine(time);
+	        		timeSlot = tsl;
+	        		oraFine = time;
 	        	}
 	        	
 	        	//calcolo creditiCont offerente se è la prima offerta per questa asta
-	        	int _creditiCont = offerente.getCreditiCont() - valoreOfferta;
+	        	int _creditiDisp = offerente.getCreditiDisp() - valoreOfferta;
 	        	
 	        	//calcolo creditiCont offerente se NON è la prima offerta per questa asta
 	        	if (!primaOfferta) {
-	        		_creditiCont += valoreOffertaPrecIdOfferente;
+	        		_creditiDisp += valoreOffertaPrecIdOfferente;
 	        	}
-	        	offerente.setCreditiCont(_creditiCont);
+	        	offerente.setCreditiCont(_creditiDisp);
+	        	
+	        	//setto valori asta
+	        	asta = new AstaSuperamentoImmediato(idAsta, baseAsta, oraInizio, oraFine, timeSlot, ogg, uV, attiva);
 	        	
 	        	//istanza offerta
 				OffertaSuperamentoImmediato offerta = new OffertaSuperamentoImmediato (valoreOfferta, asta, offerente);
 	        					
 				//inserisco offerta nel database
-				//myStatement.executeUpdate("INSERT INTO offertasuperamentoimmediato " + offerta);
-				session.save(offerta);
-				session.getTransaction().commit();
-				session.close();
+System.out.println("prima sessionsave");
+				session.saveOrUpdate(offerta);
 				
 				//aggiorno offerente nel database
-				Query u = session.createQuery("update com.trinity.model.UtenteRegistrato set creditiDisp= :creditiDisp and creditiDisp= :creditiCont where idUtente = :idOfferente");
+System.out.println("Okprima inser update offerente");
+System.out.println("get crediti cont" + offerente.getCreditiCont());
+				Query u = session.createQuery("update com.trinity.model.UtenteRegistrato u set u.creditiDisp= :creditiDisp where u.idUtente = :idOfferente");
+System.out.println("u:"+u);
 				u.setParameter("creditiDisp", offerente.getCreditiDisp());
-				u.setParameter("creditiDisp", offerente.getCreditiCont());
+System.out.println("1");
 				u.setParameter("idOfferente", idOfferente);
+System.out.println("2");
 				u.executeUpdate();
-		        
-				//aggiorno asta nel database
+System.out.println("3");
+				//session.update(u);
+System.out.println("Ok fine update offerente");
 				
+
+
+				//aggiorno asta nel database
+				Query as = session.createQuery("update com.trinity.model.AstaSuperamentoImmediato a set a.oraFine= :oraFine , a.timeSlot= :timeSlot where a.idAsta = :idAsta");
+System.out.print("get ora fine asta" + asta.getOraFine());
+				as.setParameter("oraFine", asta.getOraFine());
+				as.setParameter("timeSlot", asta.getTimeSlot());
+				as.setParameter("idAsta", idAsta);
+				as.executeUpdate();
+				//session.update(as);
+System.out.println("Ok fine update asta");
+				
+				//chiusura connessione
+				session.getTransaction().commit();
+				session.close();
 				
 				//reindirizzo alla conferma
 				RequestDispatcher view = request.getRequestDispatcher("inviaOfferta_conferma.jsp");
@@ -237,7 +278,8 @@ System.out.println("Ok4");
 System.out.println("Ok");
 	        }
 	        else {
-	        	System.out.println("else");
+	        	RequestDispatcher view = request.getRequestDispatcher("inviaOfferta_fail.jsp");
+				view.forward(request, response);
 	        }
 		}catch(Exception e)
 		{

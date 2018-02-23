@@ -20,15 +20,15 @@ public class OffertaSuperamentoImmediato {
 	private int idOffertaSI;
 	
 	@Column(name="valore", nullable = false)
-	private int valore;
+	public int valore;
 	
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn (name = "asta", nullable = false)
-	private AstaSuperamentoImmediato asta;
+	public AstaSuperamentoImmediato asta;
 	
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn (name = "offerente", nullable = false)
-	private UtenteRegistrato offerente;
+	public UtenteRegistrato offerente;
 	
 	public OffertaSuperamentoImmediato(int idOffertaSI, int valore, AstaSuperamentoImmediato asta, UtenteRegistrato offerente) {
 		this.idOffertaSI = idOffertaSI;
