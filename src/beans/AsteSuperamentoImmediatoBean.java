@@ -29,7 +29,7 @@ public class AsteSuperamentoImmediatoBean {
 			// open a connection
 			Connection connection = null;
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb?useSSL=false","root","");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb?useSSL=false","root","p0m0d0r1n1");
 			
 			ArrayList<AstaSuperamentoImmediato> aste = new ArrayList <AstaSuperamentoImmediato>();
 			AstaSuperamentoImmediato a = new AstaSuperamentoImmediato();
