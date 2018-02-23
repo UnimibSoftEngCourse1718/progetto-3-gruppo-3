@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@include file="checkLogin.jsp"%>
 <%@ page import="java.util.Date"%>
 <jsp:useBean id="astesi" class="beans.AsteSuperamentoImmediatoBean"
 	scope="session" />
@@ -36,16 +35,11 @@
 </button>
 <div class="collapse navbar-collapse" id="collapsibleNavbar">
 	<ul class="navbar-nav">
-		<li class="nav-item"><a class="nav-link" href="home.jsp">Home</a>
+		<li class="nav-item"><a class="nav-link" href="index.jsp">Home</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="profilo.jsp">Il
-				mio account</a></li>
-		<li class="nav-item"><a class="nav-link" href="creaAsta.jsp">Nuova
-				asta</a></li>
-		<li class="nav-item"><a class="nav-link" href="leMieAste.jsp">Le
-				mie aste</a></li>
-		<li class="nav-item"><a class="nav-link" href="logout.jsp">
-				Logout</a></li>
+		<li class="nav-item"><a class="nav-link" href="login.html">Log in</a></li>
+		<li class="nav-item"><a class="nav-link" href="registrazione.html">Registrati</a></li>
+		
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<form class="form-inline" action="/action_page.php">
 			<input class="form-control mr-sm-2" type="text" placeholder="Search">
@@ -86,12 +80,8 @@
 					out.println("Time Slot rimanenti:  " + astesi.Aste().get(i).getTimeSlot() + "<br><br>");
 					out.println("Venditore:  " + astesi.Aste().get(i).getVenditore().getNomeUtente());
 					out.println(astesi.Aste().get(i).getVenditore().getCognomeUtente() + "<br><br>");
-					out.print("<form method=\"POST\" action=\"IdAstaToAstaPage\">");
-					int idAsta = astesi.Aste().get(i).getIdAsta();
-					int tipoAsta = 1; //asta superamentoimmediato vale 1
-					out.print("<input type=\"hidden\" name=\"idAsta\"  value=" + idAsta + " />");
-					out.print("<input type=\"hidden\" name=\"tipoAsta\"  value=" + tipoAsta + " />");
-					out.print("<input name=\"vedi\" type=\"SUBMIT\" value=\"Vedi Asta\"> </form>");
+					out.print("<form method=\"POST\" action=\"login.html\">");
+					out.print("<input name=\"vedi\" type=\"SUBMIT\" value=\"Effettua il login per visualizzare l'asta\"> </form>");
 					out.print("<br> <br>");
 				}
 			}
@@ -116,12 +106,8 @@
 					out.println("Ora di fine:  " + end + "<br><br>");
 					out.println("Venditore:  " + astebc.Aste().get(i).getVenditore().getNomeUtente());
 					out.println(astebc.Aste().get(i).getVenditore().getCognomeUtente() + "<br><br>");
-					out.print("<form method=\"POST\" action=\"IdAstaToAstaPage\">");
-					int idAsta = astebc.Aste().get(i).getIdAsta();
-					int tipoAsta = 0; //asta superamentoimmediato vale 1
-					out.print("<input type=\"hidden\" name=\"idAsta\"  value=" + idAsta + " />");
-					out.print("<input type=\"hidden\" name=\"tipoAsta\"  value=" + tipoAsta + " />");
-					out.print("<input name=\"vedi\" type=\"SUBMIT\" value=\"Vedi Asta\"> </form>");
+					out.print("<form method=\"POST\" action=\"login.html\">");
+					out.print("<input name=\"vedi\" type=\"SUBMIT\" value=\"Effettua il login per visualizzare l'asta\"> </form>");
 					out.print("<br> <br>");
 				}
 			}

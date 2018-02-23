@@ -20,14 +20,16 @@
           if(utente.isLoggedIn()){
             out.println("Benvenuto "+utente.getEmail()+"<br/>");
             out.println("<a href='logout.jsp'>Logout</a> <br/>");
+            out.print("<button type=\"submit\" value=\"VAI ALLA HOME\" onclick=\"location.href='./home.jsp'\">VAI ALLA HOME</button>");
           }
           else{
         	  out.println("I dati di accesso sono sbagliati! Controllali di nuovo!<br />");
+        	  out.print("<button type=\"submit\" value=\"TORNA AL LOGIN\" onclick=\"location.href='./login.html'\">RIPROVA</button>");
           }
-         out.println("<a href='checkLogin.jsp'>check</A>");
+
         %>
         <br/>
-        <button type="submit" value="VAI ALLA HOME" onclick="location.href='./home.jsp'">VAI ALLA HOME</button>
+        
 		</div></div>
 
     </body>

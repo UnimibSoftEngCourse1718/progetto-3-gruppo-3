@@ -71,8 +71,9 @@ public class AcquistaCrediti extends HttpServlet {
 		
 		Session session = factory.openSession();
 		session.beginTransaction();
-		
-		int creditiAcquistati=Integer.parseInt(request.getParameter("outputCrediti"));
+		int creditiAcquistati = 0;
+		if(request.getParameter("outputCrediti") != "")
+			creditiAcquistati= Integer.parseInt(request.getParameter("outputCrediti"));
 		int creditiDispPrec = (int) session.createQuery("select creditiDisp from com.trinity.model.UtenteRegistrato where email = :email").setParameter("email", request.getParameter("email")).uniqueResult();
 		int creditiContPrec = (int) session.createQuery("select creditiCont from com.trinity.model.UtenteRegistrato where email = :email").setParameter("email", request.getParameter("email")).uniqueResult();
 		

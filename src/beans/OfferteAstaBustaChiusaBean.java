@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class OfferteAstaSuperamentoImmediatoBean {
+public class OfferteAstaBustaChiusaBean {
 	
 	//ritorna un arraylist contenente idOffertaMassima, valore, idOfferente
 	public ArrayList<Integer> Max(int idAsta){
@@ -18,7 +18,7 @@ public class OfferteAstaSuperamentoImmediatoBean {
 			
 			ArrayList<Integer> max = new ArrayList <Integer>();
 			
-			PreparedStatement prep = connection.prepareStatement("Select idOffertaSI, valore, offerente from offertasuperamentoimmediato where asta= \"" + idAsta + "\"");
+			PreparedStatement prep = connection.prepareStatement("Select idOffertaSI, valore, offerente from offertabustachiusa where asta= \"" + idAsta + "\"");
 			
 			ResultSet all = prep.executeQuery();
 			
