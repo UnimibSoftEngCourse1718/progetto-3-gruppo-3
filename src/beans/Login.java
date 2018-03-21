@@ -21,6 +21,7 @@ public class Login {
 	boolean loggedIn = false;
 
 	public Login() {
+		throw new UnsupportedOperationException();
 
 	}
 
