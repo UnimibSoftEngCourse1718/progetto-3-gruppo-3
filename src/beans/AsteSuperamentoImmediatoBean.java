@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AsteSuperamentoImmediatoBean {
@@ -25,16 +26,19 @@ public class AsteSuperamentoImmediatoBean {
 	
 	//metodo che restituisce un arraylist di tutte le aste a superamentoimmediato
 	public ArrayList<AstaSuperamentoImmediato> Aste(){
+		Connection connection = null;
+		PreparedStatement prep1 = null;
+		ResultSet rs = null;
 		try{
 			// open a connection
-			Connection connection = null;
+			
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb?useSSL=false","root","p0m0d0r1n1");
 			
 			ArrayList<AstaSuperamentoImmediato> aste = new ArrayList <AstaSuperamentoImmediato>();
 			AstaSuperamentoImmediato a = new AstaSuperamentoImmediato();
-			PreparedStatement prep1 = connection.prepareStatement("select idAsta, baseAsta, oraInizio, oraFine, timeSlot, o.idOggetto, o.nomeOggetto, o.descrizione, c.idCategoria, c.nomeCategoria, u.idUtente, u.nomeUtente, u.cognomeUtente, u.password, u.email, u.indirizzo, u.numeroCarta, attiva from astasuperamentoimmediato asi inner join utenteregistrato u on asi.venditore = u.idUtente inner join oggetto o on asi.oggetto = o.idOggetto inner join categoria c on o.categoria = c.idCategoria ");
-			ResultSet rs = prep1.executeQuery();
+			prep1 = connection.prepareStatement("select idAsta, baseAsta, oraInizio, oraFine, timeSlot, o.idOggetto, o.nomeOggetto, o.descrizione, c.idCategoria, c.nomeCategoria, u.idUtente, u.nomeUtente, u.cognomeUtente, u.password, u.email, u.indirizzo, u.numeroCarta, attiva from astasuperamentoimmediato asi inner join utenteregistrato u on asi.venditore = u.idUtente inner join oggetto o on asi.oggetto = o.idOggetto inner join categoria c on o.categoria = c.idCategoria ");
+			rs = prep1.executeQuery();
 			while(rs.next()){
 				idAsta = rs.getInt(1);
 				baseAsta = rs.getInt(2);
@@ -56,6 +60,30 @@ public class AsteSuperamentoImmediatoBean {
 			System.out.println("errore1");
 			System.out.println(sqlex.getMessage());
 			return null;
+		}
+		
+		finally {
+			try {
+				if (prep1 != null)
+					prep1.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				if (connection != null)
+					connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println("SQL exception");
+				e.printStackTrace();
+			}
+			try {
+				if (rs != null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

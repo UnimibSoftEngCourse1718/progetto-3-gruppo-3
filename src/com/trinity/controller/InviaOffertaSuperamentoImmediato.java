@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -58,12 +59,14 @@ public class InviaOffertaSuperamentoImmediato extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Connection connection = null;
+		Statement myStatement = null;
 		try {
 			//Connessione al db
-			Connection connection = null;
+			
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trinitydb","root","p0m0d0r1n1");
-			Statement myStatement = null;
+			
 	        myStatement = connection.createStatement();
 System.out.println("ok creo connessione");
 	        
@@ -285,6 +288,25 @@ System.out.println("Ok");
 		{
 			System.out.println("Error");
 			System.out.println(e.getMessage());
+		}
+		
+		finally {
+			try {
+				if (myStatement != null)
+					myStatement.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				if (connection != null)
+					connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println("SQL exception");
+				e.printStackTrace();
+			}
+			
 		}
 	}
 }
